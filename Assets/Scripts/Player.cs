@@ -6,10 +6,6 @@ using UnityEngine.SceneManagement;
 public class Player : Character
 {
     [Header("Player")]
-    private float xAxis;
-    private float yAxis;
-    private float saveAxis = 1f;
-
     private Collider2D playerCollider;
     private WeaponClass weapon;
 
@@ -18,39 +14,32 @@ public class Player : Character
     {
         // Call parent method
         base.Start();
-        state = State.Run;
         playerCollider = GetComponent<Collider2D>();
         weapon = GetComponent<WeaponClass>();
     }
 
-
-    private void FixedUpdate()
+    protected override void Update()
     {
-        // Local variables
-        currentVelocity = rb.velocity;
+        //Set animator booleans to false according to state
+        base.Update();
 
-        switch (state) {
-            case State.Run:
-                currentVelocity = new Vector2(xAxis * walkSpeed * Time.fixedDeltaTime, currentVelocity.y);
-                break;
-
-            case State.Roll:
-                RollCharacter();
-                break;
-
-            case State.Climb:
-                ClimbCharacter();
-                break;
+        if (Input.GetKey(KeyCode.RightArrow))
+        {
+            //Set character facing direction
+            transform.rotation = Quaternion.identity;
+            state = State.Run;
+        }
+        else if (Input.GetKey(KeyCode.LeftArrow))
+        {
+            //Set character facing direction
+            transform.rotation = Quaternion.Euler(0.0f, 180.0f, 0.0f);
+            state = State.Run;
         }
 
-        rb.velocity = currentVelocity;
-    }
-
-    private void Update()
-    {
-        // Mechanic input
-        xAxis = Input.GetAxisRaw("Horizontal");
-        yAxis = Input.GetAxisRaw("Vertical");
+        if (Input.GetKeyUp(KeyCode.LeftArrow) || Input.GetKeyUp(KeyCode.RightArrow))
+        {
+            state = State.Idle;
+        }
 
         //Defense
         if (Input.GetKey(KeyCode.C))
@@ -73,45 +62,16 @@ public class Player : Character
         }
 
         // Roll - player
-        if (timeRolling <= 0)
+        if (Input.GetKeyDown(KeyCode.LeftShift))
         {
-            if (Input.GetKeyDown(KeyCode.LeftShift))
-            {
-                state = State.Roll;
-                rollSpeed = maxRollSpeed;
-                timeRolling = startTimeRolling;
-            }
-        }
-        else
-        {
-            timeRolling -= Time.deltaTime;
+            state = State.Roll;
         }
 
+
         // Climb - player
-        if(timeClimbing <= 0)
+        if (Input.GetKeyDown(KeyCode.UpArrow) || (Input.GetKeyDown(KeyCode.DownArrow)))
         {
-            if (canClimb)
-            {
-                if (Input.GetKeyDown(KeyCode.UpArrow))
-                {
-                    state = State.Climb;
-                    timeClimbing = startTimeClimbing;
-                    canClimb = false;
-                }
-            }
-            else
-            {
-                if (Input.GetKeyDown(KeyCode.DownArrow))
-                {
-                    state = State.Climb;
-                    timeClimbing = startTimeClimbing;
-                    canClimb = true;
-                }
-            }
-        }
-        else
-        {
-            timeClimbing -= Time.deltaTime;
+            state = State.Climb;
         }
 
         // Attack
@@ -139,16 +99,5 @@ public class Player : Character
         {
             timeAttacking -= Time.deltaTime;
         }
-
-        // Flip - player
-        if (xAxis != 0)  // key pressed
-        {
-            if (xAxis != saveAxis) 
-                RotateCharacter();
-
-            saveAxis = xAxis;
-        }
-
-        rb.velocity = currentVelocity;
     }
 }

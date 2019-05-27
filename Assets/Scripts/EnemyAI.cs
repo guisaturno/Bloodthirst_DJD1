@@ -11,20 +11,16 @@ public class EnemyAI : Character
     [SerializeField] private Animator weaponLeftAnim;
     //AI
     private AnimatorStateInfo playerState;
-    //
+    //Attack
     int randomAttack;
-    //Run
+
+    //Player position
     [SerializeField] private float playerDistance = 5f;
     private Transform playerTransform;
-    private bool onRight = true;
-    private bool saveOnRight = false;
+
     //MoveTowards targets
-    Vector2 runTarget;
     Vector2 climbTarget;
-    Vector2 rollTarget;
-    //Roll
-    [SerializeField] private float rollRange = 30;
-    private bool didRoll;
+
     //Stats
     private int agro, def, agil;
     private int currentAgro, currentDef, currentAgil;
@@ -32,6 +28,7 @@ public class EnemyAI : Character
     protected override void Start()
     {
         base.Start();
+
         playerAnim = GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>();
         playerTransform = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
 
@@ -45,11 +42,12 @@ public class EnemyAI : Character
     }
     private void FixedUpdate()
     {
-        runTarget = new Vector2(playerTransform.position.x, transform.position.y);
         climbTarget = new Vector2(transform.position.x, playerTransform.position.y);
     }
-    void Update()
+    protected override void Update()
     {
+        base.Update();
+
         //On death
         if (CurrentHP <= 0)
         {
@@ -57,6 +55,7 @@ public class EnemyAI : Character
         }
 
         UpdateState();
+
         switch (state)
         {
             case State.Attack:
@@ -64,16 +63,9 @@ public class EnemyAI : Character
                 AttackState();
                 state = State.Idle;
                 break;
-            case State.Run:
-                RunState();
-                break;
             case State.Defend:
                 DefendState();
                 state = State.Idle;
-                break;
-            case State.Roll:
-                RollState();
-                didRoll = false;
                 break;
             case State.Climb:
                 ClimbState();
@@ -117,10 +109,17 @@ public class EnemyAI : Character
     {
         while (true)
         {
-            //Run
             if (Vector2.Distance(transform.position, playerTransform.position) > playerDistance
                 && transform.position.y == playerTransform.position.y)
             {
+                if (transform.position.x < playerTransform.position.x)
+                {
+                    transform.rotation = Quaternion.identity;
+                }
+                else
+                {
+                    transform.rotation = Quaternion.Euler(0.0f, 180.0f, 0.0f);
+                }
                 state = State.Run;
             }
             else if ((transform.position.y != playerTransform.position.y))
@@ -130,15 +129,6 @@ public class EnemyAI : Character
             else if (currentAgil > currentAgro && currentAgil > currentDef)
             {
                 state = State.Roll;
-                didRoll = true;
-                if (playerTransform.position.x > transform.position.x)
-                {
-                    rollTarget = new Vector2(transform.position.x + rollRange, transform.position.y);
-                }
-                else
-                {
-                    rollTarget = new Vector2(transform.position.x - rollRange, transform.position.y);
-                }
             }
             else if (currentAgro > currentAgil && currentAgro > currentDef)
             {
@@ -234,31 +224,6 @@ public class EnemyAI : Character
 
     }
 
-    private void RunState()
-    {
-        if (Vector2.Distance(transform.position, runTarget) > playerDistance
-            && animator.GetBool("Defense") == false)
-        {
-            animator.SetBool("Run", true);
-            weaponLeftAnim.SetBool("Run", true);
-            weaponRightAnim.SetBool("Run", true);
-            transform.position = Vector2.MoveTowards(transform.position, runTarget, walkSpeed * Time.fixedDeltaTime);
-        }
-        else
-        {
-            animator.SetBool("Run", false);
-            weaponLeftAnim.SetBool("Run", false);
-            weaponRightAnim.SetBool("Run", false);
-        }
-
-        onRight = ((playerTransform.position.x - transform.position.x) < 0);
-        if (onRight != saveOnRight)
-        {
-            RotateCharacter();
-            saveOnRight = onRight;
-        }
-    }
-
     private void ClimbState()
     {
         if (transform.position.y != playerTransform.position.y)
@@ -273,20 +238,6 @@ public class EnemyAI : Character
             animator.SetBool("Climb", false);
             weaponLeftAnim.SetBool("Climb", false);
             weaponRightAnim.SetBool("Climb", false);
-        }
-    }
-
-    private void RollState()
-    {
-        if (transform.position.x != rollTarget.x)
-        {
-            if (didRoll)
-            {
-                animator.SetTrigger("Roll");
-                weaponRightAnim.SetTrigger("Roll");
-                weaponLeftAnim.SetTrigger("Roll");
-            }
-            transform.position = Vector2.MoveTowards(transform.position, rollTarget, maxRollSpeed * Time.fixedDeltaTime);
         }
     }
 }
