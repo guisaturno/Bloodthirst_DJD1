@@ -1,0 +1,1279 @@
+fileFormatVersion: 2
+guid: d73e4f053c645ee42a83d0efd7397ac2
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: spritesheet_tridente_0
+    21300002: spritesheet_tridente_1
+    21300004: spritesheet_tridente_2
+    21300006: spritesheet_tridente_3
+    21300008: spritesheet_tridente_4
+    21300010: spritesheet_tridente_5
+    21300012: spritesheet_tridente_6
+    21300014: spritesheet_tridente_7
+    21300016: spritesheet_tridente_8
+    21300018: spritesheet_tridente_9
+    21300020: spritesheet_tridente_10
+    21300022: spritesheet_tridente_11
+    21300024: spritesheet_tridente_12
+    21300026: spritesheet_tridente_13
+    21300028: spritesheet_tridente_14
+    21300030: spritesheet_tridente_15
+    21300032: spritesheet_tridente_16
+    21300034: spritesheet_tridente_17
+    21300036: spritesheet_tridente_18
+    21300038: spritesheet_tridente_19
+    21300040: spritesheet_tridente_20
+    21300042: spritesheet_tridente_21
+    21300044: spritesheet_tridente_22
+    21300046: spritesheet_tridente_23
+    21300048: spritesheet_tridente_24
+    21300050: spritesheet_tridente_25
+    21300052: spritesheet_tridente_26
+    21300054: spritesheet_tridente_27
+    21300056: spritesheet_tridente_28
+    21300058: spritesheet_tridente_29
+    21300060: spritesheet_tridente_30
+    21300062: spritesheet_tridente_31
+    21300064: spritesheet_tridente_32
+    21300066: spritesheet_tridente_33
+    21300068: spritesheet_tridente_34
+    21300070: spritesheet_tridente_35
+    21300072: spritesheet_tridente_36
+    21300074: spritesheet_tridente_37
+    21300076: spritesheet_tridente_38
+    21300078: spritesheet_tridente_39
+    21300080: spritesheet_tridente_40
+    21300082: spritesheet_tridente_41
+    21300084: spritesheet_tridente_42
+    21300086: spritesheet_tridente_43
+    21300088: spritesheet_tridente_44
+    21300090: spritesheet_tridente_45
+    21300092: spritesheet_tridente_46
+    21300094: spritesheet_tridente_47
+    21300096: spritesheet_tridente_48
+    21300098: spritesheet_tridente_49
+    21300100: spritesheet_tridente_50
+    21300102: spritesheet_tridente_51
+    21300104: spritesheet_tridente_52
+    21300106: spritesheet_tridente_53
+    21300108: spritesheet_tridente_54
+    21300110: spritesheet_tridente_55
+    21300112: spritesheet_tridente_56
+    21300114: spritesheet_tridente_57
+    21300116: spritesheet_tridente_58
+    21300118: spritesheet_tridente_59
+    21300120: spritesheet_tridente_60
+    21300122: spritesheet_tridente_61
+    21300124: spritesheet_tridente_62
+    21300126: spritesheet_tridente_63
+    21300128: spritesheet_tridente_64
+    21300130: spritesheet_tridente_65
+    21300132: spritesheet_tridente_66
+    21300134: spritesheet_tridente_67
+    21300136: spritesheet_tridente_68
+    21300138: spritesheet_tridente_69
+    21300140: spritesheet_tridente_70
+    21300142: spritesheet_tridente_71
+    21300144: spritesheet_tridente_72
+    21300146: spritesheet_tridente_73
+    21300148: spritesheet_tridente_74
+    21300150: spritesheet_tridente_75
+    21300152: spritesheet_tridente_76
+    21300154: spritesheet_tridente_77
+    21300156: spritesheet_tridente_78
+    21300158: spritesheet_tridente_79
+  externalObjects: {}
+  serializedVersion: 9
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 2.5
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 2
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: spritesheet_tridente_0
+      rect:
+        serializedVersion: 2
+        x: 22
+        y: 1018
+        width: 10
+        height: 44
+      alignment: 9
+      pivot: {x: 0.5, y: 0.7152294}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4386dafdcf076d04daf2b09d5430518b
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheet_tridente_1
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 958
+        width: 44
+        height: 10
+      alignment: 9
+      pivot: {x: 0.29785025, y: 0.51187134}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0067eae12e16939468f98de372b5144c
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheet_tridente_2
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 956
+        width: 44
+        height: 10
+      alignment: 9
+      pivot: {x: 0.28949773, y: 0.49733886}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f8218a913cb5024fb9d6c2af34d2130
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheet_tridente_3
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 956
+        width: 44
+        height: 10
+      alignment: 9
+      pivot: {x: 0.29118624, y: 0.4999939}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dea4aa4c33493774898ea026104e682a
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheet_tridente_4
+      rect:
+        serializedVersion: 2
+        x: 42
+        y: 798
+        width: 44
+        height: 10
+      alignment: 9
+      pivot: {x: 0.2553724, y: 0.5000061}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ac09ad95bbe5cd243a1163efc4e38479
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheet_tridente_5
+      rect:
+        serializedVersion: 2
+        x: 110
+        y: 794
+        width: 44
+        height: 10
+      alignment: 9
+      pivot: {x: 0.3007672, y: 0.4889099}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 946816a6d05ac7e4f94ce2c2c28fc190
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheet_tridente_6
+      rect:
+        serializedVersion: 2
+        x: 26
+        y: 720
+        width: 44
+        height: 10
+      alignment: 9
+      pivot: {x: 0.29427478, y: 0.49015504}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5cabb119109ae1542b81989310436bb0
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheet_tridente_7
+      rect:
+        serializedVersion: 2
+        x: 86
+        y: 706
+        width: 44
+        height: 10
+      alignment: 9
+      pivot: {x: 0.29651088, y: 0.4999939}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e5fee14132c02f5478cdf0632f0726ed
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheet_tridente_8
+      rect:
+        serializedVersion: 2
+        x: 168
+        y: 682
+        width: 46
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 466d27931287cb04abb0fba25f98f725
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheet_tridente_9
+      rect:
+        serializedVersion: 2
+        x: 252
+        y: 678
+        width: 46
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 242e930fef80cac43b2a04dd8c52d8a6
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheet_tridente_10
+      rect:
+        serializedVersion: 2
+        x: 22
+        y: 618
+        width: 44
+        height: 10
+      alignment: 9
+      pivot: {x: 0.4324012, y: 0.48707277}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0bb4dbae843f4fd4bb284dbcb87487ce
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheet_tridente_11
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 624
+        width: 44
+        height: 10
+      alignment: 9
+      pivot: {x: 0.43240115, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 362e687219a4864419b57773d4c95565
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheet_tridente_12
+      rect:
+        serializedVersion: 2
+        x: 166
+        y: 622
+        width: 44
+        height: 10
+      alignment: 9
+      pivot: {x: 0.43240115, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8dcbcfa4d71290a438db598f67485144
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheet_tridente_13
+      rect:
+        serializedVersion: 2
+        x: 232
+        y: 618
+        width: 44
+        height: 10
+      alignment: 9
+      pivot: {x: 0.42946208, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2263951232d86cc418a03653e8a1dc3a
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheet_tridente_14
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 530
+        width: 44
+        height: 10
+      alignment: 9
+      pivot: {x: 0.4323283, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6976738f911f0e847928dffe5ff1988e
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheet_tridente_15
+      rect:
+        serializedVersion: 2
+        x: 142
+        y: 522
+        width: 44
+        height: 10
+      alignment: 9
+      pivot: {x: 0.6118053, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ce66943ba7e6b2f419b888aef64b17fa
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheet_tridente_16
+      rect:
+        serializedVersion: 2
+        x: 84
+        y: 520
+        width: 44
+        height: 10
+      alignment: 9
+      pivot: {x: 0.52353805, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db517d052b2050742bedc1e75f4c0c47
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheet_tridente_17
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 454
+        width: 44
+        height: 10
+      alignment: 9
+      pivot: {x: 0.4333021, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aa509548f81ae544dac72f8983f370af
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheet_tridente_18
+      rect:
+        serializedVersion: 2
+        x: 88
+        y: 452
+        width: 44
+        height: 10
+      alignment: 9
+      pivot: {x: 0.4256779, y: 0.48945314}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d081f7e8a85c8524f981273fc638c12c
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheet_tridente_19
+      rect:
+        serializedVersion: 2
+        x: 154
+        y: 452
+        width: 44
+        height: 10
+      alignment: 9
+      pivot: {x: 0.43526772, y: 0.50000304}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6756531c548720c46a4aae9e578c04a0
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheet_tridente_20
+      rect:
+        serializedVersion: 2
+        x: 222
+        y: 452
+        width: 44
+        height: 10
+      alignment: 9
+      pivot: {x: 0.433188, y: 0.48529968}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 463101790f9915d4f86410239de5426d
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheet_tridente_23
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 382
+        width: 10
+        height: 44
+      alignment: 9
+      pivot: {x: 0.4999997, y: 0.56971323}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fad99f58b39501640ab4396460f12d4e
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheet_tridente_25
+      rect:
+        serializedVersion: 2
+        x: 42
+        y: 388
+        width: 68
+        height: 22
+      alignment: 9
+      pivot: {x: 0.72178155, y: 0.77304214}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 59b07ca7a85f2ea4989efcfeb4e37097
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheet_tridente_30
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 368
+        width: 82
+        height: 34
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 51dd3ed9eb6fe5c4e999ea80690dfa90
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheet_tridente_34
+      rect:
+        serializedVersion: 2
+        x: 154
+        y: 372
+        width: 50
+        height: 46
+      alignment: 9
+      pivot: {x: 0.4999997, y: 0.1100643}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4471e22f8e82b5242ac6adddea49de3b
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheet_tridente_38
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 306
+        width: 36
+        height: 44
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3bb4f0279bdd2dd4ba70e2566e466253
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheet_tridente_41
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 322
+        width: 44
+        height: 26
+      alignment: 9
+      pivot: {x: 0.4310901, y: 0.56663746}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 85dad6362af658745ab5907f67d1c9f8
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheet_tridente_44
+      rect:
+        serializedVersion: 2
+        x: 278
+        y: 302
+        width: 64
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1019b2126d56afb44b20ad6b30e0776a
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheet_tridente_45
+      rect:
+        serializedVersion: 2
+        x: 226
+        y: 304
+        width: 50
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eb20a8ccf63b1614485850727d041b14
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheet_tridente_48
+      rect:
+        serializedVersion: 2
+        x: 178
+        y: 288
+        width: 46
+        height: 44
+      alignment: 9
+      pivot: {x: 0.45605734, y: 0.38515055}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7f13277c42de3fb479b94ffdc86d5e15
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheet_tridente_54
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 240
+        width: 44
+        height: 16
+      alignment: 9
+      pivot: {x: 0.41220436, y: 0.67845345}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b67aa4fa00b54a84ca1111cb5067433a
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheet_tridente_56
+      rect:
+        serializedVersion: 2
+        x: 88
+        y: 240
+        width: 44
+        height: 22
+      alignment: 9
+      pivot: {x: 0.3740323, y: 0.5763425}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 58cbe3b989768f7498fd3e6f71011b3c
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheet_tridente_58
+      rect:
+        serializedVersion: 2
+        x: 182
+        y: 242
+        width: 44
+        height: 26
+      alignment: 9
+      pivot: {x: 0.38548383, y: 0.49353907}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c5d385a00e4d65d4b86f697722d82e6a
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheet_tridente_59
+      rect:
+        serializedVersion: 2
+        x: 246
+        y: 236
+        width: 48
+        height: 28
+      alignment: 9
+      pivot: {x: 0.35303816, y: 0.47000667}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 916e0fbc4b7e25e4aa3fe61667501b76
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheet_tridente_60
+      rect:
+        serializedVersion: 2
+        x: 298
+        y: 240
+        width: 48
+        height: 18
+      alignment: 9
+      pivot: {x: 0.3110485, y: 0.3880276}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ab013cc38ae0334c9f26ca83f44001b
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheet_tridente_61
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 168
+        width: 44
+        height: 10
+      alignment: 9
+      pivot: {x: 0.37948513, y: 0.5000046}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3b226b61be5c34c46a1feac551af6945
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheet_tridente_62
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 162
+        width: 44
+        height: 10
+      alignment: 9
+      pivot: {x: 0.38502538, y: 0.48734894}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 610ad7caa14fe0a469cea4ab5b334ec8
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheet_tridente_63
+      rect:
+        serializedVersion: 2
+        x: 182
+        y: 140
+        width: 10
+        height: 44
+      alignment: 9
+      pivot: {x: 0.5, y: 0.61784816}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 92c171dca4384c641933df88e578f14d
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheet_tridente_64
+      rect:
+        serializedVersion: 2
+        x: 292
+        y: 170
+        width: 44
+        height: 10
+      alignment: 9
+      pivot: {x: 0.39077413, y: 0.49999696}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb751095d4e1c35429fb592312f3b332
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheet_tridente_65
+      rect:
+        serializedVersion: 2
+        x: 206
+        y: 144
+        width: 44
+        height: 10
+      alignment: 9
+      pivot: {x: 0.43388957, y: 0.49999696}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b471354a58bb1e2428bbe61db82c47d1
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheet_tridente_66
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 106
+        width: 44
+        height: 10
+      alignment: 9
+      pivot: {x: 0.56560534, y: 0.49999848}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 27aa29d8f43d76b4cbe1efdb27886e2e
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheet_tridente_67
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 108
+        width: 36
+        height: 10
+      alignment: 9
+      pivot: {x: 0.4766138, y: 0.49999923}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f7368b6d4054a294e9ece3b4500e78a1
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheet_tridente_68
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 104
+        width: 44
+        height: 10
+      alignment: 9
+      pivot: {x: 0.38392118, y: 0.50000304}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c6d1542b4ef63a249bc1f711fb806296
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheet_tridente_69
+      rect:
+        serializedVersion: 2
+        x: 216
+        y: 100
+        width: 44
+        height: 10
+      alignment: 9
+      pivot: {x: 0.6051969, y: 0.4840393}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 892ce9e055103124281054d49b8cdb9d
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheet_tridente_70
+      rect:
+        serializedVersion: 2
+        x: 386
+        y: 100
+        width: 44
+        height: 10
+      alignment: 9
+      pivot: {x: 0.38522407, y: 0.53156507}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bcde2d8c6e9083246a885a1b692687d2
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheet_tridente_71
+      rect:
+        serializedVersion: 2
+        x: 274
+        y: 98
+        width: 44
+        height: 10
+      alignment: 9
+      pivot: {x: 0.7031382, y: 0.51596296}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5c79f7f783268b74eaafafea903ba588
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheet_tridente_72
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 64
+        width: 44
+        height: 10
+      alignment: 9
+      pivot: {x: 0.38930997, y: 0.49999696}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42b3f2629e5741d4fb604a6e70e15775
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheet_tridente_73
+      rect:
+        serializedVersion: 2
+        x: 316
+        y: 22
+        width: 10
+        height: 44
+      alignment: 9
+      pivot: {x: 0.4864685, y: 0.38623568}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 840f49356d94277438db7441b3b4435e
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheet_tridente_74
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 14
+        width: 10
+        height: 44
+      alignment: 9
+      pivot: {x: 0.4999981, y: 0.38930893}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8edde4b888eecb644838998afe30e0e9
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheet_tridente_75
+      rect:
+        serializedVersion: 2
+        x: 236
+        y: 52
+        width: 44
+        height: 10
+      alignment: 9
+      pivot: {x: 0.3893096, y: 0.5135258}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7dc1aede99afc3747bdebbc65aa06f96
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheet_tridente_76
+      rect:
+        serializedVersion: 2
+        x: 380
+        y: 18
+        width: 10
+        height: 44
+      alignment: 9
+      pivot: {x: 0.49999696, y: 0.38623497}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 00d3ba82d673d804d91c34f21d62b276
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheet_tridente_77
+      rect:
+        serializedVersion: 2
+        x: 538
+        y: 14
+        width: 10
+        height: 44
+      alignment: 9
+      pivot: {x: 0.51226807, y: 0.38843194}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b24f1d50c89aaac42b7ffe22343968d8
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheet_tridente_78
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 6
+        width: 10
+        height: 44
+      alignment: 9
+      pivot: {x: 0.5135277, y: 0.3862357}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e73ac15354f208243b5ef58a8b6c8395
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheet_tridente_79
+      rect:
+        serializedVersion: 2
+        x: 452
+        y: 6
+        width: 10
+        height: 44
+      alignment: 9
+      pivot: {x: 0.4864685, y: 0.38931045}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 54c43fc0f302aee44b09786015501d82
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheet_tridente_21
+      rect:
+        serializedVersion: 2
+        x: 494
+        y: 15
+        width: 19
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 179ce356475783e448bb930ae64d35bd
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5f62416efbcb07d4a8f7ffee49d12292
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

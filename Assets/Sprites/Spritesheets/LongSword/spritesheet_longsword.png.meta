@@ -1,0 +1,1368 @@
+fileFormatVersion: 2
+guid: c95dc8faf4b78c54c928be90e8c79d2e
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: spritesheet_longsword_0
+    21300002: spritesheet_longsword_1
+    21300004: spritesheet_longsword_2
+    21300006: spritesheet_longsword_3
+    21300008: spritesheet_longsword_4
+    21300010: spritesheet_longsword_5
+    21300012: spritesheet_longsword_6
+    21300014: spritesheet_longsword_7
+    21300016: spritesheet_longsword_8
+    21300018: spritesheet_longsword_9
+    21300020: spritesheet_longsword_10
+    21300022: spritesheet_longsword_11
+    21300024: spritesheet_longsword_12
+    21300026: spritesheet_longsword_13
+    21300028: spritesheet_longsword_14
+    21300030: spritesheet_longsword_15
+    21300032: spritesheet_longsword_16
+    21300034: spritesheet_longsword_17
+    21300036: spritesheet_longsword_18
+    21300038: spritesheet_longsword_19
+    21300040: spritesheet_longsword_20
+    21300042: spritesheet_longsword_21
+    21300044: spritesheet_longsword_22
+    21300046: spritesheet_longsword_23
+    21300048: spritesheet_longsword_24
+    21300050: spritesheet_longsword_25
+    21300052: spritesheet_longsword_26
+    21300054: spritesheet_longsword_27
+    21300056: spritesheet_longsword_28
+    21300058: spritesheet_longsword_29
+    21300060: spritesheet_longsword_30
+    21300062: spritesheet_longsword_31
+    21300064: spritesheet_longsword_32
+    21300066: spritesheet_longsword_33
+    21300068: spritesheet_longsword_34
+    21300070: spritesheet_longsword_35
+    21300072: spritesheet_longsword_36
+    21300074: spritesheet_longsword_37
+    21300076: spritesheet_longsword_38
+    21300078: spritesheet_longsword_39
+    21300080: spritesheet_longsword_40
+    21300082: spritesheet_longsword_41
+    21300084: spritesheet_longsword_42
+    21300086: spritesheet_longsword_43
+    21300088: spritesheet_longsword_44
+    21300090: spritesheet_longsword_45
+    21300092: spritesheet_longsword_46
+    21300094: spritesheet_longsword_47
+    21300096: spritesheet_longsword_48
+    21300098: spritesheet_longsword_49
+    21300100: spritesheet_longsword_50
+    21300102: spritesheet_longsword_51
+    21300104: spritesheet_longsword_52
+    21300106: spritesheet_longsword_53
+    21300108: spritesheet_longsword_54
+    21300110: spritesheet_longsword_55
+    21300112: spritesheet_longsword_56
+    21300114: spritesheet_longsword_57
+    21300116: spritesheet_longsword_58
+    21300118: spritesheet_longsword_59
+    21300120: spritesheet_longsword_60
+    21300122: spritesheet_longsword_61
+    21300124: spritesheet_longsword_62
+    21300126: spritesheet_longsword_63
+    21300128: spritesheet_longsword_64
+    21300130: spritesheet_longsword_65
+    21300132: spritesheet_longsword_66
+    21300134: spritesheet_longsword_67
+    21300136: spritesheet_longsword_68
+    21300138: spritesheet_longsword_69
+    21300140: spritesheet_longsword_70
+    21300142: spritesheet_longsword_71
+    21300144: spritesheet_longsword_72
+    21300146: spritesheet_longsword_73
+    21300148: spritesheet_longsword_74
+    21300150: spritesheet_longsword_75
+    21300152: spritesheet_longsword_76
+    21300154: spritesheet_longsword_77
+    21300156: spritesheet_longsword_78
+    21300158: spritesheet_longsword_79
+    21300160: spritesheet_longsword_80
+    21300162: spritesheet_longsword_81
+    21300164: spritesheet_longsword_82
+    21300166: spritesheet_longsword_83
+    21300168: spritesheet_longsword_84
+    21300170: spritesheet_longsword_85
+    21300172: spritesheet_longsword_86
+  externalObjects: {}
+  serializedVersion: 9
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 2.5
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 2
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: spritesheet_longsword_0
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 1024
+        width: 6
+        height: 30
+      alignment: 9
+      pivot: {x: 0.5000003, y: 0.82980144}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2365e4a94debc1a469899ee75de3f160
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheet_longsword_1
+      rect:
+        serializedVersion: 2
+        x: 44
+        y: 958
+        width: 6
+        height: 30
+      alignment: 9
+      pivot: {x: 0.5060641, y: 0.16537271}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe0fa52680a1ac04f9384f207cc45667
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheet_longsword_2
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 956
+        width: 6
+        height: 30
+      alignment: 9
+      pivot: {x: 0.51430386, y: 0.1623759}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 11b896ce530d2da41b0c8fb65b8e4f3d
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheet_longsword_3
+      rect:
+        serializedVersion: 2
+        x: 250
+        y: 956
+        width: 6
+        height: 30
+      alignment: 9
+      pivot: {x: 0.5, y: 0.16791789}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 41c6d3bc9d9199749b44fcf662cb7e41
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheet_longsword_4
+      rect:
+        serializedVersion: 2
+        x: 52
+        y: 798
+        width: 6
+        height: 30
+      alignment: 9
+      pivot: {x: 0.5163059, y: 0.17062582}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 962bcc504f98a5b4da0d5cdab103587b
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheet_longsword_5
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 794
+        width: 6
+        height: 30
+      alignment: 9
+      pivot: {x: 0.5, y: 0.16736451}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3c698b383e6a7b04985822cc260ad36c
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheet_longsword_6
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 720
+        width: 6
+        height: 30
+      alignment: 9
+      pivot: {x: 0.5282173, y: 0.16701864}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 37295e9dc78f52941859fadcc582a7f2
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheet_longsword_7
+      rect:
+        serializedVersion: 2
+        x: 74
+        y: 680
+        width: 30
+        height: 6
+      alignment: 9
+      pivot: {x: 0.82839966, y: 0.48090616}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c394b451d8d21c4bbe3c304df5e4d21
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheet_longsword_8
+      rect:
+        serializedVersion: 2
+        x: 146
+        y: 680
+        width: 30
+        height: 6
+      alignment: 9
+      pivot: {x: 0.8360372, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8702a44af1433ec45a7fee78bcedfa60
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheet_longsword_9
+      rect:
+        serializedVersion: 2
+        x: 218
+        y: 680
+        width: 30
+        height: 6
+      alignment: 9
+      pivot: {x: 0.8245814, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 282b4cf65b4058448a93c9645518828f
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheet_longsword_10
+      rect:
+        serializedVersion: 2
+        x: 110
+        y: 626
+        width: 30
+        height: 6
+      alignment: 9
+      pivot: {x: 0.16699448, y: 0.48190308}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 304b500a57f35e442aac2ef15ab1edaa
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheet_longsword_11
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 624
+        width: 30
+        height: 6
+      alignment: 9
+      pivot: {x: 0.16699524, y: 0.48191324}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 58431d19c6c91ff43902dce2566c77be
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheet_longsword_12
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 620
+        width: 30
+        height: 6
+      alignment: 9
+      pivot: {x: 0.17109121, y: 0.4875895}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fd409d9f063d7314baf48c183d482231
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheet_longsword_13
+      rect:
+        serializedVersion: 2
+        x: 246
+        y: 620
+        width: 30
+        height: 6
+      alignment: 9
+      pivot: {x: 0.16744384, y: 0.4738973}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b6a821b13d28ad54181871b1a8a7b97a
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheet_longsword_14
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 532
+        width: 30
+        height: 6
+      alignment: 9
+      pivot: {x: 0.17145297, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ef6abf212531e6b419586c4944a2442e
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheet_longsword_15
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 522
+        width: 30
+        height: 6
+      alignment: 9
+      pivot: {x: 0.16727498, y: 0.5158488}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: af00aaede478f534a901a314d93bf988
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheet_longsword_16
+      rect:
+        serializedVersion: 2
+        x: 164
+        y: 524
+        width: 30
+        height: 6
+      alignment: 9
+      pivot: {x: 0.16410623, y: 0.5000102}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ef34749e9430fbd41bc54e7324e35218
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheet_longsword_17
+      rect:
+        serializedVersion: 2
+        x: 26
+        y: 458
+        width: 30
+        height: 6
+      alignment: 9
+      pivot: {x: 0.16361924, y: 0.47953287}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5a1de64c54a44df48afd014b1dbcc1a2
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheet_longsword_18
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 454
+        width: 30
+        height: 6
+      alignment: 9
+      pivot: {x: 0.17122269, y: 0.51440936}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b0ce5f1bab3f56948a686bd2c2b28807
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheet_longsword_19
+      rect:
+        serializedVersion: 2
+        x: 168
+        y: 454
+        width: 30
+        height: 6
+      alignment: 9
+      pivot: {x: 0.17099355, y: 0.4999949}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6736c143ad60ee54f800819dd22fe974
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheet_longsword_20
+      rect:
+        serializedVersion: 2
+        x: 236
+        y: 454
+        width: 30
+        height: 6
+      alignment: 9
+      pivot: {x: 0.16561839, y: 0.48078918}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1e8b65f10081aae4ba134d48a1d8e6ed
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheet_longsword_22
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 382
+        width: 46
+        height: 40
+      alignment: 9
+      pivot: {x: 0.24058475, y: 0.62242967}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a6b00a97a2a4dee4db99579a2e002af9
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheet_longsword_28
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 374
+        width: 30
+        height: 50
+      alignment: 9
+      pivot: {x: 0.8315745, y: 0.6200525}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b7a17938e8ae86c4c91de4c5a2d0feee
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheet_longsword_31
+      rect:
+        serializedVersion: 2
+        x: 154
+        y: 374
+        width: 64
+        height: 42
+      alignment: 9
+      pivot: {x: 0.39072704, y: 0.06954011}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba561844316b61d4d844209285b22098
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheet_longsword_32
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 372
+        width: 66
+        height: 42
+      alignment: 9
+      pivot: {x: 0.07626089, y: 0.21430752}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eb7bb4e332edc984ab7610ce57a5ef19
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheet_longsword_35
+      rect:
+        serializedVersion: 2
+        x: 328
+        y: 362
+        width: 10
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c4bfb84bcde6a2498521e086eba459e
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheet_longsword_38
+      rect:
+        serializedVersion: 2
+        x: 170
+        y: 302
+        width: 56
+        height: 54
+      alignment: 9
+      pivot: {x: 0.518207, y: 0.053137884}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 650ebc845f6a4e8438f0afbe061fa8f9
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheet_longsword_43
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 300
+        width: 16
+        height: 46
+      alignment: 9
+      pivot: {x: 0.811273, y: 0.54255676}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c23053de8ac9b9419c8e22ee8e4f803
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheet_longsword_44
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 312
+        width: 30
+        height: 28
+      alignment: 9
+      pivot: {x: 0.83121365, y: 0.8903602}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e174760e53cafa342aa1a0e039882c94
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheet_longsword_45
+      rect:
+        serializedVersion: 2
+        x: 292
+        y: 306
+        width: 60
+        height: 36
+      alignment: 9
+      pivot: {x: 0.0839325, y: 0.36221483}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 91bc4b334b94d254b8bb11f4b3d343b3
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheet_longsword_47
+      rect:
+        serializedVersion: 2
+        x: 374
+        y: 312
+        width: 24
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cd6f3e489f186464e89da004cde59474
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheet_longsword_49
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 312
+        width: 38
+        height: 34
+      alignment: 9
+      pivot: {x: 0.13330118, y: 0.14347301}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e09857bdd9964fb4884d8ea15dc6fc41
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheet_longsword_54
+      rect:
+        serializedVersion: 2
+        x: 178
+        y: 240
+        width: 46
+        height: 28
+      alignment: 9
+      pivot: {x: 0.45644578, y: 0.53279006}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dd9ce6e467f445b40ad7dc8b6194993f
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheet_longsword_56
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 240
+        width: 38
+        height: 20
+      alignment: 9
+      pivot: {x: 0.13141517, y: 0.5494331}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bf55665038a6ca74f9da4cd11283ec60
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheet_longsword_57
+      rect:
+        serializedVersion: 2
+        x: 87
+        y: 240
+        width: 41
+        height: 24
+      alignment: 9
+      pivot: {x: 0.38947743, y: 0.5343291}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e86f2e867f70c6448d2c57c2a58b2be
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheet_longsword_58
+      rect:
+        serializedVersion: 2
+        x: 258
+        y: 236
+        width: 38
+        height: 24
+      alignment: 9
+      pivot: {x: 0.13099751, y: 0.53749275}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b6781180b02398478cbc296f56b803a
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheet_longsword_60
+      rect:
+        serializedVersion: 2
+        x: 308
+        y: 236
+        width: 38
+        height: 23
+      alignment: 9
+      pivot: {x: 0.13054778, y: 0.47538558}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 719f5978a18ef6e458a759d95fd1cdfa
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheet_longsword_68
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 170
+        width: 30
+        height: 6
+      alignment: 9
+      pivot: {x: 0.1666078, y: 0.48316702}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a11db1501d96df45b7772383cb512c3
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheet_longsword_69
+      rect:
+        serializedVersion: 2
+        x: 184
+        y: 148
+        width: 6
+        height: 30
+      alignment: 9
+      pivot: {x: 0.49999747, y: 0.16626588}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a2f2aa486e91cf04f8ca621cd47f2da9
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheet_longsword_70
+      rect:
+        serializedVersion: 2
+        x: 306
+        y: 170
+        width: 6
+        height: 30
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1627894}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ec28e0894ef21cd44b602017989d1193
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheet_longsword_71
+      rect:
+        serializedVersion: 2
+        x: 124
+        y: 162
+        width: 30
+        height: 6
+      alignment: 9
+      pivot: {x: 0.17092133, y: 0.47746024}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c6874f3e652d5ce4b981ff5240b2721c
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheet_longsword_72
+      rect:
+        serializedVersion: 2
+        x: 220
+        y: 146
+        width: 30
+        height: 6
+      alignment: 9
+      pivot: {x: 0.16974182, y: 0.50000507}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d9d121b0c19db9642ac9e363bf13877f
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheet_longsword_73
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 106
+        width: 6
+        height: 30
+      alignment: 9
+      pivot: {x: 0.50215846, y: 0.16641311}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 082dbc306deb8e84dab7f67a6213ae74
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheet_longsword_74
+      rect:
+        serializedVersion: 2
+        x: 114
+        y: 108
+        width: 6
+        height: 30
+      alignment: 9
+      pivot: {x: 0.48744074, y: 0.16841684}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8bdc110c5191a3542ad7af1c76cdd3bf
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheet_longsword_75
+      rect:
+        serializedVersion: 2
+        x: 164
+        y: 106
+        width: 30
+        height: 6
+      alignment: 9
+      pivot: {x: 0.16129659, y: 0.50000256}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f23bea523f2cd304d925c969341d0073
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheet_longsword_76
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 100
+        width: 6
+        height: 30
+      alignment: 9
+      pivot: {x: 0.48939005, y: 0.16013922}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 10af9d11e5e739e42bba1a19f0e9125a
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheet_longsword_77
+      rect:
+        serializedVersion: 2
+        x: 238
+        y: 102
+        width: 30
+        height: 6
+      alignment: 9
+      pivot: {x: 0.16548462, y: 0.4753596}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2b08b312e1d29d44ebf922ff2f574fb1
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheet_longsword_78
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 100
+        width: 30
+        height: 6
+      alignment: 9
+      pivot: {x: 0.1627299, y: 0.4875997}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f340de56f62fc794283614e7a186ae9a
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheet_longsword_79
+      rect:
+        serializedVersion: 2
+        x: 172
+        y: 66
+        width: 30
+        height: 6
+      alignment: 9
+      pivot: {x: 0.16615652, y: 0.48095575}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 253b4fb20b7c5f147bb9c09aebe280db
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheet_longsword_80
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 26
+        width: 6
+        height: 30
+      alignment: 9
+      pivot: {x: 0.5, y: 0.16906828}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2950c483782c7574b8d86ddaaf80fa4b
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheet_longsword_81
+      rect:
+        serializedVersion: 2
+        x: 246
+        y: 54
+        width: 30
+        height: 6
+      alignment: 9
+      pivot: {x: 0.16097361, y: 0.49999937}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab1877cd74ae123488da548bcf5578dd
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheet_longsword_82
+      rect:
+        serializedVersion: 2
+        x: 318
+        y: 34
+        width: 6
+        height: 30
+      alignment: 9
+      pivot: {x: 0.50675964, y: 0.16452332}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 411c1580ff42b484ab5b8862ab63dd50
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheet_longsword_83
+      rect:
+        serializedVersion: 2
+        x: 382
+        y: 30
+        width: 6
+        height: 30
+      alignment: 9
+      pivot: {x: 0.48991394, y: 0.16696116}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ff9ad641f4d2fd64ca24aff7ef6d1525
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheet_longsword_84
+      rect:
+        serializedVersion: 2
+        x: 540
+        y: 26
+        width: 6
+        height: 30
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1658505}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c74724b6c5b20664a8bf336c880df57e
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheet_longsword_85
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 18
+        width: 6
+        height: 30
+      alignment: 9
+      pivot: {x: 0.48939514, y: 0.16482455}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e9250785b01377349b69bee253cabd53
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheet_longsword_86
+      rect:
+        serializedVersion: 2
+        x: 454
+        y: 18
+        width: 6
+        height: 30
+      alignment: 9
+      pivot: {x: 0.5165761, y: 0.16723448}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 33c96a59454c5e743ac5fe35a79f3281
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheet_longsword_21
+      rect:
+        serializedVersion: 2
+        x: 390
+        y: 235
+        width: 17
+        height: 4
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b32111a249d88d648bc714fa09cbb3f9
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spritesheet_longsword_23
+      rect:
+        serializedVersion: 2
+        x: 552
+        y: 3
+        width: 8
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab212918e25764640be6bd96f7cf6118
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 97995c6367870454d998af8b838f49aa
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
