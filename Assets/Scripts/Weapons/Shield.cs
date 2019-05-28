@@ -7,15 +7,12 @@ public class Shield : WeaponClass
 
     protected override void Start()
     {
-        weaponName = "Shield";
-        weaponDamage = 0f;
+        
         weaponDefense = 25f;
-        weaponDurability = 100f;
     }
 
-    public void SpecialAttack()
+    internal override void SpecialAttack()
     {
-        SpecialShield = true;
-        //Attack();
+        base.SpecialAttack();
     }
 }

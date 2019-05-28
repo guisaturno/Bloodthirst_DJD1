@@ -21,7 +21,12 @@ public class Player : Character
     protected override void Update()
     {
         base.Update();
-
+        //Attack
+        if (Input.GetKey(KeyCode.X))
+        {
+            state = State.Attack;
+            attackState = AttackState.Vertical;
+        }
         // Roll - player
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {

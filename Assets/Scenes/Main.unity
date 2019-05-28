@@ -427,6 +427,12 @@ Animator:
     type: 3}
   m_PrefabInstance: {fileID: 1145150953}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1371415481 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1139764119462312434, guid: 22ea230ea5a470244a28ca3ce9580064,
+    type: 3}
+  m_PrefabInstance: {fileID: 1786738046}
+  m_PrefabAsset: {fileID: 0}
 --- !u!95 &1622376733 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 6135967095498936494, guid: e0f4d37dae3f82744873adfe7da8748a,
@@ -443,7 +449,7 @@ PrefabInstance:
     - target: {fileID: 1139764119462312434, guid: 22ea230ea5a470244a28ca3ce9580064,
         type: 3}
       propertyPath: m_Name
-      value: LongSwordRight
+      value: LongSword
       objectReference: {fileID: 0}
     - target: {fileID: 6101427905396313106, guid: 22ea230ea5a470244a28ca3ce9580064,
         type: 3}
@@ -499,6 +505,31 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7068649377505319741, guid: 22ea230ea5a470244a28ca3ce9580064,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 22.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7068649377505319741, guid: 22ea230ea5a470244a28ca3ce9580064,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 21.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7068649377505319741, guid: 22ea230ea5a470244a28ca3ce9580064,
+        type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3212006799316985761, guid: 22ea230ea5a470244a28ca3ce9580064,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2461430280556178599, guid: 22ea230ea5a470244a28ca3ce9580064,
+        type: 3}
+      propertyPath: verticalRecoveryTime
+      value: 0.3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 22ea230ea5a470244a28ca3ce9580064, type: 3}
@@ -782,7 +813,7 @@ PrefabInstance:
         type: 3}
       propertyPath: rightWeapon
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1371415481}
     - target: {fileID: 5109573004481057293, guid: 12f8839490acad04eaad775d6291ee65,
         type: 3}
       propertyPath: rollDistance
@@ -911,7 +942,12 @@ PrefabInstance:
     - target: {fileID: 6135967095498936496, guid: e0f4d37dae3f82744873adfe7da8748a,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6135967095498936496, guid: e0f4d37dae3f82744873adfe7da8748a,
+        type: 3}
+      propertyPath: m_TagString
+      value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 6135967095498936492, guid: e0f4d37dae3f82744873adfe7da8748a,
         type: 3}
@@ -1001,7 +1037,7 @@ PrefabInstance:
     - target: {fileID: 6135967095498936493, guid: e0f4d37dae3f82744873adfe7da8748a,
         type: 3}
       propertyPath: playerDistance
-      value: 60
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 6135967095498936493, guid: e0f4d37dae3f82744873adfe7da8748a,
         type: 3}

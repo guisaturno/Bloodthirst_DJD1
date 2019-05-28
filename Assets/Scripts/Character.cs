@@ -38,19 +38,18 @@ public class Character : MonoBehaviour
     private float climbRecovery;
     private bool climbed = true;
 
-    //[Header("Attack")]
-    protected enum State { Idle, Roll, Climb, Attack, Run, Defend }
-    protected enum AttackState { Horizontal, Vertical, Special }
-    protected State state;
-    protected AttackState attackState;
-    //public WeaponSide weaponSide;
+    [Header("Attack")]
+    [SerializeField] protected GameObject leftWeapon;
+    [SerializeField] protected GameObject rightWeapon;
 
+    internal bool attacked = true;
+    internal enum State { Idle, Roll, Climb, Attack, Run, Defend }
+    protected enum AttackState { Horizontal, Vertical, Special }
+    internal State state;
+    protected AttackState attackState;
 
     [Header("To be review")]
     // Variables
-    [SerializeField] protected float startTimeAttack;
-    [SerializeField] protected GameObject leftWeapon;
-    [SerializeField] protected GameObject rightWeapon;
     [SerializeField] protected float knockback;
     [SerializeField] protected float knockbackCount;
     [SerializeField] protected bool knockbackRight;
@@ -93,7 +92,6 @@ public class Character : MonoBehaviour
 
     protected virtual void Update()
     {
-        print(state);
         //Set animator booleans to false according to state
         switch (state)
         {
@@ -149,6 +147,7 @@ public class Character : MonoBehaviour
                 ClimbCharacter();
                 break;
             case State.Attack:
+                Attack();
                 break;
             case State.Run:
                 if (transform.rotation.y == 0.0f)
@@ -283,87 +282,67 @@ public class Character : MonoBehaviour
 
     protected void Attack()
     {
-        switch (attackState)
+        if (attacked)
         {
-            case AttackState.Horizontal:
-                switch (rightWeapon.name)
-                {
-                    case "Sword":
-                        //rightWeapon.GetComponent<Sword>().HorizontalAttack();
-                        break;
-                    case "Trident":
-                        //rightWeapon.GetComponent<Trident>().HorizontalAttack();
-                        break;
-                    case "LongSword":
-                        //rightWeapon.GetComponent<LongSword>().HorizontalAttack();
-                        break;
-                    default:
-                        break;
-                }
-                break;
-            case AttackState.Vertical:
-                switch (rightWeapon.name)
-                {
-                    case "Sword":
-                        //rightWeapon.GetComponent<Sword>().VerticalAttack();
-                        break;
-                    case "Trident":
-                        //rightWeapon.GetComponent<Trident>().VerticalAttack();
-                        break;
-                    case "LongSword":
-                        //rightWeapon.GetComponent<LongSword>().VerticalAttack();
-                        break;
-                    default:
-                        break;
-                }
-                break;
-            case AttackState.Special:
-                switch (leftWeapon.name)
-                {
-                    case "Sword":
-                        //leftWeapon.GetComponent<Sword>().SpecialAttack();
-                        break;
-                    case "Shield":
-                        //leftWeapon.GetComponent<Shield>().SpecialAttack();
-                        break;
-                    case "Net":
-                        //leftWeapon.GetComponent<Net>().SpecialAttack();
-                        break;
-                    default:
-                        break;
-                }
-                break;
-            default:
-                break;
-        }  
+            switch (attackState)
+            {
+                case AttackState.Horizontal:
+                    switch (rightWeapon.name)
+                    {
+                        case "Trident":
+                            //rightWeapon.GetComponent<Trident>().HorizontalAttack();
+                            break;
+                        case "LongSword":
+                            //rightWeapon.GetComponent<LongSword>().HorizontalAttack();
+                            break;
+                        default:
+                            break;
+                    }
+                    break;
+                case AttackState.Vertical:
+                    characterAnim.SetTrigger("VerticalAttack");
+                    leftWeaponAnim.SetTrigger("VerticalAttack");
+                    rightWeaponAnim.SetTrigger("VerticalAttack");
+                    switch (rightWeapon.name)
+                    {
+                        case "Trident":
+                            rightWeapon.GetComponent<Trident>().VerticalAttack();
+                            break;
+                        case "LongSword":
+                            print("LongSword");
+                            rightWeapon.GetComponent<LongSword>().VerticalAttack();
+                            break;
+                        default:
+                            break;
+                    }
+                    break;
+                case AttackState.Special:
+                    switch (leftWeapon.name)
+                    {
+                        case "Shield":
+                            //leftWeapon.GetComponent<Shield>().SpecialAttack();
+                            break;
+                        case "Net":
+                            //leftWeapon.GetComponent<Net>().SpecialAttack();
+                            break;
+                        default:
+                            break;
+                    }
+                    break;
+                default:
+                    break;
+            }
+            //attacked = false;
+        }
     }
 
 
-    public void TakeDamage(float damage)
-    {
+    internal void TakeDamage(float damage)
+    { 
         CurrentHP -= damage;
-        if (instance.SpecialShield)
-        {
-            instance.SpecialShield = false;
-            if (knockbackCount > 0)
-            {
-                rb.velocity = (knockbackRight == true) ? new Vector2(-knockback, 0) : new Vector2(knockback, 0);
-                knockback -= Time.deltaTime;
-            }
-        }
-        else if (instance.SpecialNet)
-        {
-            instance.SpecialNet = false;
-            if (stunTime <= 0)
-            {
-                //walkSpeed = 5000f;
-                stunTime = startStunTime;
-            }
-            else
-            {
-                //walkSpeed = 0;
-                stunTime -= Time.deltaTime;
-            }
-        }
+        characterAnim.SetTrigger("Hit");
+        leftWeaponAnim.SetTrigger("Hit");
+        rightWeaponAnim.SetTrigger("Hit");
+        print(CurrentHP);
     }
 }

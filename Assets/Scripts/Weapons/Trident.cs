@@ -6,8 +6,16 @@ public class Trident : WeaponClass
 {
     protected override void Start()
     {
-        weaponName = "Trident";
         weaponDefense = 25f;
-        weaponDurability = 100f;
+    }
+
+    internal override void VerticalAttack()
+    {
+        base.VerticalAttack();
+    }
+
+    internal override void HorizontalAttack()
+    {
+        base.HorizontalAttack();
     }
 }

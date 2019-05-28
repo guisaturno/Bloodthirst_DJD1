@@ -56,14 +56,12 @@ public class EnemyAI : Character
         {
             case State.Attack:
                 randomAttack = Random.Range(1, 4);
-                AttackState();
+                //AttackState();
                 state = State.Idle;
                 break;
             case State.Defend:
                 DefendState();
                 state = State.Idle;
-                break;
-            case State.Climb:
                 break;
             default:
                 break;
@@ -139,68 +137,68 @@ public class EnemyAI : Character
     }
 
     //Action Methods
-    private void AttackState()
-    {
+    //private void AttackState()
+    //{
 
 
-        if (randomAttack == 1)
-        {
-            switch (leftWeapon.name)
-            {
-                case "Net":
-                    animator.SetTrigger("NetAttack");
-                    weaponLeftAnim.SetTrigger("NetAttack");
-                    weaponRightAnim.SetTrigger("NetAttack");
-                  //  rightWeapon.GetComponent<Net>().Attack();
-                    break;
-                case "Shield":
-                    animator.SetTrigger("ShieldAttack");
-                    weaponLeftAnim.SetTrigger("ShieldAttack");
-                    weaponRightAnim.SetTrigger("ShieldAttack");
-                  //  rightWeapon.GetComponent<Shield>().Attack();
-                    break;
-                default:
-                    break;
-            }
-            randomAttack = 0;
-        }
-        else if (randomAttack == 2)
-        {
-            animator.SetTrigger("HorizontalAttack");
-            weaponRightAnim.SetTrigger("HorizontalAttack");
-            weaponLeftAnim.SetTrigger("HorizontalAttack");
-            switch (rightWeapon.name)
-            {
-                case "Trident":
-                 //   rightWeapon.GetComponent<Trident>().Attack();
-                    break;
-                case "LongSwordRight":
-                  //  rightWeapon.GetComponent<LongSword>().Attack();
-                    break;
-                default:
-                    break;
-            }
-            randomAttack = 0;
-        }
-        else if (randomAttack == 3)
-        {
-            animator.SetTrigger("VerticalAttack");
-            weaponRightAnim.SetTrigger("VerticalAttack");
-            weaponLeftAnim.SetTrigger("HorizontalAttack");
-            switch (rightWeapon.name)
-            {
-                case "Trident":
-                   // rightWeapon.GetComponent<Trident>().Attack();
-                    break;
-                case "LongSwordRight":
-                   // rightWeapon.GetComponent<LongSword>().Attack();
-                    break;
-                default:
-                    break;
-            }
-            randomAttack = 0;
-        }
-    }
+    //    if (randomAttack == 1)
+    //    {
+    //        switch (leftWeapon.name)
+    //        {
+    //            case "Net":
+    //                animator.SetTrigger("NetAttack");
+    //                weaponLeftAnim.SetTrigger("NetAttack");
+    //                weaponRightAnim.SetTrigger("NetAttack");
+    //              //  rightWeapon.GetComponent<Net>().Attack();
+    //                break;
+    //            case "Shield":
+    //                animator.SetTrigger("ShieldAttack");
+    //                weaponLeftAnim.SetTrigger("ShieldAttack");
+    //                weaponRightAnim.SetTrigger("ShieldAttack");
+    //              //  rightWeapon.GetComponent<Shield>().Attack();
+    //                break;
+    //            default:
+    //                break;
+    //        }
+    //        randomAttack = 0;
+    //    }
+    //    else if (randomAttack == 2)
+    //    {
+    //        animator.SetTrigger("HorizontalAttack");
+    //        weaponRightAnim.SetTrigger("HorizontalAttack");
+    //        weaponLeftAnim.SetTrigger("HorizontalAttack");
+    //        switch (rightWeapon.name)
+    //        {
+    //            case "Trident":
+    //             //   rightWeapon.GetComponent<Trident>().Attack();
+    //                break;
+    //            case "LongSwordRight":
+    //              //  rightWeapon.GetComponent<LongSword>().Attack();
+    //                break;
+    //            default:
+    //                break;
+    //        }
+    //        randomAttack = 0;
+    //    }
+    //    else if (randomAttack == 3)
+    //    {
+    //        animator.SetTrigger("VerticalAttack");
+    //        weaponRightAnim.SetTrigger("VerticalAttack");
+    //        weaponLeftAnim.SetTrigger("HorizontalAttack");
+    //        switch (rightWeapon.name)
+    //        {
+    //            case "Trident":
+    //               // rightWeapon.GetComponent<Trident>().Attack();
+    //                break;
+    //            case "LongSwordRight":
+    //               // rightWeapon.GetComponent<LongSword>().Attack();
+    //                break;
+    //            default:
+    //                break;
+    //        }
+    //        randomAttack = 0;
+    //    }
+    //}
 
     private void DefendState()
     {

@@ -6,15 +6,17 @@ public class LongSword : WeaponClass
 {
     protected override void Start()
     {
-        weaponName = "Sword";
-        weaponDamage = 20f;
+        
         weaponDefense = 15f;
-        weaponDurability = 100f;
+    }
+    internal override void VerticalAttack()
+    {
+        base.VerticalAttack();
+        print("CalledAttack");
     }
 
-    private void SpecialAttack()
+    internal override void HorizontalAttack()
     {
-        weaponDamage = (weaponSide == WeaponSide.Left) ? (weaponDamage * 0.5f) + weaponDamage : 20f;
-        //Attack();
+        base.HorizontalAttack();
     }
 }

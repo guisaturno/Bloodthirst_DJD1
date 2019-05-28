@@ -7,15 +7,12 @@ public class Net : WeaponClass
 
     protected override void Start()
     {
-        weaponName = "Net";
-        weaponDamage = 5f;
+
         weaponDefense = 25f;
-        weaponDurability = 100f;
     }
 
-    public void SpecialAttack()
+    internal override void SpecialAttack()
     {
-        SpecialNet = true;
-        //Attack();
+        base.SpecialAttack();
     }
 }
