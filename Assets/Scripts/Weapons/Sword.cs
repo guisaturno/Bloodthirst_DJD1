@@ -7,7 +7,6 @@ public class Sword : WeaponClass
     protected override void Start()
     {
         weaponName = "Sword";
-        weaponDamage = (HorizontalAttack == true) ? 10f : 20f;
         weaponDefense = 15f;
         weaponDurability = 100f;
     }

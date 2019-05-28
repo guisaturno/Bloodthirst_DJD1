@@ -38,6 +38,12 @@ public class Character : MonoBehaviour
     private float climbRecovery;
     private bool climbed = true;
 
+    //[Header("Attack")]
+    protected enum State { Idle, Roll, Climb, Attack, Run, Defend }
+    protected enum AttackState { Horizontal, Vertical, Special }
+    protected State state;
+    protected AttackState attackState;
+    //public WeaponSide weaponSide;
 
 
     [Header("To be review")]
@@ -62,9 +68,7 @@ public class Character : MonoBehaviour
     protected Rigidbody2D rb;
     protected Vector2 currentVelocity;
 
-    protected enum State { Idle, Roll, Climb, Attack, Run, Defend }
-    protected State state;
-    public WeaponSide weaponSide;
+
 
     // Properties
     bool IsInvunerable
@@ -80,7 +84,6 @@ public class Character : MonoBehaviour
     // Methods
     protected virtual void Start()
     {
-
         //To be review
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
@@ -257,7 +260,7 @@ public class Character : MonoBehaviour
             {
                 //Climb down
                 climbTarget = new Vector2(transform.position.x, transform.position.y - climbDistance);
-            }            
+            }
             //Reset climb recovery time
             climbRecovery = climbRecoveryTime + 5.0f;
             //Confirm that character climbed
@@ -278,44 +281,63 @@ public class Character : MonoBehaviour
         }
     }
 
-    protected void RightWeaponAttack()
+    protected void Attack()
     {
-
-        switch (rightWeapon.name)
+        switch (attackState)
         {
-            case "Sword":
-                weaponSide = WeaponSide.Right;
-                // rightWeapon.GetComponent<Sword>().Attack();
+            case AttackState.Horizontal:
+                switch (rightWeapon.name)
+                {
+                    case "Sword":
+                        //rightWeapon.GetComponent<Sword>().HorizontalAttack();
+                        break;
+                    case "Trident":
+                        //rightWeapon.GetComponent<Trident>().HorizontalAttack();
+                        break;
+                    case "LongSword":
+                        //rightWeapon.GetComponent<LongSword>().HorizontalAttack();
+                        break;
+                    default:
+                        break;
+                }
                 break;
-            case "Trident":
-                // rightWeapon.GetComponent<Trident>().Attack();
+            case AttackState.Vertical:
+                switch (rightWeapon.name)
+                {
+                    case "Sword":
+                        //rightWeapon.GetComponent<Sword>().VerticalAttack();
+                        break;
+                    case "Trident":
+                        //rightWeapon.GetComponent<Trident>().VerticalAttack();
+                        break;
+                    case "LongSword":
+                        //rightWeapon.GetComponent<LongSword>().VerticalAttack();
+                        break;
+                    default:
+                        break;
+                }
                 break;
-            case "LongSword":
-                // rightWeapon.GetComponent<LongSword>().Attack();
+            case AttackState.Special:
+                switch (leftWeapon.name)
+                {
+                    case "Sword":
+                        //leftWeapon.GetComponent<Sword>().SpecialAttack();
+                        break;
+                    case "Shield":
+                        //leftWeapon.GetComponent<Shield>().SpecialAttack();
+                        break;
+                    case "Net":
+                        //leftWeapon.GetComponent<Net>().SpecialAttack();
+                        break;
+                    default:
+                        break;
+                }
                 break;
             default:
                 break;
-        }
+        }  
     }
 
-    protected void LeftWeaponAttack()
-    {
-        switch (leftWeapon.name)
-        {
-            case "Sword":
-                weaponSide = WeaponSide.Left;
-                // leftWeapon.GetComponent<Sword>().SpecialAttack();
-                break;
-            case "Shield":
-                // leftWeapon.GetComponent<Shield>().SpecialAttack();
-                break;
-            case "Net":
-                //  leftWeapon.GetComponent<Net>().SpecialAttack();
-                break;
-            default:
-                break;
-        }
-    }
 
     public void TakeDamage(float damage)
     {

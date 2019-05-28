@@ -80,30 +80,30 @@ public class Player : Character
             Scene scene = SceneManager.GetActiveScene(); SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
 
-        // Attack
-        if (timeAttacking <= 0)
-        {
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                LeftWeaponAttack();
-                timeAttacking = startTimeAttack;
-            }
+        //// Attack
+        //if (timeAttacking <= 0)
+        //{
+        //    if (Input.GetKeyDown(KeyCode.Space))
+        //    {
+        //        LeftWeaponAttack();
+        //        timeAttacking = startTimeAttack;
+        //    }
 
-            if (Input.GetKeyDown(KeyCode.H))
-            {
-                weapon.HorizontalAttack = true;
-                RightWeaponAttack();
-            }
+        //    if (Input.GetKeyDown(KeyCode.H))
+        //    {
+        //        weapon.HorizontalAttack = true;
+        //        RightWeaponAttack();
+        //    }
 
-            if (Input.GetKeyDown(KeyCode.V))
-            {
-                weapon.HorizontalAttack = false;
-                RightWeaponAttack();
-            }
-        }
-        else
-        {
-            timeAttacking -= Time.deltaTime;
-        }
+        //    if (Input.GetKeyDown(KeyCode.V))
+        //    {
+        //        weapon.HorizontalAttack = false;
+        //        RightWeaponAttack();
+        //    }
+        //}
+        //else
+        //{
+        //    timeAttacking -= Time.deltaTime;
+        //}
     }
 }

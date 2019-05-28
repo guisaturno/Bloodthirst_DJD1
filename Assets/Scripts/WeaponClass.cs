@@ -18,7 +18,6 @@ public class WeaponClass : MonoBehaviour
     public WeaponSide weaponSide;
     public bool SpecialShield { get; set; } = false;
     public bool SpecialNet { get; set; } = false;
-    public bool HorizontalAttack { get; set; }
     protected float dashTime;
     private Rigidbody2D rb;
 
@@ -29,42 +28,58 @@ public class WeaponClass : MonoBehaviour
         dashTime = startDashTime;
     }
 
-    //public void Attack()
-    //{
-    //    Collider2D[] enemiesHit = Physics2D.OverlapCircleAll(weaponSensor.position, weaponRange, whatisEnemy);
+    protected virtual void VerticalAttack()
+    {
 
-    //    for (int i = 0; i < enemiesHit.Length; i++)
+    }
+
+    protected virtual void HorizontalAttack()
+    {
+
+    }
+
+    protected virtual void SpecialAttack()
+    {
+
+    }
+
+
+    //    public void Attack()
     //    {
-    //        enemiesHit[i].GetComponent<Character>().TakeDamage(weaponDamage); // metodo na classe enemy
-    //        if (HorizontalAttack)
+    //        Collider2D[] enemiesHit = Physics2D.OverlapCircleAll(weaponSensor.position, weaponRange, whatisEnemy);
+
+    //        for (int i = 0; i < enemiesHit.Length; i++)
     //        {
-    //            if(dashTime <= 0)
+    //            enemiesHit[i].GetComponent<Character>().TakeDamage(weaponDamage); // metodo na classe enemy
+    //            if (HorizontalAttack)
     //            {
-    //                dashTime = startDashTime;
-    //                rb.velocity = Vector2.zero;
+    //                if (dashTime <= 0)
+    //                {
+    //                    dashTime = startDashTime;
+    //                    rb.velocity = Vector2.zero;
+    //                }
+    //                else
+    //                {
+    //                    dashTime -= Time.deltaTime;
+    //                    if (character.transform.right.x > 0f)
+    //                        rb.velocity = Vector2.right * dashSpeed;
+    //                    else if (character.transform.right.x < 0f)
+    //                        rb.velocity = Vector2.left * dashSpeed;
+    //                }
     //            }
-    //            else
-    //            {
-    //                dashTime -= Time.deltaTime;
-    //                if(character.transform.right.x > 0f)
-    //                    rb.velocity = Vector2.right * dashSpeed;
-    //                else if(character.transform.right.x < 0f)
-    //                    rb.velocity = Vector2.left * dashSpeed;
-    //            }
+    //            Debug.Log("HIT");
     //        }
-    //        Debug.Log("HIT");
     //    }
-    //}
 
-    public void ResultAttack(WeaponClass other)
-    {
-        weaponDurability -= Mathf.Max(other.weaponDamage - weaponDefense, 0);
-        CheckBroken();
-    }
+    //    public void ResultAttack(WeaponClass other)
+    //    {
+    //        weaponDurability -= Mathf.Max(other.weaponDamage - weaponDefense, 0);
+    //        CheckBroken();
+    //    }
 
 
-    protected void CheckBroken()
-    {
-        weaponBroke = (weaponDurability <= 0);
-    }
+    //    protected void CheckBroken()
+    //    {
+    //        weaponBroke = (weaponDurability <= 0);
+    //    }
 }
