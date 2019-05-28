@@ -19,7 +19,7 @@ public class EnemyAI : Character
     private Transform playerTransform;
 
     //MoveTowards targets
-    Vector2 climbTarget;
+    //Vector2 climbTarget;
 
     //Stats
     private int agro, def, agil;
@@ -39,10 +39,6 @@ public class EnemyAI : Character
         StartCoroutine(SetState());
         CurrentHP = 250;
 
-    }
-    private void FixedUpdate()
-    {
-        climbTarget = new Vector2(transform.position.x, playerTransform.position.y);
     }
     protected override void Update()
     {
@@ -68,7 +64,6 @@ public class EnemyAI : Character
                 state = State.Idle;
                 break;
             case State.Climb:
-                ClimbState();
                 break;
             default:
                 break;
@@ -222,22 +217,5 @@ public class EnemyAI : Character
             weaponRightAnim.SetBool("Defense", false);
         }
 
-    }
-
-    private void ClimbState()
-    {
-        if (transform.position.y != playerTransform.position.y)
-        {
-            transform.position = Vector2.MoveTowards(transform.position, climbTarget, climbSpeed * Time.fixedDeltaTime);
-            animator.SetBool("Climb", true);
-            weaponLeftAnim.SetBool("Climb", true);
-            weaponRightAnim.SetBool("Climb", true);
-        }
-        else
-        {
-            animator.SetBool("Climb", false);
-            weaponLeftAnim.SetBool("Climb", false);
-            weaponRightAnim.SetBool("Climb", false);
-        }
     }
 }

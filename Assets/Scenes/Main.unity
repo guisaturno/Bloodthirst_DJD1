@@ -786,7 +786,7 @@ PrefabInstance:
     - target: {fileID: 5109573004481057293, guid: 12f8839490acad04eaad775d6291ee65,
         type: 3}
       propertyPath: rollDistance
-      value: 30
+      value: 41
       objectReference: {fileID: 0}
     - target: {fileID: 5109573004481057293, guid: 12f8839490acad04eaad775d6291ee65,
         type: 3}
@@ -831,7 +831,17 @@ PrefabInstance:
     - target: {fileID: 5109573004481057293, guid: 12f8839490acad04eaad775d6291ee65,
         type: 3}
       propertyPath: climbDistance
-      value: 10
+      value: 41
+      objectReference: {fileID: 0}
+    - target: {fileID: 5109573004481057293, guid: 12f8839490acad04eaad775d6291ee65,
+        type: 3}
+      propertyPath: climbSpeed
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 5109573004481057293, guid: 12f8839490acad04eaad775d6291ee65,
+        type: 3}
+      propertyPath: climbRecoveryTime
+      value: 2.2
       objectReference: {fileID: 0}
     - target: {fileID: 5109573004481057295, guid: 12f8839490acad04eaad775d6291ee65,
         type: 3}
@@ -1032,6 +1042,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6135967095498936493, guid: e0f4d37dae3f82744873adfe7da8748a,
+        type: 3}
+      propertyPath: climbDistance
+      value: 41
+      objectReference: {fileID: 0}
+    - target: {fileID: 6135967095498936493, guid: e0f4d37dae3f82744873adfe7da8748a,
+        type: 3}
+      propertyPath: climbRecoveryTime
+      value: 2.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6135967095498936493, guid: e0f4d37dae3f82744873adfe7da8748a,
+        type: 3}
+      propertyPath: climbSpeed
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 4000163807847027322, guid: e0f4d37dae3f82744873adfe7da8748a,
         type: 3}

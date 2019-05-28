@@ -12,13 +12,14 @@ public class Character : MonoBehaviour
     [SerializeField] protected Animator rightWeaponAnim;
 
     [Header("Roll")]
-    [SerializeField] private float rollDistance = 300.0f;
+    [SerializeField] private float rollDistance = 30.0f;
     [SerializeField] private float rollRecoveryTime = 10.0f;
     [SerializeField] private float rollSpeed = 15.0f;
 
     private Vector2 rollTarget;
     private float rollRecovery;
     private bool rolled = true;
+    protected bool facingRight = true;
 
     [Header("Move")]
     [SerializeField] private Transform rightMovePoint;
@@ -41,9 +42,6 @@ public class Character : MonoBehaviour
 
     [Header("To be review")]
     // Variables
-    [SerializeField] protected float walkSpeed = 2500f;
-    [SerializeField] protected float startTimeClimbing;
-    [SerializeField] protected float startClimbDistance = 30f;
     [SerializeField] protected float startTimeAttack;
     [SerializeField] protected GameObject leftWeapon;
     [SerializeField] protected GameObject rightWeapon;
@@ -55,9 +53,6 @@ public class Character : MonoBehaviour
 
     public float MaxHP { get; set; } = 100;
     public float CurrentHP { get; set; }
-    protected float timeRolling = 0f;
-    protected float timeClimbing = 0f;
-    protected bool canClimb = true;
     protected float timeAttacking = 0f;
     protected WeaponClass instance;
     protected float stunTime;
@@ -90,7 +85,6 @@ public class Character : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         CurrentHP = MaxHP;
-        climbDistance = startClimbDistance;
         stunTime = startStunTime;
     }
 
@@ -170,7 +164,7 @@ public class Character : MonoBehaviour
         }
     }
 
-    protected void MoveRight()
+    private void MoveRight()
     {
         //Animation
         characterAnim.SetBool("Run", true);
@@ -182,7 +176,7 @@ public class Character : MonoBehaviour
         transform.position = Vector2.MoveTowards(transform.position, rightMoveTarget, moveSpeed * Time.fixedDeltaTime);
     }
 
-    protected void MoveLeft()
+    private void MoveLeft()
     {
         //Animation
         characterAnim.SetBool("Run", true);
@@ -200,10 +194,8 @@ public class Character : MonoBehaviour
             Quaternion.Euler(0.0f, 180.0f, 0.0f) : Quaternion.identity;
     }
 
-    protected void RollCharacter()
-    { 
-        //Set roll distance direction
-        rollDistance = (transform.rotation.y == 0.0f) ? rollDistance : -rollDistance;
+    private void RollCharacter()
+    {
         //Discount recovery time
         rollRecovery -= Time.fixedDeltaTime;
 
@@ -214,7 +206,16 @@ public class Character : MonoBehaviour
             leftWeaponAnim.SetTrigger("Roll");
             rightWeaponAnim.SetTrigger("Roll");
             //Set roll direction
-            rollTarget = new Vector2(transform.position.x + rollDistance, transform.position.y);
+            if (transform.right.x > 0.0f)
+            {
+                //Roll right
+                rollTarget = new Vector2(transform.position.x + rollDistance, transform.position.y);
+            }
+            else
+            {
+                //Roll left
+                rollTarget = new Vector2(transform.position.x - rollDistance, transform.position.y);
+            }
             //Reset roll recovery time
             rollRecovery = rollRecoveryTime + 5.0f;
             //Confirm that character rolled
@@ -235,10 +236,8 @@ public class Character : MonoBehaviour
         }
     }
 
-    protected void ClimbCharacter()
+    private void ClimbCharacter()
     {
-        //Set climb distance direction
-        climbDistance = (transform.position.y == -58.0f) ? climbDistance : -climbDistance;
         //Discount recovery time
         climbRecovery -= Time.fixedDeltaTime;
 
@@ -249,13 +248,22 @@ public class Character : MonoBehaviour
             leftWeaponAnim.SetBool("Climb", true);
             rightWeaponAnim.SetBool("Climb", true);
             //Set climb direction
-            climbTarget = new Vector2(transform.position.x , transform.position.y + climbDistance);
+            if (transform.position.y == -58)
+            {
+                //Climb up
+                climbTarget = new Vector2(transform.position.x, transform.position.y + climbDistance);
+            }
+            else
+            {
+                //Climb down
+                climbTarget = new Vector2(transform.position.x, transform.position.y - climbDistance);
+            }            
             //Reset climb recovery time
             climbRecovery = climbRecoveryTime + 5.0f;
             //Confirm that character climbed
-            rolled = false;
+            climbed = false;
         }
-        else if (transform.position.y != rollTarget.y)
+        else if (transform.position.y != climbTarget.y)
         {
             //Move character
             transform.position = Vector2.MoveTowards(transform.position, climbTarget, climbSpeed * Time.fixedDeltaTime);
@@ -268,22 +276,6 @@ public class Character : MonoBehaviour
             climbRecovery = 0.0f;
             climbed = true;
         }
-
-        //if (climbDistance <= 0)
-        //{
-        //    animator.SetBool("Climb", false);
-        //    rb.constraints = RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
-        //    state = State.Run;
-        //    climbDistance = startClimbDistance;
-        //    currentVelocity = Vector2.zero;
-        //}
-        //else
-        //{
-        //    animator.SetBool("Climb", true);
-        //    rb.constraints &= ~RigidbodyConstraints2D.FreezePositionY;
-        //    climbDistance -= Time.fixedDeltaTime;
-        //    currentVelocity = (canClimb == false) ? Vector2.up * climbSpeed * Time.fixedDeltaTime : Vector2.down * climbSpeed * Time.fixedDeltaTime;
-        //}
     }
 
     protected void RightWeaponAttack()
@@ -342,12 +334,12 @@ public class Character : MonoBehaviour
             instance.SpecialNet = false;
             if (stunTime <= 0)
             {
-                walkSpeed = 5000f;
+                //walkSpeed = 5000f;
                 stunTime = startStunTime;
             }
             else
             {
-                walkSpeed = 0;
+                //walkSpeed = 0;
                 stunTime -= Time.deltaTime;
             }
         }

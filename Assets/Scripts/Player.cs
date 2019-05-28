@@ -20,18 +20,31 @@ public class Player : Character
 
     protected override void Update()
     {
-        //Set animator booleans to false according to state
         base.Update();
 
-        if (Input.GetKey(KeyCode.RightArrow))
+        // Roll - player
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            state = State.Roll;
+        }
+
+        // Climb - player
+        if (Input.GetKeyDown(KeyCode.UpArrow) || (Input.GetKeyDown(KeyCode.DownArrow)))
+        {
+            state = State.Climb;
+        }
+
+        if (Input.GetKey(KeyCode.RightArrow) && state == State.Idle)
         {
             //Set character facing direction
+            facingRight = true;
             transform.rotation = Quaternion.identity;
             state = State.Run;
         }
-        else if (Input.GetKey(KeyCode.LeftArrow))
+        else if (Input.GetKey(KeyCode.LeftArrow) && state == State.Idle)
         {
             //Set character facing direction
+            facingRight = false;
             transform.rotation = Quaternion.Euler(0.0f, 180.0f, 0.0f);
             state = State.Run;
         }
@@ -40,6 +53,12 @@ public class Player : Character
         {
             state = State.Idle;
         }
+
+        
+
+
+//----------------------------------------------------------------------------------------------//
+
 
         //Defense
         if (Input.GetKey(KeyCode.C))
@@ -59,19 +78,6 @@ public class Player : Character
         if (Input.GetKeyDown(KeyCode.R))
         {
             Scene scene = SceneManager.GetActiveScene(); SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        }
-
-        // Roll - player
-        if (Input.GetKeyDown(KeyCode.LeftShift))
-        {
-            state = State.Roll;
-        }
-
-
-        // Climb - player
-        if (Input.GetKeyDown(KeyCode.UpArrow) || (Input.GetKeyDown(KeyCode.DownArrow)))
-        {
-            state = State.Climb;
         }
 
         // Attack
