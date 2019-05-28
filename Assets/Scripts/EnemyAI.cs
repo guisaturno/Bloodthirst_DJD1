@@ -5,11 +5,8 @@ using UnityEngine;
 public class EnemyAI : Character
 {
     [Header("Enemy")]
-    //Animator
-    private Animator playerAnim;
-    [SerializeField] private Animator weaponRightAnim;
-    [SerializeField] private Animator weaponLeftAnim;
     //AI
+    private Animator playerAnim;
     private AnimatorStateInfo playerState;
     //Attack
     int randomAttack;
@@ -17,9 +14,6 @@ public class EnemyAI : Character
     //Player position
     [SerializeField] private float playerDistance = 5f;
     private Transform playerTransform;
-
-    //MoveTowards targets
-    //Vector2 climbTarget;
 
     //Stats
     private int agro, def, agil;
@@ -60,7 +54,6 @@ public class EnemyAI : Character
                 state = State.Idle;
                 break;
             case State.Defend:
-                DefendState();
                 state = State.Idle;
                 break;
             default:
@@ -102,20 +95,20 @@ public class EnemyAI : Character
     {
         while (true)
         {
-            if (Vector2.Distance(transform.position, playerTransform.position) > playerDistance
-                && transform.position.y == playerTransform.position.y)
-            {
-                if (transform.position.x < playerTransform.position.x)
-                {
-                    transform.rotation = Quaternion.identity;
-                }
-                else
-                {
-                    transform.rotation = Quaternion.Euler(0.0f, 180.0f, 0.0f);
-                }
-                state = State.Run;
-            }
-            else if ((transform.position.y != playerTransform.position.y))
+            //if (Vector2.Distance(transform.position, playerTransform.position) > playerDistance
+            //    && transform.position.y == playerTransform.position.y)
+            //{
+            //    if (transform.position.x < playerTransform.position.x)
+            //    {
+            //        transform.rotation = Quaternion.identity;
+            //    }
+            //    else
+            //    {
+            //        transform.rotation = Quaternion.Euler(0.0f, 180.0f, 0.0f);
+            //    }
+            //    state = State.Run;
+            //}
+            if ((transform.position.y != playerTransform.position.y))
             {
                 state = State.Climb;
             }
@@ -135,7 +128,6 @@ public class EnemyAI : Character
             yield return new WaitForSeconds(1.5f);
         }
     }
-
     //Action Methods
     //private void AttackState()
     //{
@@ -199,21 +191,4 @@ public class EnemyAI : Character
     //        randomAttack = 0;
     //    }
     //}
-
-    private void DefendState()
-    {
-        if (Vector2.Distance(transform.position, playerTransform.position) < playerDistance)
-        {
-            animator.SetBool("Defense", true);
-            weaponLeftAnim.SetBool("Defense", true);
-            weaponRightAnim.SetBool("Defense", true);
-        }
-        else
-        {
-            animator.SetBool("Defense", false);
-            weaponLeftAnim.SetBool("Defense", false);
-            weaponRightAnim.SetBool("Defense", false);
-        }
-
-    }
 }

@@ -69,7 +69,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5109573004481057283}
-  - component: {fileID: 5109573004481057282}
   - component: {fileID: 5109573004481057293}
   - component: {fileID: 5109573004481057292}
   - component: {fileID: 5109573004481057295}
@@ -98,18 +97,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5109573004481057282
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5109573004481057288}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6648af5ae6d0e0345b23dce775c68d6e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &5109573004481057293
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -122,21 +109,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5b5362c09b7f6c42b0173098c82e575, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkSpeed: 5000
-  maxRollSpeed: 500
-  startTimeRolling: 2
-  rollSpeedMultiplier: 13
+  characterAnim: {fileID: 0}
+  leftWeaponAnim: {fileID: 0}
+  rightWeaponAnim: {fileID: 0}
+  rollDistance: 30
+  rollRecoveryTime: 10
+  rollSpeed: 15
+  rightMovePoint: {fileID: 0}
+  leftMovePoint: {fileID: 0}
+  moveSpeed: 15
+  climbDistance: 300
+  climbRecoveryTime: 10
   climbSpeed: 3050
-  startTimeClimbing: 2
-  startClimbDistance: 0.66
-  startTimeAttack: 0
   leftWeapon: {fileID: 0}
   rightWeapon: {fileID: 0}
   knockback: 0
   knockbackCount: 0
   knockbackRight: 0
   startStunTime: 0
-  weaponSide: 0
 --- !u!212 &5109573004481057292
 SpriteRenderer:
   m_ObjectHideFlags: 0

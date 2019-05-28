@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum WeaponSide { Left, Right }
-
 public class Character : MonoBehaviour
 {
     [Header("Animator")]
@@ -103,6 +101,14 @@ public class Character : MonoBehaviour
                 characterAnim.SetBool("Defense", false);
                 leftWeaponAnim.SetBool("Defense", false);
                 rightWeaponAnim.SetBool("Defense", false);
+
+                characterAnim.SetBool("HorizontalAttack", false);
+                leftWeaponAnim.SetBool("HorizontalAttack", false);
+                rightWeaponAnim.SetBool("HorizontalAttack", false);
+
+                characterAnim.SetBool("VerticalAttack", false);
+                leftWeaponAnim.SetBool("VerticalAttack", false);
+                rightWeaponAnim.SetBool("VerticalAttack", false);
                 break;
             case State.Run:
                 characterAnim.SetBool("Defense", false);
@@ -112,6 +118,14 @@ public class Character : MonoBehaviour
                 characterAnim.SetBool("Climb", false);
                 leftWeaponAnim.SetBool("Climb", false);
                 rightWeaponAnim.SetBool("Climb", false);
+
+                characterAnim.SetBool("HorizontalAttack", false);
+                leftWeaponAnim.SetBool("HorizontalAttack", false);
+                rightWeaponAnim.SetBool("HorizontalAttack", false);
+
+                characterAnim.SetBool("VerticalAttack", false);
+                leftWeaponAnim.SetBool("VerticalAttack", false);
+                rightWeaponAnim.SetBool("VerticalAttack", false);
                 break;
             case State.Defend:
                 characterAnim.SetBool("Run", false);
@@ -121,8 +135,16 @@ public class Character : MonoBehaviour
                 characterAnim.SetBool("Climb", false);
                 leftWeaponAnim.SetBool("Climb", false);
                 rightWeaponAnim.SetBool("Climb", false);
+
+                characterAnim.SetBool("HorizontalAttack", false);
+                leftWeaponAnim.SetBool("HorizontalAttack", false);
+                rightWeaponAnim.SetBool("HorizontalAttack", false);
+
+                characterAnim.SetBool("VerticalAttack", false);
+                leftWeaponAnim.SetBool("VerticalAttack", false);
+                rightWeaponAnim.SetBool("VerticalAttack", false);
                 break;
-            default:
+           case State.Idle:
                 characterAnim.SetBool("Climb", false);
                 leftWeaponAnim.SetBool("Climb", false);
                 rightWeaponAnim.SetBool("Climb", false);
@@ -134,6 +156,14 @@ public class Character : MonoBehaviour
                 characterAnim.SetBool("Defense", false);
                 leftWeaponAnim.SetBool("Defense", false);
                 rightWeaponAnim.SetBool("Defense", false);
+
+                characterAnim.SetBool("HorizontalAttack", false);
+                leftWeaponAnim.SetBool("HorizontalAttack", false);
+                rightWeaponAnim.SetBool("HorizontalAttack", false);
+
+                characterAnim.SetBool("VerticalAttack", false);
+                leftWeaponAnim.SetBool("VerticalAttack", false);
+                rightWeaponAnim.SetBool("VerticalAttack", false);
                 break;
         }
         switch (state)
@@ -287,22 +317,27 @@ public class Character : MonoBehaviour
             switch (attackState)
             {
                 case AttackState.Horizontal:
+                    //Animation
+                    characterAnim.SetBool("HorizontalAttack", true);
+                    leftWeaponAnim.SetBool("HorizontalAttack", true);
+                    rightWeaponAnim.SetBool("HorizontalAttack", true);
                     switch (rightWeapon.name)
                     {
                         case "Trident":
-                            //rightWeapon.GetComponent<Trident>().HorizontalAttack();
+                            rightWeapon.GetComponent<Trident>().HorizontalAttack();
                             break;
                         case "LongSword":
-                            //rightWeapon.GetComponent<LongSword>().HorizontalAttack();
+                            rightWeapon.GetComponent<LongSword>().HorizontalAttack();
                             break;
                         default:
                             break;
                     }
                     break;
                 case AttackState.Vertical:
-                    characterAnim.SetTrigger("VerticalAttack");
-                    leftWeaponAnim.SetTrigger("VerticalAttack");
-                    rightWeaponAnim.SetTrigger("VerticalAttack");
+                    //Animation
+                    characterAnim.SetBool("VerticalAttack", true);
+                    leftWeaponAnim.SetBool("VerticalAttack", true);
+                    rightWeaponAnim.SetBool("VerticalAttack", true);
                     switch (rightWeapon.name)
                     {
                         case "Trident":
@@ -320,10 +355,16 @@ public class Character : MonoBehaviour
                     switch (leftWeapon.name)
                     {
                         case "Shield":
-                            //leftWeapon.GetComponent<Shield>().SpecialAttack();
+                            characterAnim.SetBool("ShieldAttack", true);
+                            leftWeaponAnim.SetBool("ShieldAttack", true);
+                            rightWeaponAnim.SetBool("ShieldAttack", true);
+                            leftWeapon.GetComponent<Shield>().SpecialAttack();
                             break;
                         case "Net":
-                            //leftWeapon.GetComponent<Net>().SpecialAttack();
+                            characterAnim.SetBool("NetAttack", true);
+                            leftWeaponAnim.SetBool("NetAttack", true);
+                            rightWeaponAnim.SetBool("NetAttack", true);
+                            leftWeapon.GetComponent<Net>().SpecialAttack();
                             break;
                         default:
                             break;
@@ -336,9 +377,8 @@ public class Character : MonoBehaviour
         }
     }
 
-
     internal void TakeDamage(float damage)
-    { 
+    {
         CurrentHP -= damage;
         characterAnim.SetTrigger("Hit");
         leftWeaponAnim.SetTrigger("Hit");

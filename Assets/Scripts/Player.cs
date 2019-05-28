@@ -21,22 +21,36 @@ public class Player : Character
     protected override void Update()
     {
         base.Update();
-        //Attack
-        if (Input.GetKey(KeyCode.X))
+        if (state == State.Idle || state == State.Run)
         {
-            state = State.Attack;
-            attackState = AttackState.Vertical;
-        }
-        // Roll - player
-        if (Input.GetKeyDown(KeyCode.LeftShift))
-        {
-            state = State.Roll;
-        }
-
-        // Climb - player
-        if (Input.GetKeyDown(KeyCode.UpArrow) || (Input.GetKeyDown(KeyCode.DownArrow)))
-        {
-            state = State.Climb;
+            //Vertical attack
+            if (Input.GetKeyDown(KeyCode.X))
+            {
+                state = State.Attack;
+                attackState = AttackState.Vertical;
+            }
+            //Horizontal attack
+            if (Input.GetKeyDown(KeyCode.Z))
+            {
+                state = State.Attack;
+                attackState = AttackState.Horizontal;
+            }
+            //Special attack
+            if (Input.GetKeyDown(KeyCode.V))
+            {
+                state = State.Attack;
+                attackState = AttackState.Special;
+            }
+            // Roll - player
+            if (Input.GetKeyDown(KeyCode.LeftShift))
+            {
+                state = State.Roll;
+            }
+            // Climb - player
+            if (Input.GetKeyDown(KeyCode.UpArrow) || (Input.GetKeyDown(KeyCode.DownArrow)))
+            {
+                state = State.Climb;
+            }
         }
 
         if (Input.GetKey(KeyCode.RightArrow) && state == State.Idle)
@@ -54,15 +68,13 @@ public class Player : Character
             state = State.Run;
         }
 
-        if (Input.GetKeyUp(KeyCode.LeftArrow) || Input.GetKeyUp(KeyCode.RightArrow))
+        if (Input.GetKeyUp(KeyCode.LeftArrow) && state == State.Run
+        || Input.GetKeyUp(KeyCode.RightArrow) && state == State.Run)
         {
             state = State.Idle;
         }
 
-        
-
-
-//----------------------------------------------------------------------------------------------//
+        //----------------------------------------------------------------------------------------------//
 
 
         //Defense
