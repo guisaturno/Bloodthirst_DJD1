@@ -9,6 +9,25 @@ public class Character : MonoBehaviour
     [SerializeField] protected Animator leftWeaponAnim;
     [SerializeField] protected Animator rightWeaponAnim;
 
+    [Header("Attack")]
+    [SerializeField] protected GameObject leftWeapon;
+    [SerializeField] protected GameObject rightWeapon;
+
+    internal bool attacked = true;
+    internal enum State { Idle, Roll, Climb, Attack, Run, Defend }
+    protected enum AttackState { Horizontal, Vertical, Special }
+    internal State state;
+    protected AttackState attackState;
+
+    [Header("Dash")]
+    [SerializeField] private float dashRecoveryTime = 1f;
+    [SerializeField] private float dashDistance = 30.0f;
+    [SerializeField] private float dashSpeed = 15.0f;
+
+    private Vector2 dashTarget;
+    private float dashRecovery;
+    private bool dashed = true;
+
     [Header("Roll")]
     [SerializeField] private float rollDistance = 30.0f;
     [SerializeField] private float rollRecoveryTime = 10.0f;
@@ -36,30 +55,9 @@ public class Character : MonoBehaviour
     private float climbRecovery;
     private bool climbed = true;
 
-    [Header("Attack")]
-    [SerializeField] protected GameObject leftWeapon;
-    [SerializeField] protected GameObject rightWeapon;
-
-    internal bool attacked = true;
-    internal enum State { Idle, Roll, Climb, Attack, Run, Defend }
-    protected enum AttackState { Horizontal, Vertical, Special }
-    internal State state;
-    protected AttackState attackState;
-
-    [Header("To be review")]
-    // Variables
-    [SerializeField] protected float knockback;
-    [SerializeField] protected float knockbackCount;
-    [SerializeField] protected bool knockbackRight;
-    [SerializeField] protected float startStunTime;
-
 
     public float MaxHP { get; set; } = 100;
     public float CurrentHP { get; set; }
-    protected float timeAttacking = 0f;
-    protected WeaponClass instance;
-    protected float stunTime;
-
 
     protected Animator animator;
     protected Rigidbody2D rb;
@@ -85,7 +83,6 @@ public class Character : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         CurrentHP = MaxHP;
-        stunTime = startStunTime;
     }
 
     protected virtual void Update()
@@ -113,6 +110,10 @@ public class Character : MonoBehaviour
                 characterAnim.SetBool("NetAttack", false);
                 leftWeaponAnim.SetBool("NetAttack", false);
                 rightWeaponAnim.SetBool("NetAttack", false);
+
+                characterAnim.SetBool("ShieldAttack", false);
+                leftWeaponAnim.SetBool("ShieldAttack", false);
+                rightWeaponAnim.SetBool("ShieldAttack", false);
                 break;
             case State.Run:
                 characterAnim.SetBool("Defense", false);
@@ -134,6 +135,10 @@ public class Character : MonoBehaviour
                 characterAnim.SetBool("NetAttack", false);
                 leftWeaponAnim.SetBool("NetAttack", false);
                 rightWeaponAnim.SetBool("NetAttack", false);
+
+                characterAnim.SetBool("ShieldAttack", false);
+                leftWeaponAnim.SetBool("ShieldAttack", false);
+                rightWeaponAnim.SetBool("ShieldAttack", false);
                 break;
             case State.Defend:
                 characterAnim.SetBool("Run", false);
@@ -155,8 +160,12 @@ public class Character : MonoBehaviour
                 characterAnim.SetBool("NetAttack", false);
                 leftWeaponAnim.SetBool("NetAttack", false);
                 rightWeaponAnim.SetBool("NetAttack", false);
+
+                characterAnim.SetBool("ShieldAttack", false);
+                leftWeaponAnim.SetBool("ShieldAttack", false);
+                rightWeaponAnim.SetBool("ShieldAttack", false);
                 break;
-           case State.Idle:
+            case State.Idle:
                 characterAnim.SetBool("Climb", false);
                 leftWeaponAnim.SetBool("Climb", false);
                 rightWeaponAnim.SetBool("Climb", false);
@@ -180,6 +189,10 @@ public class Character : MonoBehaviour
                 characterAnim.SetBool("NetAttack", false);
                 leftWeaponAnim.SetBool("NetAttack", false);
                 rightWeaponAnim.SetBool("NetAttack", false);
+
+                characterAnim.SetBool("ShieldAttack", false);
+                leftWeaponAnim.SetBool("ShieldAttack", false);
+                rightWeaponAnim.SetBool("ShieldAttack", false);
                 break;
         }
         switch (state)
@@ -337,6 +350,7 @@ public class Character : MonoBehaviour
                     characterAnim.SetBool("HorizontalAttack", true);
                     leftWeaponAnim.SetBool("HorizontalAttack", true);
                     rightWeaponAnim.SetBool("HorizontalAttack", true);
+                    Dash();
                     switch (rightWeapon.name)
                     {
                         case "Trident":
@@ -375,6 +389,7 @@ public class Character : MonoBehaviour
                             leftWeaponAnim.SetBool("ShieldAttack", true);
                             rightWeaponAnim.SetBool("ShieldAttack", true);
                             leftWeapon.GetComponent<Shield>().SpecialAttack();
+                            Dash();
                             break;
                         case "Net":
                             characterAnim.SetBool("NetAttack", true);
@@ -390,6 +405,44 @@ public class Character : MonoBehaviour
                     break;
             }
             //attacked = false;
+        }
+    }
+
+    private void Dash()
+    {
+        //Discount recovery time
+        dashRecovery -= Time.fixedDeltaTime;
+
+        if (dashed)
+        {
+            //Set roll direction
+            if (transform.right.x > 0.0f)
+            {
+                //Roll right
+                dashTarget = new Vector2(transform.position.x + dashDistance, transform.position.y);
+            }
+            else
+            {
+                //Roll left
+                dashTarget = new Vector2(transform.position.x - dashDistance, transform.position.y);
+            }
+            //Reset roll recovery time
+            dashRecovery = dashRecoveryTime + 5;
+            //Confirm that character rolled
+            dashed = false;
+        }
+        else if (transform.position.x != dashTarget.x)
+        {
+            //Move character
+            transform.position = Vector2.MoveTowards(transform.position, dashTarget, dashSpeed * Time.fixedDeltaTime);
+        }
+
+        if (dashRecovery <= 5.0f)
+        {
+            //Reset variables
+            state = State.Idle;
+            dashRecovery = 0.0f;
+            dashed = true;
         }
     }
 

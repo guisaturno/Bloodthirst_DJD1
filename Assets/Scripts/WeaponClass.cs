@@ -86,12 +86,10 @@ public class WeaponClass : MonoBehaviour
             //Reset variables
             if (transform.parent.parent.tag == "Player")
             {
-                gameObject.GetComponentInParent<Player>().state = Character.State.Idle;
                 gameObject.GetComponentInParent<Player>().attacked = true;
             }
             else if (transform.parent.parent.tag == "Enemy")
             {
-                gameObject.GetComponentInParent<EnemyAI>().state = Character.State.Idle;
                 gameObject.GetComponentInParent<EnemyAI>().attacked = true;
             }
             gameObject.GetComponent<BoxCollider2D>().enabled = false;
@@ -117,16 +115,21 @@ public class WeaponClass : MonoBehaviour
 
         if (specialRecovery <= 0.0f)
         {
-            print("Time end!!!");
             //Reset variables
             if (transform.parent.parent.tag == "Player")
             {
-                gameObject.GetComponentInParent<Player>().state = Character.State.Idle;
+                if (gameObject.name != "Shield")
+                {
+                    gameObject.GetComponentInParent<Player>().state = Character.State.Idle;
+                }
                 gameObject.GetComponentInParent<Player>().attacked = true;
             }
             else if (transform.parent.parent.tag == "Enemy")
             {
-                gameObject.GetComponentInParent<EnemyAI>().state = Character.State.Idle;
+                if (gameObject.name != "Shield")
+                {
+                    gameObject.GetComponentInParent<Player>().state = Character.State.Idle;
+                }
                 gameObject.GetComponentInParent<EnemyAI>().attacked = true;
             }
             gameObject.GetComponent<BoxCollider2D>().enabled = false;

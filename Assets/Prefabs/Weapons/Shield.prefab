@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 8104210788813593783}
   - component: {fileID: 8104210788813593782}
   - component: {fileID: 3292910366610536412}
-  - component: {fileID: 290731015710517804}
   m_Layer: 0
   m_Name: Shield
   m_TagString: Untagged
@@ -47,10 +46,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28f1b7513be07b24aadbaf505b46c08a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponRange: 0
-  dashSpeed: 0
-  startDashTime: 0
-  weaponSide: 0
+  specialRecoveryTime: 1
+  horizontalRecoveryTime: 1
+  horizontalDistance: 15
+  verticalRecoveryTime: 1
+  damage: 0
+  shieldPushSpeed: 100
+  shieldPushDistance: 20
 --- !u!95 &8104210788813593783
 Animator:
   serializedVersion: 3
@@ -144,15 +146,3 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 4.8, y: 11.2}
   m_EdgeRadius: 0
---- !u!114 &290731015710517804
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8104210788813593781}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6648af5ae6d0e0345b23dce775c68d6e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
