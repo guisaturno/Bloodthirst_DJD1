@@ -310,7 +310,27 @@ PrefabInstance:
     - target: {fileID: 2260814622791643900, guid: 320e43e1c35962d4eaacc65fe41a5774,
         type: 3}
       propertyPath: netPullDistance
-      value: 50
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 2260814622791643900, guid: 320e43e1c35962d4eaacc65fe41a5774,
+        type: 3}
+      propertyPath: specialRecoveryTime
+      value: 2.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2260814622791643900, guid: 320e43e1c35962d4eaacc65fe41a5774,
+        type: 3}
+      propertyPath: verticalRecoveryTime
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2260814622791643900, guid: 320e43e1c35962d4eaacc65fe41a5774,
+        type: 3}
+      propertyPath: horizontalDistance
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2260814622791643900, guid: 320e43e1c35962d4eaacc65fe41a5774,
+        type: 3}
+      propertyPath: horizontalRecoveryTime
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5506292927565873181, guid: 320e43e1c35962d4eaacc65fe41a5774,
         type: 3}
@@ -692,12 +712,12 @@ PrefabInstance:
     - target: {fileID: 2461430280556178599, guid: 22ea230ea5a470244a28ca3ce9580064,
         type: 3}
       propertyPath: verticalRecoveryTime
-      value: 1
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 2461430280556178599, guid: 22ea230ea5a470244a28ca3ce9580064,
         type: 3}
       propertyPath: horizontalRecoveryTime
-      value: 1.8
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 22ea230ea5a470244a28ca3ce9580064, type: 3}

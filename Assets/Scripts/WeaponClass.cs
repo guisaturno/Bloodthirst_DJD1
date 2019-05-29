@@ -117,6 +117,7 @@ public class WeaponClass : MonoBehaviour
 
         if (specialRecovery <= 0.0f)
         {
+            print("Time end!!!");
             //Reset variables
             if (transform.parent.parent.tag == "Player")
             {

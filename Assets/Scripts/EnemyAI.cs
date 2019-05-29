@@ -30,7 +30,7 @@ public class EnemyAI : Character
         def = Random.Range(1, 10);
         agil = Random.Range(1, 10); ;
 
-        StartCoroutine(SetState());
+        //StartCoroutine(SetState());
         CurrentHP = 250;
 
     }
@@ -91,43 +91,43 @@ public class EnemyAI : Character
         }
     }
 
-    private IEnumerator SetState()
-    {
-        while (true)
-        {
-            //if (Vector2.Distance(transform.position, playerTransform.position) > playerDistance
-            //    && transform.position.y == playerTransform.position.y)
-            //{
-            //    if (transform.position.x < playerTransform.position.x)
-            //    {
-            //        transform.rotation = Quaternion.identity;
-            //    }
-            //    else
-            //    {
-            //        transform.rotation = Quaternion.Euler(0.0f, 180.0f, 0.0f);
-            //    }
-            //    state = State.Run;
-            //}
-            if ((transform.position.y != playerTransform.position.y))
-            {
-                state = State.Climb;
-            }
-            else if (currentAgil > currentAgro && currentAgil > currentDef)
-            {
-                state = State.Roll;
-            }
-            else if (currentAgro > currentAgil && currentAgro > currentDef)
-            {
-                state = State.Attack;
-            }
-            else if (currentDef > currentAgil && currentDef > currentAgro)
-            {
-                state = State.Defend; ;
-            }
+    //private IEnumerator SetState()
+    //{
+    //    //while (true)
+    //    //{
+    //    //    if (Vector2.Distance(transform.position, playerTransform.position) > playerDistance
+    //    //        && transform.position.y == playerTransform.position.y)
+    //    //    {
+    //    //        if (transform.position.x < playerTransform.position.x)
+    //    //        {
+    //    //            transform.rotation = Quaternion.identity;
+    //    //        }
+    //    //        else
+    //    //        {
+    //    //            transform.rotation = Quaternion.Euler(0.0f, 180.0f, 0.0f);
+    //    //        }
+    //    //        state = State.Run;
+    //    //    }
+    //    //    if ((transform.position.y != playerTransform.position.y))
+    //    //    {
+    //    //        state = State.Climb;
+    //    //    }
+    //    //    else if (currentAgil > currentAgro && currentAgil > currentDef)
+    //    //    {
+    //    //        state = State.Roll;
+    //    //    }
+    //    //    else if (currentAgro > currentAgil && currentAgro > currentDef)
+    //    //    {
+    //    //        state = State.Attack;
+    //    //    }
+    //    //    else if (currentDef > currentAgil && currentDef > currentAgro)
+    //    //    {
+    //    //        state = State.Defend; ;
+    //    //    }
 
-            yield return new WaitForSeconds(1.5f);
-        }
-    }
+    //    //    yield return new WaitForSeconds(1.5f);
+    //    //}
+    //}
     //Action Methods
     //private void AttackState()
     //{

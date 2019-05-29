@@ -109,6 +109,10 @@ public class Character : MonoBehaviour
                 characterAnim.SetBool("VerticalAttack", false);
                 leftWeaponAnim.SetBool("VerticalAttack", false);
                 rightWeaponAnim.SetBool("VerticalAttack", false);
+
+                characterAnim.SetBool("NetAttack", false);
+                leftWeaponAnim.SetBool("NetAttack", false);
+                rightWeaponAnim.SetBool("NetAttack", false);
                 break;
             case State.Run:
                 characterAnim.SetBool("Defense", false);
@@ -126,6 +130,10 @@ public class Character : MonoBehaviour
                 characterAnim.SetBool("VerticalAttack", false);
                 leftWeaponAnim.SetBool("VerticalAttack", false);
                 rightWeaponAnim.SetBool("VerticalAttack", false);
+
+                characterAnim.SetBool("NetAttack", false);
+                leftWeaponAnim.SetBool("NetAttack", false);
+                rightWeaponAnim.SetBool("NetAttack", false);
                 break;
             case State.Defend:
                 characterAnim.SetBool("Run", false);
@@ -143,6 +151,10 @@ public class Character : MonoBehaviour
                 characterAnim.SetBool("VerticalAttack", false);
                 leftWeaponAnim.SetBool("VerticalAttack", false);
                 rightWeaponAnim.SetBool("VerticalAttack", false);
+
+                characterAnim.SetBool("NetAttack", false);
+                leftWeaponAnim.SetBool("NetAttack", false);
+                rightWeaponAnim.SetBool("NetAttack", false);
                 break;
            case State.Idle:
                 characterAnim.SetBool("Climb", false);
@@ -164,6 +176,10 @@ public class Character : MonoBehaviour
                 characterAnim.SetBool("VerticalAttack", false);
                 leftWeaponAnim.SetBool("VerticalAttack", false);
                 rightWeaponAnim.SetBool("VerticalAttack", false);
+
+                characterAnim.SetBool("NetAttack", false);
+                leftWeaponAnim.SetBool("NetAttack", false);
+                rightWeaponAnim.SetBool("NetAttack", false);
                 break;
         }
         switch (state)

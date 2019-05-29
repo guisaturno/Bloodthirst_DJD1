@@ -9,7 +9,7 @@ public class Net : WeaponClass
     [SerializeField] private float netPullDistance = 10f;
 
     Vector2 characterTarget;
-    private Transform characterHit;
+    private GameObject characterHit;
     private bool netHit;
 
     protected override void Start()
@@ -18,32 +18,40 @@ public class Net : WeaponClass
 
     internal override void SpecialAttack()
     {
-        print("NetSpecial");
-       
-        if (netHit)
+        if (characterHit != null && specialRecovery <= 0.1f)
         {
-            if (characterHit.position.x > transform.position.x)
+            characterHit.GetComponent<CapsuleCollider2D>().enabled = true;
+            characterHit.transform.position = characterTarget;
+            characterHit = null;
+            print("NetEnd");
+        }
+
+        base.SpecialAttack();
+
+        if (netHit && specialRecovery > 0 && characterHit != null)
+        {
+            if (characterHit.transform.position.x > transform.position.x)
             {
-                characterTarget = new Vector2(characterHit.position.x - netPullDistance, characterHit.position.y);
+                characterTarget = new Vector2(characterHit.transform.position.x - netPullDistance, characterHit.transform.position.y);
             }
             else
             {
-                characterTarget = new Vector2(characterHit.position.x + netPullDistance, characterHit.position.y);
+                characterTarget = new Vector2(characterHit.transform.position.x + netPullDistance, characterHit.transform.position.y);
             }
+            characterHit.GetComponent<CapsuleCollider2D>().enabled = false;
             netHit = false;
         }
-        if (!netHit)
+        else if (characterHit != null)
         {
-            characterHit.position = Vector2.MoveTowards(transform.position, characterTarget, netPullSpeed * Time.fixedDeltaTime);
+            characterHit.transform.position = Vector2.MoveTowards(transform.position, characterTarget, netPullSpeed * Time.fixedDeltaTime);
         }
-        base.SpecialAttack();
     }
 
     protected override void OnTriggerEnter2D(Collider2D obj)
     {
         if (obj.CompareTag("Enemy") || obj.CompareTag("Player"))
         {
-            characterHit = obj.gameObject.GetComponent<Transform>();
+            characterHit = obj.gameObject;
             netHit = true;
         }
         base.OnTriggerEnter2D(obj);
