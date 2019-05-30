@@ -28,7 +28,7 @@ public class Shield : WeaponClass
             //Set variable back to null
             characterHit = null;
 
-            print("Shield END!!!S");
+            gameObject.GetComponent<BoxCollider2D>().enabled = false;
         }
         //Call base method at WeaponClass
         base.SpecialAttack();

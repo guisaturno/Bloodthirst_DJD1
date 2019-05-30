@@ -11,7 +11,6 @@ public class WeaponClass : MonoBehaviour
 
     [Header("HorizontalAttack")]
     [SerializeField] private float horizontalRecoveryTime = 1.0f;
-    [SerializeField] private float horizontalDistance = 15;
 
     private float horizontalRecovery;
 

@@ -72,8 +72,8 @@ GameObject:
   - component: {fileID: 5109573004481057293}
   - component: {fileID: 5109573004481057292}
   - component: {fileID: 5109573004481057295}
-  - component: {fileID: 5109573004481057294}
   - component: {fileID: 5109573004481057289}
+  - component: {fileID: 7339848651855153305}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -112,6 +112,11 @@ MonoBehaviour:
   characterAnim: {fileID: 0}
   leftWeaponAnim: {fileID: 0}
   rightWeaponAnim: {fileID: 0}
+  leftWeapon: {fileID: 0}
+  rightWeapon: {fileID: 0}
+  dashRecoveryTime: 1
+  dashDistance: 30
+  dashSpeed: 15
   rollDistance: 30
   rollRecoveryTime: 10
   rollSpeed: 15
@@ -121,12 +126,6 @@ MonoBehaviour:
   climbDistance: 300
   climbRecoveryTime: 10
   climbSpeed: 3050
-  leftWeapon: {fileID: 0}
-  rightWeapon: {fileID: 0}
-  knockback: 0
-  knockbackCount: 0
-  knockbackRight: 0
-  startStunTime: 0
 --- !u!212 &5109573004481057292
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -196,22 +195,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 6
---- !u!70 &5109573004481057294
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5109573004481057288}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 6, y: 18}
-  m_Direction: 0
 --- !u!95 &5109573004481057289
 Animator:
   serializedVersion: 3
@@ -231,3 +214,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!70 &7339848651855153305
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5109573004481057288}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 9, y: 19}
+  m_Direction: 0

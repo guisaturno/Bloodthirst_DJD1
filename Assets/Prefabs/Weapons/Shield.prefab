@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 292474717680784940}
   - component: {fileID: 8104210788813593783}
   - component: {fileID: 8104210788813593782}
-  - component: {fileID: 3292910366610536412}
+  - component: {fileID: 6537532140144907452}
   m_Layer: 0
   m_Name: Shield
   m_TagString: Untagged
@@ -120,7 +120,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &3292910366610536412
+--- !u!61 &6537532140144907452
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
