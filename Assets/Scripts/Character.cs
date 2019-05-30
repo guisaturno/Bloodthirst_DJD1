@@ -427,9 +427,19 @@ public class Character : MonoBehaviour
                 dashTarget = new Vector2(transform.position.x - dashDistance, transform.position.y);
             }
             //Reset roll recovery time
-            dashRecovery = dashRecoveryTime + 5;
+            dashRecovery = dashRecoveryTime;
             //Confirm that character rolled
             dashed = false;
+            //Enable weapon collider
+            if (attackState == AttackState.Horizontal)
+            {
+                rightWeapon.GetComponent<BoxCollider2D>().enabled = true;
+            }
+            else if (attackState == AttackState.Special)
+            {
+                leftWeapon.GetComponent<BoxCollider2D>().enabled = true;
+            }
+            
         }
         else if (transform.position.x != dashTarget.x)
         {
@@ -437,12 +447,21 @@ public class Character : MonoBehaviour
             transform.position = Vector2.MoveTowards(transform.position, dashTarget, dashSpeed * Time.fixedDeltaTime);
         }
 
-        if (dashRecovery <= 5.0f)
+        if (dashRecovery <= 0.0f)
         {
             //Reset variables
             state = State.Idle;
             dashRecovery = 0.0f;
             dashed = true;
+            //Disable weapon collider
+            if (attackState == AttackState.Horizontal)
+            {
+                rightWeapon.GetComponent<BoxCollider2D>().enabled = false;
+            }
+            else if (attackState == AttackState.Special)
+            {
+                leftWeapon.GetComponent<BoxCollider2D>().enabled = false;
+            }
         }
     }
 

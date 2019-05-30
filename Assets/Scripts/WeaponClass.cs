@@ -35,8 +35,8 @@ public class WeaponClass : MonoBehaviour
         if (attacked)
         {
             //Set damage
-            damage = damage * 2;
             gameObject.GetComponent<BoxCollider2D>().enabled = true;
+            damage = damage * 2;
             //Reset vertical attack recovery time
             verticalRecovery = verticalRecoveryTime;
             //Confirm that character attacked
@@ -48,7 +48,6 @@ public class WeaponClass : MonoBehaviour
             //Reset variables
             if (transform.parent.parent.tag == "Player")
             {
-                print("!");
                 gameObject.GetComponentInParent<Player>().state = Character.State.Idle;
                 gameObject.GetComponentInParent<Player>().attacked = true;
             }
@@ -57,7 +56,6 @@ public class WeaponClass : MonoBehaviour
                 gameObject.GetComponentInParent<EnemyAI>().state = Character.State.Idle;
                 gameObject.GetComponentInParent<EnemyAI>().attacked = true;
             }
-
             gameObject.GetComponent<BoxCollider2D>().enabled = false;
             verticalRecovery = 0.0f;
             damage = damage / 2;
@@ -72,8 +70,6 @@ public class WeaponClass : MonoBehaviour
         horizontalRecovery -= Time.fixedDeltaTime;
         if (attacked)
         {
-            //Set damage
-            gameObject.GetComponent<BoxCollider2D>().enabled = true;
             //Reset vertical attack recovery time
             horizontalRecovery = horizontalRecoveryTime;
             //Confirm that character attacked
@@ -91,7 +87,6 @@ public class WeaponClass : MonoBehaviour
             {
                 gameObject.GetComponentInParent<EnemyAI>().attacked = true;
             }
-            gameObject.GetComponent<BoxCollider2D>().enabled = false;
             horizontalRecovery = 0.0f;
             attacked = true;
             hit = true;
@@ -105,7 +100,8 @@ public class WeaponClass : MonoBehaviour
         if (attacked)
         {
             //Set damage
-            gameObject.GetComponent<BoxCollider2D>().enabled = true;
+            if (gameObject.name != "Shield")
+                gameObject.GetComponent<BoxCollider2D>().enabled = true;
             //Reset special attack recovery time
             specialRecovery = specialRecoveryTime;
             //Confirm that character attacked
@@ -131,7 +127,8 @@ public class WeaponClass : MonoBehaviour
                 }
                 gameObject.GetComponentInParent<EnemyAI>().attacked = true;
             }
-            gameObject.GetComponent<BoxCollider2D>().enabled = false;
+            if (gameObject.name != "Shield")
+                gameObject.GetComponent<BoxCollider2D>().enabled = false;
             specialRecovery = 0.0f;
             attacked = true;
             hit = true;

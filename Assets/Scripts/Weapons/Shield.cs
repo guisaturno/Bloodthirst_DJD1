@@ -21,8 +21,6 @@ public class Shield : WeaponClass
         //Verifies if characterHit isnt null and if action is in recovery
         if (characterHit != null && specialRecovery <= 0.1f)
         {
-            //Enable collider
-            characterHit.GetComponent<CapsuleCollider2D>().enabled = true;
             //Finish movement
             characterHit.transform.position = characterTarget;
             //Set variable back to null
@@ -32,6 +30,7 @@ public class Shield : WeaponClass
         }
         //Call base method at WeaponClass
         base.SpecialAttack();
+
         //Verifies if shield hit something and if characterHit isnt null
         if (shieldHit && specialRecovery > 0 && characterHit != null)
         {
@@ -46,8 +45,6 @@ public class Shield : WeaponClass
                 //Set caracter target moving point
                 characterTarget = new Vector2(characterHit.transform.position.x - shieldPushDistance, characterHit.transform.position.y);
             }
-            //Disable collided character collider
-            characterHit.GetComponent<CapsuleCollider2D>().enabled = false;
             //Confirm that hit ended
             shieldHit = false;
         }
@@ -57,6 +54,7 @@ public class Shield : WeaponClass
             //Move collided character to target moving point
             characterHit.transform.position = Vector2.MoveTowards(transform.position, characterTarget, shieldPushSpeed * Time.fixedDeltaTime);
         }
+        print(characterHit);
     }
 
     protected override void OnTriggerEnter2D(Collider2D obj)
