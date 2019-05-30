@@ -4,28 +4,31 @@ using UnityEngine;
 
 public class WeaponClass : MonoBehaviour
 {
-    [Header("SpecialAttack")]
-    [SerializeField] protected float specialRecoveryTime = 1.0f;
+    [Header("Weapon")]
+    [SerializeField] internal float baseDamage;
 
-    protected float specialRecovery;
+    internal float damage;
+
+    [Header("SpecialAttack")]
+    [SerializeField] internal float specialRecoveryTime = 1.0f;
+
+    internal float specialRecovery;
 
     [Header("HorizontalAttack")]
-    [SerializeField] private float horizontalRecoveryTime = 1.0f;
+    [SerializeField] internal float horizontalRecoveryTime = 1.0f;
 
-    private float horizontalRecovery;
+    internal float horizontalRecovery;
 
     [Header("VerticalAttack")]
-    [SerializeField] private float verticalRecoveryTime = 1.0f;
+    [SerializeField] internal float verticalRecoveryTime = 1.0f;
 
-    private float verticalRecovery;
-    private bool attacked = true;
-    private bool hit;
-
-    [Header("To be review")]
-    [SerializeField] protected float damage;
+    internal float verticalRecovery;
+    internal bool attacked = true;
+    internal bool hit;
 
     protected virtual void Start()
     {
+        damage = baseDamage;
     }
 
     internal virtual void VerticalAttack()
@@ -123,7 +126,7 @@ public class WeaponClass : MonoBehaviour
             {
                 if (gameObject.name != "Shield")
                 {
-                    gameObject.GetComponentInParent<Player>().state = Character.State.Idle;
+                    gameObject.GetComponentInParent<EnemyAI>().state = Character.State.Idle;
                 }
                 gameObject.GetComponentInParent<EnemyAI>().attacked = true;
             }
@@ -139,9 +142,12 @@ public class WeaponClass : MonoBehaviour
     {
         if (hit && obj.CompareTag("Player") || hit && obj.CompareTag("Enemy"))
         {
-            obj.gameObject.GetComponent<Character>().TakeDamage(damage);
+            Character.FacingDirection facingDirection
+            = transform.rotation == Quaternion.Euler(0.0f, 180.0f, 0.0f)
+            ? Character.FacingDirection.left : Character.FacingDirection.right;
+
+            obj.gameObject.GetComponent<Character>().TakeDamage(damage, facingDirection,transform.position.x);
             hit = false;
-            print(obj.name);
         }
     }
 

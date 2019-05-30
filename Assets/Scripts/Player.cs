@@ -51,76 +51,45 @@ public class Player : Character
             {
                 state = State.Climb;
             }
+            //Defense
+            if (Input.GetKey(KeyCode.C))
+            {
+                state = State.Defend;
+            }
         }
-
+        //Run
         if (Input.GetKey(KeyCode.RightArrow) && state == State.Idle)
         {
             //Set character facing direction
-            facingRight = true;
             transform.rotation = Quaternion.identity;
             state = State.Run;
         }
         else if (Input.GetKey(KeyCode.LeftArrow) && state == State.Idle)
         {
             //Set character facing direction
-            facingRight = false;
             transform.rotation = Quaternion.Euler(0.0f, 180.0f, 0.0f);
             state = State.Run;
         }
-
+        //Set state back to idle when stop running
         if (Input.GetKeyUp(KeyCode.LeftArrow) && state == State.Run
         || Input.GetKeyUp(KeyCode.RightArrow) && state == State.Run)
         {
             state = State.Idle;
         }
-
-        //----------------------------------------------------------------------------------------------//
-
-
-        //Defense
-        if (Input.GetKey(KeyCode.C))
+        if (Input.GetKeyUp(KeyCode.C))
         {
-            GetComponent<CapsuleCollider2D>().enabled = false;
+            state = State.Idle;
         }
-        else
-        {
-            GetComponent<CapsuleCollider2D>().enabled = true;
-        }
+
         //On death
         if (CurrentHP <= 0)
         {
             Scene scene = SceneManager.GetActiveScene(); SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
         }
-
+        //Restart scene
         if (Input.GetKeyDown(KeyCode.R))
         {
             Scene scene = SceneManager.GetActiveScene(); SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
-
-        //// Attack
-        //if (timeAttacking <= 0)
-        //{
-        //    if (Input.GetKeyDown(KeyCode.Space))
-        //    {
-        //        LeftWeaponAttack();
-        //        timeAttacking = startTimeAttack;
-        //    }
-
-        //    if (Input.GetKeyDown(KeyCode.H))
-        //    {
-        //        weapon.HorizontalAttack = true;
-        //        RightWeaponAttack();
-        //    }
-
-        //    if (Input.GetKeyDown(KeyCode.V))
-        //    {
-        //        weapon.HorizontalAttack = false;
-        //        RightWeaponAttack();
-        //    }
-        //}
-        //else
-        //{
-        //    timeAttacking -= Time.deltaTime;
-        //}
     }
 }

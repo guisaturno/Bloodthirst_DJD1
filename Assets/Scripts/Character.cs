@@ -14,7 +14,7 @@ public class Character : MonoBehaviour
     [SerializeField] protected GameObject rightWeapon;
 
     internal bool attacked = true;
-    internal enum State { Idle, Roll, Climb, Attack, Run, Defend }
+    internal enum State { Idle, Roll, Climb, Attack, Run, Defend, Stun }
     protected enum AttackState { Horizontal, Vertical, Special }
     internal State state;
     protected AttackState attackState;
@@ -54,6 +54,16 @@ public class Character : MonoBehaviour
     private Vector2 climbTarget;
     private float climbRecovery;
     private bool climbed = true;
+    private bool atGround = true;
+
+    [Header("Stun")]
+    [SerializeField] private float stunRecoveryTime = 10.0f;
+    private float stunRecovery;
+
+    //Defend
+    private bool isDefending;
+    internal enum FacingDirection { right, left }
+    internal FacingDirection facingDirection;
 
 
     public float MaxHP { get; set; } = 100;
@@ -62,19 +72,6 @@ public class Character : MonoBehaviour
     protected Animator animator;
     protected Rigidbody2D rb;
     protected Vector2 currentVelocity;
-
-
-
-    // Properties
-    bool IsInvunerable
-    {
-        get
-        {
-            if (state == State.Roll) return true;
-
-            return false;
-        }
-    }
 
     // Methods
     protected virtual void Start()
@@ -87,6 +84,9 @@ public class Character : MonoBehaviour
 
     protected virtual void Update()
     {
+        //Set facing direction
+        facingDirection = transform.rotation == Quaternion.Euler(0.0f, 180.0f, 0.0f)
+            ? FacingDirection.left : FacingDirection.right;
         //Set animator booleans to false according to state
         switch (state)
         {
@@ -198,6 +198,7 @@ public class Character : MonoBehaviour
         switch (state)
         {
             case State.Idle:
+                ResetCharacter();
                 break;
             case State.Roll:
                 RollCharacter();
@@ -219,124 +220,79 @@ public class Character : MonoBehaviour
                 }
                 break;
             case State.Defend:
+                characterAnim.SetBool("Defense", true);
+                leftWeaponAnim.SetBool("Defense", true);
+                rightWeaponAnim.SetBool("Defense", true);
+                isDefending = true;
                 break;
             default:
                 break;
         }
     }
-
-    private void MoveRight()
+    protected void ResetCharacter()
     {
-        //Animation
-        characterAnim.SetBool("Run", true);
-        leftWeaponAnim.SetBool("Run", true);
-        rightWeaponAnim.SetBool("Run", true);
-        //Set character movement direction
-        rightMoveTarget = new Vector2(rightMovePoint.position.x, transform.position.y);
-        //Move character towards right
-        transform.position = Vector2.MoveTowards(transform.position, rightMoveTarget, moveSpeed * Time.fixedDeltaTime);
-    }
-
-    private void MoveLeft()
-    {
-        //Animation
-        characterAnim.SetBool("Run", true);
-        leftWeaponAnim.SetBool("Run", true);
-        rightWeaponAnim.SetBool("Run", true);
-        //Set character movement direction
-        leftMoveTarget = new Vector2(leftMovePoint.position.x, transform.position.y);
-        //Move character towards left
-        transform.position = Vector2.MoveTowards(transform.position, leftMoveTarget, moveSpeed * Time.fixedDeltaTime);
-    }
-
-    protected void RotateCharacter()
-    {
-        transform.rotation = (transform.right.x > 0.0f) ?
-            Quaternion.Euler(0.0f, 180.0f, 0.0f) : Quaternion.identity;
-    }
-
-    private void RollCharacter()
-    {
-        //Discount recovery time
-        rollRecovery -= Time.fixedDeltaTime;
-
-        if (rolled)
+        //Weapon
+        rightWeapon.GetComponent<BoxCollider2D>().enabled = false;
+        leftWeapon.GetComponent<BoxCollider2D>().enabled = false;
+        if (rightWeapon.name == "Trident")
         {
-            //Animation
-            characterAnim.SetTrigger("Roll");
-            leftWeaponAnim.SetTrigger("Roll");
-            rightWeaponAnim.SetTrigger("Roll");
-            //Set roll direction
-            if (transform.right.x > 0.0f)
-            {
-                //Roll right
-                rollTarget = new Vector2(transform.position.x + rollDistance, transform.position.y);
-            }
-            else
-            {
-                //Roll left
-                rollTarget = new Vector2(transform.position.x - rollDistance, transform.position.y);
-            }
-            //Reset roll recovery time
-            rollRecovery = rollRecoveryTime + 5.0f;
-            //Confirm that character rolled
-            rolled = false;
+            rightWeapon.GetComponent<Trident>().horizontalRecovery = 0.0f;
+            rightWeapon.GetComponent<Trident>().verticalRecovery = 0.0f;
+            rightWeapon.GetComponent<Trident>().damage = rightWeapon.GetComponent<Trident>().baseDamage;
+            rightWeapon.GetComponent<Trident>().hit = true;
+            rightWeapon.GetComponent<Trident>().attacked = true;
         }
-        else if (transform.position.x != rollTarget.x)
+        else if (rightWeapon.name == "LongSword")
         {
-            //Move character
-            this.transform.position = Vector2.MoveTowards(transform.position, rollTarget, rollSpeed * Time.fixedDeltaTime);
+            rightWeapon.GetComponent<LongSword>().horizontalRecovery = 0.0f;
+            rightWeapon.GetComponent<LongSword>().verticalRecovery = 0.0f;
+            rightWeapon.GetComponent<LongSword>().damage = rightWeapon.GetComponent<LongSword>().baseDamage;
+            rightWeapon.GetComponent<LongSword>().hit = true;
+            rightWeapon.GetComponent<LongSword>().attacked = true;
         }
 
-        if (rollRecovery <= 5.0f)
+        if (leftWeapon.name == "Net")
         {
-            //Reset variables
-            state = State.Idle;
-            rollRecovery = 0.0f;
-            rolled = true;
+            leftWeapon.GetComponent<Net>().specialRecovery = 0;
+            leftWeapon.GetComponent<Net>().attacked = true;
+            leftWeapon.GetComponent<Net>().hit = true;
+            leftWeapon.GetComponent<Net>().netHit = false;
+            leftWeapon.GetComponent<Net>().characterHit = null;
         }
-    }
-
-    private void ClimbCharacter()
-    {
-        //Discount recovery time
-        climbRecovery -= Time.fixedDeltaTime;
-
-        if (climbed)
+        else if (leftWeapon.name == "Shield")
         {
-            //Animation
-            characterAnim.SetBool("Climb", true);
-            leftWeaponAnim.SetBool("Climb", true);
-            rightWeaponAnim.SetBool("Climb", true);
-            //Set climb direction
-            if (transform.position.y == -58)
-            {
-                //Climb up
-                climbTarget = new Vector2(transform.position.x, transform.position.y + climbDistance);
-            }
-            else
-            {
-                //Climb down
-                climbTarget = new Vector2(transform.position.x, transform.position.y - climbDistance);
-            }
-            //Reset climb recovery time
-            climbRecovery = climbRecoveryTime + 5.0f;
-            //Confirm that character climbed
-            climbed = false;
+            leftWeapon.GetComponent<Shield>().specialRecovery = 0;
+            leftWeapon.GetComponent<Shield>().attacked = true;
+            leftWeapon.GetComponent<Shield>().hit = true;
+            leftWeapon.GetComponent<Shield>().shieldHit = false;
+            leftWeapon.GetComponent<Shield>().characterHit = null;
         }
-        else if (transform.position.y != climbTarget.y)
+        //Attack
+        attacked = true;
+
+        //Dash
+        state = State.Idle;
+        dashRecovery = 0.0f;
+        dashed = true;
+
+        //Roll
+        rollRecovery = 0.0f;
+        rolled = true;
+
+        //Climb
+        climbRecovery = 0.0f;
+        climbed = true;
+        if (atGround)
         {
-            //Move character
-            transform.position = Vector2.MoveTowards(transform.position, climbTarget, climbSpeed * Time.fixedDeltaTime);
+            //transform.position = new Vector2(transform.position.x, -58);
+        }
+        else
+        {
+            transform.position = new Vector2(transform.position.x, -17);
         }
 
-        if (climbRecovery <= 5.0f)
-        {
-            //Reset variables
-            state = State.Idle;
-            climbRecovery = 0.0f;
-            climbed = true;
-        }
+        //Defending
+        isDefending = false;
     }
 
     protected void Attack()
@@ -404,7 +360,6 @@ public class Character : MonoBehaviour
                 default:
                     break;
             }
-            //attacked = false;
         }
     }
 
@@ -439,7 +394,7 @@ public class Character : MonoBehaviour
             {
                 leftWeapon.GetComponent<BoxCollider2D>().enabled = true;
             }
-            
+
         }
         else if (transform.position.x != dashTarget.x)
         {
@@ -465,12 +420,159 @@ public class Character : MonoBehaviour
         }
     }
 
-    internal void TakeDamage(float damage)
+    private void RollCharacter()
     {
-        CurrentHP -= damage;
-        characterAnim.SetTrigger("Hit");
-        leftWeaponAnim.SetTrigger("Hit");
-        rightWeaponAnim.SetTrigger("Hit");
-        print(CurrentHP);
+        //Discount recovery time
+        rollRecovery -= Time.fixedDeltaTime;
+
+        if (rolled)
+        {
+            //Disable collider
+            gameObject.GetComponent<CapsuleCollider2D>().enabled = false;
+            //Animation
+            characterAnim.SetTrigger("Roll");
+            leftWeaponAnim.SetTrigger("Roll");
+            rightWeaponAnim.SetTrigger("Roll");
+            //Set roll direction
+            if (transform.right.x > 0.0f)
+            {
+                //Roll right
+                rollTarget = new Vector2(transform.position.x + rollDistance, transform.position.y);
+            }
+            else
+            {
+                //Roll left
+                rollTarget = new Vector2(transform.position.x - rollDistance, transform.position.y);
+            }
+            //Reset roll recovery time
+            rollRecovery = rollRecoveryTime + 5.0f;
+            //Confirm that character rolled
+            rolled = false;
+        }
+        else if (transform.position.x != rollTarget.x)
+        {
+            //Move character
+            this.transform.position = Vector2.MoveTowards(transform.position, rollTarget, rollSpeed * Time.fixedDeltaTime);
+        }
+
+        if (rollRecovery <= 5.0f)
+        {
+            //Enable collider
+            gameObject.GetComponent<CapsuleCollider2D>().enabled = true;
+            //Reset variables
+            state = State.Idle;
+            rollRecovery = 0.0f;
+            rolled = true;
+        }
+    }
+
+    private void ClimbCharacter()
+    {
+        //Discount recovery time
+        climbRecovery -= Time.fixedDeltaTime;
+
+        if (climbed)
+        {
+            atGround = !atGround;
+            //Animation
+            characterAnim.SetBool("Climb", true);
+            leftWeaponAnim.SetBool("Climb", true);
+            rightWeaponAnim.SetBool("Climb", true);
+            //Set climb direction
+            if (transform.position.y == -58)
+            {
+                //Climb up
+                climbTarget = new Vector2(transform.position.x, transform.position.y + climbDistance);
+            }
+            else
+            {
+                //Climb down
+                climbTarget = new Vector2(transform.position.x, transform.position.y - climbDistance);
+            }
+            //Reset climb recovery time
+            climbRecovery = climbRecoveryTime + 5.0f;
+            //Confirm that character climbed
+            climbed = false;
+        }
+        else if (transform.position.y != climbTarget.y)
+        {
+            //Move character
+            transform.position = Vector2.MoveTowards(transform.position, climbTarget, climbSpeed * Time.fixedDeltaTime);
+        }
+
+        if (climbRecovery <= 5.0f)
+        {
+            //Reset variables
+            state = State.Idle;
+            climbRecovery = 0.0f;
+            climbed = true;
+        }
+    }
+
+    private void MoveRight()
+    {
+        //Animation
+        characterAnim.SetBool("Run", true);
+        leftWeaponAnim.SetBool("Run", true);
+        rightWeaponAnim.SetBool("Run", true);
+        //Set character movement direction
+        rightMoveTarget = new Vector2(rightMovePoint.position.x, transform.position.y);
+        //Move character towards right
+        transform.position = Vector2.MoveTowards(transform.position, rightMoveTarget, moveSpeed * Time.fixedDeltaTime);
+    }
+
+    private void MoveLeft()
+    {
+        //Animation
+        characterAnim.SetBool("Run", true);
+        leftWeaponAnim.SetBool("Run", true);
+        rightWeaponAnim.SetBool("Run", true);
+        //Set character movement direction
+        leftMoveTarget = new Vector2(leftMovePoint.position.x, transform.position.y);
+        //Move character towards left
+        transform.position = Vector2.MoveTowards(transform.position, leftMoveTarget, moveSpeed * Time.fixedDeltaTime);
+    }
+
+    protected void RotateCharacter()
+    {
+        transform.rotation = (transform.right.x > 0.0f) ?
+            Quaternion.Euler(0.0f, 180.0f, 0.0f) : Quaternion.identity;
+    }
+
+    protected void Stun()
+    {
+        //Discount recovery time
+        dashRecovery -= Time.fixedDeltaTime;
+
+        if (dashed)
+        {
+            
+        }
+    }
+
+    internal void TakeDamage(float damage, FacingDirection hitDirection, float pos)
+    {
+        if (isDefending && facingDirection == hitDirection)
+        {
+            characterAnim.SetTrigger("Block");
+            leftWeaponAnim.SetTrigger("Block");
+            rightWeaponAnim.SetTrigger("Block");
+            //if(facingDirection == FacingDirection.right && transform.position.x < pos 
+            //|| (facingDirection == FacingDirection.left && transform.position.x > pos))
+            //{
+            //    characterAnim.SetTrigger("Block");
+            //    leftWeaponAnim.SetTrigger("Block");
+            //    rightWeaponAnim.SetTrigger("Block");
+            //}
+        }
+        else
+        {
+            ResetCharacter();
+            CurrentHP -= damage;
+            characterAnim.SetTrigger("Hit");
+            leftWeaponAnim.SetTrigger("Hit");
+            rightWeaponAnim.SetTrigger("Hit");
+            print(CurrentHP);
+        }
     }
 }

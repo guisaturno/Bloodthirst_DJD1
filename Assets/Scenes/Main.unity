@@ -185,6 +185,31 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 22100000, guid: 14ba6fb5e0996b248a74c36bb1479f99,
         type: 2}
+    - target: {fileID: 2260814622791643900, guid: 320e43e1c35962d4eaacc65fe41a5774,
+        type: 3}
+      propertyPath: specialRecoveryTime
+      value: 2.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2260814622791643900, guid: 320e43e1c35962d4eaacc65fe41a5774,
+        type: 3}
+      propertyPath: horizontalRecoveryTime
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2260814622791643900, guid: 320e43e1c35962d4eaacc65fe41a5774,
+        type: 3}
+      propertyPath: verticalRecoveryTime
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2260814622791643900, guid: 320e43e1c35962d4eaacc65fe41a5774,
+        type: 3}
+      propertyPath: netPullDistance
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 2260814622791643900, guid: 320e43e1c35962d4eaacc65fe41a5774,
+        type: 3}
+      propertyPath: netPullSpeed
+      value: 100
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 320e43e1c35962d4eaacc65fe41a5774, type: 3}
 --- !u!1 &43261337 stripped
@@ -456,6 +481,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3117738396137195707, guid: 326be0c3ad266ce40903462980448879,
+        type: 3}
+      propertyPath: verticalRecoveryTime
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3117738396137195707, guid: 326be0c3ad266ce40903462980448879,
+        type: 3}
+      propertyPath: specialRecoveryTime
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 326be0c3ad266ce40903462980448879, type: 3}
 --- !u!1 &1086396624 stripped
@@ -546,6 +581,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3117738396137195707, guid: 326be0c3ad266ce40903462980448879,
+        type: 3}
+      propertyPath: specialRecoveryTime
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3117738396137195707, guid: 326be0c3ad266ce40903462980448879,
+        type: 3}
+      propertyPath: verticalRecoveryTime
+      value: 1.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 326be0c3ad266ce40903462980448879, type: 3}
@@ -865,7 +910,12 @@ PrefabInstance:
     - target: {fileID: 3212006799316985761, guid: 22ea230ea5a470244a28ca3ce9580064,
         type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3212006799316985761, guid: 22ea230ea5a470244a28ca3ce9580064,
+        type: 3}
+      propertyPath: m_Offset.x
+      value: 5.66
       objectReference: {fileID: 0}
     - target: {fileID: 2461430280556178599, guid: 22ea230ea5a470244a28ca3ce9580064,
         type: 3}
@@ -876,6 +926,11 @@ PrefabInstance:
         type: 3}
       propertyPath: horizontalRecoveryTime
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2461430280556178599, guid: 22ea230ea5a470244a28ca3ce9580064,
+        type: 3}
+      propertyPath: specialRecoveryTime
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 22ea230ea5a470244a28ca3ce9580064, type: 3}
@@ -8168,17 +8223,17 @@ PrefabInstance:
     - target: {fileID: 6135967095498936493, guid: e0f4d37dae3f82744873adfe7da8748a,
         type: 3}
       propertyPath: rollRecoveryTime
-      value: 0.8
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 6135967095498936493, guid: e0f4d37dae3f82744873adfe7da8748a,
         type: 3}
       propertyPath: rollDistance
-      value: 30
+      value: 41
       objectReference: {fileID: 0}
     - target: {fileID: 6135967095498936493, guid: e0f4d37dae3f82744873adfe7da8748a,
         type: 3}
       propertyPath: playerDistance
-      value: 30
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 6135967095498936493, guid: e0f4d37dae3f82744873adfe7da8748a,
         type: 3}
@@ -8234,6 +8289,21 @@ PrefabInstance:
         type: 3}
       propertyPath: climbSpeed
       value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 6135967095498936493, guid: e0f4d37dae3f82744873adfe7da8748a,
+        type: 3}
+      propertyPath: dashRecoveryTime
+      value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6135967095498936493, guid: e0f4d37dae3f82744873adfe7da8748a,
+        type: 3}
+      propertyPath: dashDistance
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 6135967095498936493, guid: e0f4d37dae3f82744873adfe7da8748a,
+        type: 3}
+      propertyPath: dashSpeed
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 4000163807847027322, guid: e0f4d37dae3f82744873adfe7da8748a,
         type: 3}

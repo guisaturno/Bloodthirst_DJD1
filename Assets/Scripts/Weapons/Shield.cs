@@ -9,8 +9,8 @@ public class Shield : WeaponClass
     [SerializeField] private float shieldPushDistance = 20f;
 
     Vector2 characterTarget;
-    private GameObject characterHit;
-    private bool shieldHit;
+    internal GameObject characterHit;
+    internal bool shieldHit;
 
     protected override void Start()
     {
@@ -54,7 +54,6 @@ public class Shield : WeaponClass
             //Move collided character to target moving point
             characterHit.transform.position = Vector2.MoveTowards(transform.position, characterTarget, shieldPushSpeed * Time.fixedDeltaTime);
         }
-        print(characterHit);
     }
 
     protected override void OnTriggerEnter2D(Collider2D obj)

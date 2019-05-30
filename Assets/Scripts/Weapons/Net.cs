@@ -9,8 +9,8 @@ public class Net : WeaponClass
     [SerializeField] private float netPullDistance = 10f;
 
     Vector2 characterTarget;
-    private GameObject characterHit;
-    private bool netHit;
+    internal GameObject characterHit;
+    internal bool netHit;
 
     protected override void Start()
     {
