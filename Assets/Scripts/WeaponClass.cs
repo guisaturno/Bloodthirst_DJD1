@@ -142,11 +142,7 @@ public class WeaponClass : MonoBehaviour
     {
         if (hit && obj.CompareTag("Player") || hit && obj.CompareTag("Enemy"))
         {
-            Character.FacingDirection facingDirection
-            = transform.rotation == Quaternion.Euler(0.0f, 180.0f, 0.0f)
-            ? Character.FacingDirection.left : Character.FacingDirection.right;
-
-            obj.gameObject.GetComponent<Character>().TakeDamage(damage, facingDirection,transform.position.x);
+            obj.gameObject.GetComponent<Character>().TakeDamage(damage);
             hit = false;
         }
     }

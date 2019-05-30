@@ -8,16 +8,14 @@ public class EnemyAI : Character
     //AI
     private Animator playerAnim;
     private AnimatorStateInfo playerState;
-    //Attack
-    int randomAttack;
 
     //Player position
-    [SerializeField] private float playerDistance = 5f;
+    [SerializeField] private float playerDistance = 25f;
     private Transform playerTransform;
 
     //Stats
-    private int agro, def, agil;
-    private int currentAgro, currentDef, currentAgil;
+    private int agro, def;
+    private int currentAgro, currentDef;
 
     protected override void Start()
     {
@@ -28,25 +26,29 @@ public class EnemyAI : Character
 
         agro = Random.Range(4, 10);
         def = Random.Range(1, 6);
-        agil = Random.Range(1, 6); ;
 
         StartCoroutine(SetState());
-        CurrentHP = 250;
-
     }
+
     protected override void Update()
     {
         base.Update();
+
         UpdateState();
+
+        if (transform.position.x < playerTransform.position.x)
+        {
+            transform.rotation = Quaternion.identity;
+        }
+        else
+        {
+            transform.rotation = Quaternion.Euler(0.0f, 180.0f, 0.0f);
+        }
+
         if (Vector2.Distance(transform.position, playerTransform.position) < playerDistance && state == State.Run)
         {
             state = State.Idle;
         }
-        //On death
-        if (CurrentHP <= 0)
-        {
-            Destroy(gameObject);
-        }       
     }
 
     //AI Methods
@@ -55,25 +57,21 @@ public class EnemyAI : Character
         playerState = playerAnim.GetCurrentAnimatorStateInfo(0);
         if (playerState.IsName("Attack"))
         {
-            currentAgil = Random.Range(1, 10) + agil;
-            currentAgro = Random.Range(1, 5) + agro;
-            currentDef = Random.Range(1, 10) + def;
+            currentAgro = Random.Range(1, 10) + agro;
+            currentDef = Random.Range(5, 10) + def;
         }
         else if (playerState.IsName("Defend"))
         {
-            currentAgil = Random.Range(1, 10) + agil;
-            currentAgro = Random.Range(1, 10) + agro;
-            currentDef = Random.Range(1, 5) + def;
+            currentAgro = Random.Range(5, 10) + agro;
+            currentDef = Random.Range(1, 10) + def;
         }
         else if (playerState.IsName("Roll"))
         {
-            currentAgil = Random.Range(1, 5) + agil;
-            currentAgro = Random.Range(1, 10) + agro;
-            currentDef = Random.Range(1, 10) + def;
+            currentAgro = Random.Range(5, 10) + agro;
+            currentDef = Random.Range(1, 5) + def;
         }
         else
         {
-            currentAgil = Random.Range(1, 10) + agil;
             currentAgro = Random.Range(1, 10) + agro;
             currentDef = Random.Range(1, 10) + def;
         }
@@ -86,51 +84,44 @@ public class EnemyAI : Character
             if (Vector2.Distance(transform.position, playerTransform.position) > playerDistance
                 && transform.position.y == playerTransform.position.y)
             {
-                if (transform.position.x < playerTransform.position.x)
-                {
-                    transform.rotation = Quaternion.identity;
-                }
-                else
-                {
-                    transform.rotation = Quaternion.Euler(0.0f, 180.0f, 0.0f);
-                }
                 state = State.Run;
             }
             else if ((transform.position.y != playerTransform.position.y))
             {
                 state = State.Climb;
             }
-            else if (currentAgil > currentAgro && currentAgil > currentDef)
+            else if (Vector2.Distance(transform.position, playerTransform.position) <= 15)
             {
                 state = State.Roll;
             }
-            else if (currentAgro > currentAgil && currentAgro > currentDef)
+            else if (currentAgro > currentDef)
             {
-                randomAttack = Random.Range(1, 4);
                 SelectAttack();
                 state = State.Attack;
             }
-            else if (currentDef > currentAgil && currentDef > currentAgro)
+            else if (currentDef > currentAgro)
             {
                 state = State.Defend; ;
             }
 
-            yield return new WaitForSeconds(1.0f);
+            yield return new WaitForSeconds(1.5f);
         }
     }
+
     private void SelectAttack()
     {
-        if (randomAttack == 1)
+
+        if (Vector2.Distance(transform.position, playerTransform.position) <= 20)
         {
             attackState = AttackState.Special;
         }
-        else if (randomAttack == 2)
-        {
-            attackState = AttackState.Horizontal;
-        }
-        else if (randomAttack == 3)
+        else if (Vector2.Distance(transform.position, playerTransform.position) <= 30)
         {
             attackState = AttackState.Vertical;
+        }
+        else
+        {
+            attackState = AttackState.Horizontal;
         }
     }
 }

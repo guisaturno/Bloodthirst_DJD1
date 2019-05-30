@@ -5,7 +5,7 @@ using UnityEngine;
 public class Character : MonoBehaviour
 {
     //ENUMS
-    internal enum State { Idle, Roll, Climb, Attack, Run, Defend, Stun }
+    internal enum State { Idle, Roll, Climb, Attack, Run, Defend, Stun, Dead }
     protected enum AttackState { Horizontal, Vertical, Special }
 
     internal State state;
@@ -65,34 +65,69 @@ public class Character : MonoBehaviour
     private bool stuned = true;
     private float stunRecovery;
     
-
     //Defend
     private bool isDefending;
-    internal enum FacingDirection { right, left }
-    internal FacingDirection facingDirection;
 
+    //Death
+    private bool dead;
 
     public float MaxHP { get; set; } = 100;
     public float CurrentHP { get; set; }
 
-    protected Animator animator;
-    protected Rigidbody2D rb;
-    protected Vector2 currentVelocity;
-
     // Methods
     protected virtual void Start()
     {
-        //To be review
-        rb = GetComponent<Rigidbody2D>();
-        animator = GetComponent<Animator>();
         CurrentHP = MaxHP;
     }
 
     protected virtual void Update()
     {
-        //Set facing direction
-        facingDirection = transform.rotation == Quaternion.Euler(0.0f, 180.0f, 0.0f)
-            ? FacingDirection.left : FacingDirection.right;
+        AnimationManager();
+        if (CurrentHP <= 0)
+        {
+            Destroy(gameObject);            
+        }
+        switch (state)
+        {
+            case State.Idle:
+                ResetCharacter();
+                break;
+            case State.Stun:
+                ResetCharacter();
+                Stun();
+                break;
+            case State.Roll:
+                RollCharacter();
+                break;
+            case State.Climb:
+                ClimbCharacter();
+                break;
+            case State.Attack:
+                Attack();
+                break;
+            case State.Run:
+                if (transform.rotation.y == 0.0f)
+                {
+                    MoveRight();
+                }
+                else
+                {
+                    MoveLeft();
+                }
+                break;
+            case State.Defend:
+                characterAnim.SetBool("Defense", true);
+                leftWeaponAnim.SetBool("Defense", true);
+                rightWeaponAnim.SetBool("Defense", true);
+                isDefending = true;
+                break;
+            default:
+                break;
+        }
+    }
+
+    private void AnimationManager()
+    {
         //Set animator booleans to false according to state
         switch (state)
         {
@@ -201,44 +236,8 @@ public class Character : MonoBehaviour
                 rightWeaponAnim.SetBool("ShieldAttack", false);
                 break;
         }
-        switch (state)
-        {
-            case State.Idle:
-                ResetCharacter();
-                break;
-            case State.Stun:
-                ResetCharacter();
-                Stun();
-                break;
-            case State.Roll:
-                RollCharacter();
-                break;
-            case State.Climb:
-                ClimbCharacter();
-                break;
-            case State.Attack:
-                Attack();
-                break;
-            case State.Run:
-                if (transform.rotation.y == 0.0f)
-                {
-                    MoveRight();
-                }
-                else
-                {
-                    MoveLeft();
-                }
-                break;
-            case State.Defend:
-                characterAnim.SetBool("Defense", true);
-                leftWeaponAnim.SetBool("Defense", true);
-                rightWeaponAnim.SetBool("Defense", true);
-                isDefending = true;
-                break;
-            default:
-                break;
-        }
     }
+
     protected void ResetCharacter()
     {
         //Weapon
@@ -339,7 +338,6 @@ public class Character : MonoBehaviour
                             rightWeapon.GetComponent<Trident>().VerticalAttack();
                             break;
                         case "LongSword":
-                            print("LongSword");
                             rightWeapon.GetComponent<LongSword>().VerticalAttack();
                             break;
                         default:
@@ -561,26 +559,18 @@ public class Character : MonoBehaviour
 
         if (stunRecovery <= 0.0f)
         {
-            print("Stun is over");
             state = State.Idle;
             stuned = true;
         }
     }
 
-    internal void TakeDamage(float damage, FacingDirection hitDirection, float pos)
+    internal void TakeDamage(float damage)
     {
-        if (isDefending && facingDirection == hitDirection)
+        if (isDefending)
         {
             characterAnim.SetTrigger("Block");
             leftWeaponAnim.SetTrigger("Block");
             rightWeaponAnim.SetTrigger("Block");
-            //if(facingDirection == FacingDirection.right && transform.position.x < pos 
-            //|| (facingDirection == FacingDirection.left && transform.position.x > pos))
-            //{
-            //    characterAnim.SetTrigger("Block");
-            //    leftWeaponAnim.SetTrigger("Block");
-            //    rightWeaponAnim.SetTrigger("Block");
-            //}
         }
         else
         {
@@ -589,7 +579,6 @@ public class Character : MonoBehaviour
             characterAnim.SetTrigger("Hit");
             leftWeaponAnim.SetTrigger("Hit");
             rightWeaponAnim.SetTrigger("Hit");
-            print(CurrentHP);
         }
     }
 }
