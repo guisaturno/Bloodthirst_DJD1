@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class Character : MonoBehaviour
 {
+    //ENUMS
+    internal enum State { Idle, Roll, Climb, Attack, Run, Defend, Stun }
+    protected enum AttackState { Horizontal, Vertical, Special }
+
+    internal State state;
+    protected AttackState attackState;
+
     [Header("Animator")]
     [SerializeField] protected Animator characterAnim;
     [SerializeField] protected Animator leftWeaponAnim;
@@ -14,11 +21,7 @@ public class Character : MonoBehaviour
     [SerializeField] protected GameObject rightWeapon;
 
     internal bool attacked = true;
-    internal enum State { Idle, Roll, Climb, Attack, Run, Defend, Stun }
-    protected enum AttackState { Horizontal, Vertical, Special }
-    internal State state;
-    protected AttackState attackState;
-
+    
     [Header("Dash")]
     [SerializeField] private float dashRecoveryTime = 1f;
     [SerializeField] private float dashDistance = 30.0f;
@@ -57,8 +60,11 @@ public class Character : MonoBehaviour
     private bool atGround = true;
 
     [Header("Stun")]
-    [SerializeField] private float stunRecoveryTime = 10.0f;
+    [SerializeField]private float stunRecoveryTime;
+
+    private bool stuned = true;
     private float stunRecovery;
+    
 
     //Defend
     private bool isDefending;
@@ -200,6 +206,10 @@ public class Character : MonoBehaviour
             case State.Idle:
                 ResetCharacter();
                 break;
+            case State.Stun:
+                ResetCharacter();
+                Stun();
+                break;
             case State.Roll:
                 RollCharacter();
                 break;
@@ -271,7 +281,6 @@ public class Character : MonoBehaviour
         attacked = true;
 
         //Dash
-        state = State.Idle;
         dashRecovery = 0.0f;
         dashed = true;
 
@@ -284,7 +293,7 @@ public class Character : MonoBehaviour
         climbed = true;
         if (atGround)
         {
-            //transform.position = new Vector2(transform.position.x, -58);
+            transform.position = new Vector2(transform.position.x, -58);
         }
         else
         {
@@ -542,11 +551,19 @@ public class Character : MonoBehaviour
     protected void Stun()
     {
         //Discount recovery time
-        dashRecovery -= Time.fixedDeltaTime;
+        stunRecovery -= Time.fixedDeltaTime;
 
-        if (dashed)
+        if (stuned)
         {
-            
+            stunRecovery = stunRecoveryTime;
+            stuned = false;
+        }
+
+        if (stunRecovery <= 0.0f)
+        {
+            print("Stun is over");
+            state = State.Idle;
+            stuned = true;
         }
     }
 
@@ -567,7 +584,7 @@ public class Character : MonoBehaviour
         }
         else
         {
-            ResetCharacter();
+            state = State.Stun;
             CurrentHP -= damage;
             characterAnim.SetTrigger("Hit");
             leftWeaponAnim.SetTrigger("Hit");
