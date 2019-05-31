@@ -52,6 +52,12 @@ public class Shield : WeaponClass
         else if (characterHit != null)
         {
             //Move collided character to target moving point
+            float deltaY = characterTarget.y - characterHit.transform.position.y;
+            if (deltaY != 0.0f)
+            {
+                Debug.LogWarning("DeltaY == " + deltaY);
+            }
+
             characterHit.transform.position = Vector2.MoveTowards(transform.position, characterTarget, shieldPushSpeed * Time.fixedDeltaTime);
         }
     }
