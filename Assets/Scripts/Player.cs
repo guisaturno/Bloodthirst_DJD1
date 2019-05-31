@@ -21,106 +21,78 @@ public class Player : Character
     protected override void Update()
     {
         base.Update();
-        if (state == State.Idle || state == State.Run)
+        if (state != State.Stun)
         {
-            //Vertical attack
-            if (Input.GetKeyDown(KeyCode.X))
+            if (state == State.Idle || state == State.Run)
             {
-                state = State.Attack;
-                attackState = AttackState.Vertical;
+                //Vertical attack
+                if (Input.GetKeyDown(KeyCode.X))
+                {
+                    state = State.Attack;
+                    attackState = AttackState.Vertical;
+                }
+                //Horizontal attack
+                if (Input.GetKeyDown(KeyCode.Z))
+                {
+                    state = State.Attack;
+                    attackState = AttackState.Horizontal;
+                }
+                //Special attack
+                if (Input.GetKeyDown(KeyCode.V))
+                {
+                    state = State.Attack;
+                    attackState = AttackState.Special;
+                }
+                // Roll - player
+                if (Input.GetKeyDown(KeyCode.LeftShift))
+                {
+                    state = State.Roll;
+                }
+                // Climb - player
+                if (Input.GetKeyDown(KeyCode.UpArrow) || (Input.GetKeyDown(KeyCode.DownArrow)))
+                {
+                    state = State.Climb;
+                }
+                //Defense
+                if (Input.GetKey(KeyCode.C))
+                {
+                    state = State.Defend;
+                }
             }
-            //Horizontal attack
-            if (Input.GetKeyDown(KeyCode.Z))
+            //Run
+            if (Input.GetKey(KeyCode.RightArrow) && state == State.Idle)
             {
-                state = State.Attack;
-                attackState = AttackState.Horizontal;
+                //Set character facing direction
+                transform.rotation = Quaternion.identity;
+                state = State.Run;
             }
-            //Special attack
-            if (Input.GetKeyDown(KeyCode.V))
+            else if (Input.GetKey(KeyCode.LeftArrow) && state == State.Idle)
             {
-                state = State.Attack;
-                attackState = AttackState.Special;
+                //Set character facing direction
+                transform.rotation = Quaternion.Euler(0.0f, 180.0f, 0.0f);
+                state = State.Run;
             }
-            // Roll - player
-            if (Input.GetKeyDown(KeyCode.LeftShift))
+            //Set state back to idle when stop running
+            if (Input.GetKeyUp(KeyCode.LeftArrow) && state == State.Run
+            || Input.GetKeyUp(KeyCode.RightArrow) && state == State.Run)
             {
-                state = State.Roll;
+                state = State.Idle;
             }
-            // Climb - player
-            if (Input.GetKeyDown(KeyCode.UpArrow) || (Input.GetKeyDown(KeyCode.DownArrow)))
+            if (Input.GetKeyUp(KeyCode.C))
             {
-                state = State.Climb;
+                state = State.Idle;
             }
         }
-
-        if (Input.GetKey(KeyCode.RightArrow) && state == State.Idle)
-        {
-            //Set character facing direction
-            facingRight = true;
-            transform.rotation = Quaternion.identity;
-            state = State.Run;
-        }
-        else if (Input.GetKey(KeyCode.LeftArrow) && state == State.Idle)
-        {
-            //Set character facing direction
-            facingRight = false;
-            transform.rotation = Quaternion.Euler(0.0f, 180.0f, 0.0f);
-            state = State.Run;
-        }
-
-        if (Input.GetKeyUp(KeyCode.LeftArrow) && state == State.Run
-        || Input.GetKeyUp(KeyCode.RightArrow) && state == State.Run)
-        {
-            state = State.Idle;
-        }
-
-        //----------------------------------------------------------------------------------------------//
-
-
-        //Defense
-        if (Input.GetKey(KeyCode.C))
-        {
-            GetComponent<CapsuleCollider2D>().enabled = false;
-        }
-        else
-        {
-            GetComponent<CapsuleCollider2D>().enabled = true;
-        }
+        
         //On death
         if (CurrentHP <= 0)
         {
             Scene scene = SceneManager.GetActiveScene(); SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
         }
-
+        //Restart scene
         if (Input.GetKeyDown(KeyCode.R))
         {
             Scene scene = SceneManager.GetActiveScene(); SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
-
-        //// Attack
-        //if (timeAttacking <= 0)
-        //{
-        //    if (Input.GetKeyDown(KeyCode.Space))
-        //    {
-        //        LeftWeaponAttack();
-        //        timeAttacking = startTimeAttack;
-        //    }
-
-        //    if (Input.GetKeyDown(KeyCode.H))
-        //    {
-        //        weapon.HorizontalAttack = true;
-        //        RightWeaponAttack();
-        //    }
-
-        //    if (Input.GetKeyDown(KeyCode.V))
-        //    {
-        //        weapon.HorizontalAttack = false;
-        //        RightWeaponAttack();
-        //    }
-        //}
-        //else
-        //{
-        //    timeAttacking -= Time.deltaTime;
-        //}
     }
 }
