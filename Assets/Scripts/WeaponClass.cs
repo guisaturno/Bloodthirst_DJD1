@@ -11,8 +11,9 @@ public class WeaponClass : MonoBehaviour
 
     [Header("SpecialAttack")]
     [SerializeField] internal float specialRecoveryTime = 1.0f;
-
+    [SerializeField] private float pushDistance;
     internal float specialRecovery;
+    
 
     [Header("HorizontalAttack")]
     [SerializeField] internal float horizontalRecoveryTime = 1.0f;
@@ -142,47 +143,8 @@ public class WeaponClass : MonoBehaviour
     {
         if (hit && obj.CompareTag("Player") || hit && obj.CompareTag("Enemy"))
         {
-            obj.gameObject.GetComponent<Character>().TakeDamage(damage);
+            obj.gameObject.GetComponent<Character>().TakeDamage(damage, pushDistance, transform);
             hit = false;
         }
     }
-
-    //    public void Attack()
-    //    {
-    //        Collider2D[] enemiesHit = Physics2D.OverlapCircleAll(weaponSensor.position, weaponRange, whatisEnemy);
-
-    //        for (int i = 0; i < enemiesHit.Length; i++)
-    //        {
-    //            enemiesHit[i].GetComponent<Character>().TakeDamage(weaponDamage); // metodo na classe enemy
-    //            if (HorizontalAttack)
-    //            {
-    //                if (dashTime <= 0)
-    //                {
-    //                    dashTime = startDashTime;
-    //                    rb.velocity = Vector2.zero;
-    //                }
-    //                else
-    //                {
-    //                    dashTime -= Time.deltaTime;
-    //                    if (character.transform.right.x > 0f)
-    //                        rb.velocity = Vector2.right * dashSpeed;
-    //                    else if (character.transform.right.x < 0f)
-    //                        rb.velocity = Vector2.left * dashSpeed;
-    //                }
-    //            }
-    //            Debug.Log("HIT");
-    //        }
-    //    }
-
-    //    public void ResultAttack(WeaponClass other)
-    //    {
-    //        weaponDurability -= Mathf.Max(other.weaponDamage - weaponDefense, 0);
-    //        CheckBroken();
-    //    }
-
-
-    //    protected void CheckBroken()
-    //    {
-    //        weaponBroke = (weaponDurability <= 0);
-    //    }
 }

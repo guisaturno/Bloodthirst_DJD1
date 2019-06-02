@@ -5,7 +5,7 @@ using UnityEngine;
 public class Character : MonoBehaviour
 {
     //ENUMS
-    internal enum State { Idle, Roll, Climb, Attack, Run, Defend, Stun, Dead }
+    internal enum State { Idle, Roll, Climb, Attack, Run, Defend, Stun, Push, Dead }
     protected enum AttackState { Horizontal, Vertical, Special }
 
     internal State state;
@@ -21,7 +21,7 @@ public class Character : MonoBehaviour
     [SerializeField] protected GameObject rightWeapon;
 
     internal bool attacked = true;
-    
+
     [Header("Dash")]
     [SerializeField] private float dashRecoveryTime = 1f;
     [SerializeField] private float dashDistance = 30.0f;
@@ -60,11 +60,25 @@ public class Character : MonoBehaviour
     private bool atGround = true;
 
     [Header("Stun")]
-    [SerializeField]private float stunRecoveryTime;
+    [SerializeField] private float stunRecoveryTime;
 
     private bool stuned = true;
     private float stunRecovery;
-    
+
+    [Header("Push")]
+    [SerializeField] private float pushSpeed = 100f;
+    [SerializeField] private float pushDistance = 10f;
+    [SerializeField] internal float pushRecoveryTime = 1.0f;
+
+    internal float pushRecovery;
+    Vector2 characterTarget;
+    internal GameObject characterHit;
+    internal Transform hitPos;
+
+    //Character components
+    protected CapsuleCollider2D charCollider;
+    protected Transform charTransform;
+
     //Defend
     private bool isDefending;
 
@@ -74,7 +88,10 @@ public class Character : MonoBehaviour
     public float MaxHP { get; set; } = 100;
     public float CurrentHP { get; set; }
 
-    // Methods
+    protected virtual void Awake()
+    {
+        charCollider = gameObject.GetComponent<CapsuleCollider2D>();
+    }
     protected virtual void Start()
     {
         CurrentHP = MaxHP;
@@ -85,7 +102,7 @@ public class Character : MonoBehaviour
         AnimationManager();
         if (CurrentHP <= 0)
         {
-            characterAnim.SetBool("Death", true);            
+            characterAnim.SetBool("Death", true);
         }
         switch (state)
         {
@@ -120,6 +137,9 @@ public class Character : MonoBehaviour
                 leftWeaponAnim.SetBool("Defense", true);
                 rightWeaponAnim.SetBool("Defense", true);
                 isDefending = true;
+                break;
+            case State.Push:
+                Push();
                 break;
             default:
                 break;
@@ -243,32 +263,18 @@ public class Character : MonoBehaviour
         //Weapon
         rightWeapon.GetComponent<BoxCollider2D>().enabled = false;
         leftWeapon.GetComponent<BoxCollider2D>().enabled = false;
-        if (rightWeapon.name == "Trident")
-        {
-            rightWeapon.GetComponent<Trident>().horizontalRecovery = 0.0f;
-            rightWeapon.GetComponent<Trident>().verticalRecovery = 0.0f;
-            rightWeapon.GetComponent<Trident>().damage = rightWeapon.GetComponent<Trident>().baseDamage;
-            rightWeapon.GetComponent<Trident>().hit = true;
-            rightWeapon.GetComponent<Trident>().attacked = true;
-        }
-        else if (rightWeapon.name == "LongSword")
-        {
-            rightWeapon.GetComponent<LongSword>().horizontalRecovery = 0.0f;
-            rightWeapon.GetComponent<LongSword>().verticalRecovery = 0.0f;
-            rightWeapon.GetComponent<LongSword>().damage = rightWeapon.GetComponent<LongSword>().baseDamage;
-            rightWeapon.GetComponent<LongSword>().hit = true;
-            rightWeapon.GetComponent<LongSword>().attacked = true;
-        }
 
-        if (leftWeapon.name == "Net")
-        {
-            leftWeapon.GetComponent<Net>().specialRecovery = 0;
-            leftWeapon.GetComponent<Net>().attacked = true;
-            leftWeapon.GetComponent<Net>().hit = true;
-            leftWeapon.GetComponent<Net>().netHit = false;
-            leftWeapon.GetComponent<Net>().characterHit = null;
-        }
-        else if (leftWeapon.name == "Shield")
+        rightWeapon.GetComponent<WeaponClass>().horizontalRecovery = 0.0f;
+        rightWeapon.GetComponent<WeaponClass>().verticalRecovery = 0.0f;
+        rightWeapon.GetComponent<WeaponClass>().damage = rightWeapon.GetComponent<WeaponClass>().baseDamage;
+        rightWeapon.GetComponent<WeaponClass>().hit = true;
+        rightWeapon.GetComponent<WeaponClass>().attacked = true;
+
+        leftWeapon.GetComponent<WeaponClass>().specialRecovery = 0;
+        leftWeapon.GetComponent<WeaponClass>().attacked = true;
+        leftWeapon.GetComponent<WeaponClass>().hit = true;
+
+        if (leftWeapon.name == "Shield")
         {
             leftWeapon.GetComponent<Shield>().specialRecovery = 0;
             leftWeapon.GetComponent<Shield>().attacked = true;
@@ -301,6 +307,12 @@ public class Character : MonoBehaviour
 
         //Defending
         isDefending = false;
+
+        //Push
+        //Enable collider
+        charCollider.enabled = true;
+        pushDistance = 0;
+        //Finish movement
     }
 
     protected void Attack()
@@ -315,35 +327,18 @@ public class Character : MonoBehaviour
                     leftWeaponAnim.SetBool("HorizontalAttack", true);
                     rightWeaponAnim.SetBool("HorizontalAttack", true);
                     Dash();
-                    switch (rightWeapon.name)
-                    {
-                        case "Trident":
-                            rightWeapon.GetComponent<Trident>().HorizontalAttack();
-                            break;
-                        case "LongSword":
-                            rightWeapon.GetComponent<LongSword>().HorizontalAttack();
-                            break;
-                        default:
-                            break;
-                    }
+                    rightWeapon.GetComponent<WeaponClass>().HorizontalAttack();
                     break;
+
                 case AttackState.Vertical:
                     //Animation
                     characterAnim.SetBool("VerticalAttack", true);
                     leftWeaponAnim.SetBool("VerticalAttack", true);
                     rightWeaponAnim.SetBool("VerticalAttack", true);
-                    switch (rightWeapon.name)
-                    {
-                        case "Trident":
-                            rightWeapon.GetComponent<Trident>().VerticalAttack();
-                            break;
-                        case "LongSword":
-                            rightWeapon.GetComponent<LongSword>().VerticalAttack();
-                            break;
-                        default:
-                            break;
-                    }
+                    rightWeapon.GetComponent<WeaponClass>().VerticalAttack();
                     break;
+
+
                 case AttackState.Special:
                     switch (leftWeapon.name)
                     {
@@ -351,14 +346,14 @@ public class Character : MonoBehaviour
                             characterAnim.SetBool("ShieldAttack", true);
                             leftWeaponAnim.SetBool("ShieldAttack", true);
                             rightWeaponAnim.SetBool("ShieldAttack", true);
-                            leftWeapon.GetComponent<Shield>().SpecialAttack();
+                            leftWeapon.GetComponent<WeaponClass>().SpecialAttack();
                             Dash();
                             break;
                         case "Net":
                             characterAnim.SetBool("NetAttack", true);
                             leftWeaponAnim.SetBool("NetAttack", true);
                             rightWeaponAnim.SetBool("NetAttack", true);
-                            leftWeapon.GetComponent<Net>().SpecialAttack();
+                            leftWeapon.GetComponent<WeaponClass>().SpecialAttack();
                             break;
                         default:
                             break;
@@ -435,7 +430,7 @@ public class Character : MonoBehaviour
         if (rolled)
         {
             //Disable collider
-            gameObject.GetComponent<CapsuleCollider2D>().enabled = false;
+            charCollider.enabled = false;
             //Animation
             characterAnim.SetTrigger("Roll");
             leftWeaponAnim.SetTrigger("Roll");
@@ -459,13 +454,13 @@ public class Character : MonoBehaviour
         else if (transform.position.x != rollTarget.x)
         {
             //Move character
-            this.transform.position = Vector2.MoveTowards(transform.position, rollTarget, rollSpeed * Time.fixedDeltaTime);
+            transform.position = Vector2.MoveTowards(transform.position, rollTarget, rollSpeed * Time.fixedDeltaTime);
         }
 
         if (rollRecovery <= 5.0f)
         {
             //Enable collider
-            gameObject.GetComponent<CapsuleCollider2D>().enabled = true;
+            charCollider.enabled = true;
             //Reset variables
             state = State.Idle;
             rollRecovery = 0.0f;
@@ -564,7 +559,41 @@ public class Character : MonoBehaviour
         }
     }
 
-    internal void TakeDamage(float damage)
+    internal void Push()
+    {
+        //Verifies if net hit something and if characterHit isnt null
+        if (charCollider.enabled == true)
+        {
+            //Set collided character direction
+            if (transform.position.x > hitPos.position.x)
+            {
+                //Set caracter target moving point
+                characterTarget = new Vector2(transform.position.x + pushDistance, transform.position.y);
+            }
+            else
+            {
+                //Set caracter target moving point
+                characterTarget = new Vector2(transform.position.x - pushDistance, transform.position.y);
+            }
+            //Disable collided character collider
+            charCollider.enabled = false;
+
+            pushRecovery = pushRecoveryTime;
+        }
+        //Verifies if characterHit isnt null and if action is in recovery
+        else if (pushRecovery <= 0.1f)
+        {
+            state = State.Idle;
+        }
+        //Verifies if characterHit isnt null
+        else
+        {
+            //Move collided character to target moving point
+            transform.position = Vector2.MoveTowards(transform.position, characterTarget, pushSpeed * Time.fixedDeltaTime);
+        }
+    }
+
+    internal void TakeDamage(float damage, float _pushDistance, Transform _hitPos)
     {
         if (isDefending)
         {
@@ -572,13 +601,19 @@ public class Character : MonoBehaviour
             leftWeaponAnim.SetTrigger("Block");
             rightWeaponAnim.SetTrigger("Block");
         }
+        else if (_pushDistance != 0)
+        {
+            state = State.Push;
+            hitPos = _hitPos;
+            pushDistance = _pushDistance;
+        }
         else
         {
             state = State.Stun;
-            CurrentHP -= damage;
-            characterAnim.SetTrigger("Hit");
-            leftWeaponAnim.SetTrigger("Hit");
-            rightWeaponAnim.SetTrigger("Hit");
         }
+        CurrentHP -= damage;
+        characterAnim.SetTrigger("Hit");
+        leftWeaponAnim.SetTrigger("Hit");
+        rightWeaponAnim.SetTrigger("Hit");
     }
 }
