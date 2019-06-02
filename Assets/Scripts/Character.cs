@@ -85,7 +85,7 @@ public class Character : MonoBehaviour
         AnimationManager();
         if (CurrentHP <= 0)
         {
-            Destroy(gameObject);            
+            characterAnim.SetBool("Death", true);            
         }
         switch (state)
         {
