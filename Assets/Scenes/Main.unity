@@ -154,15 +154,15 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2666343213460470991}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1443401999 stripped
+--- !u!1 &1197869696 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 1428764899567188697, guid: 12f8839490acad04eaad775d6291ee65,
+  m_CorrespondingSourceObject: {fileID: 1428764899039097127, guid: 12f8839490acad04eaad775d6291ee65,
     type: 3}
   m_PrefabInstance: {fileID: 1428764900296784019}
   m_PrefabAsset: {fileID: 0}
---- !u!95 &1443402003 stripped
+--- !u!95 &1197869700 stripped
 Animator:
-  m_CorrespondingSourceObject: {fileID: 1428764899567188701, guid: 12f8839490acad04eaad775d6291ee65,
+  m_CorrespondingSourceObject: {fileID: 1428764899039097129, guid: 12f8839490acad04eaad775d6291ee65,
     type: 3}
   m_PrefabInstance: {fileID: 1428764900296784019}
   m_PrefabAsset: {fileID: 0}
@@ -191,7 +191,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1520182615}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -137.54637, y: 135, z: 3.1851232}
+  m_LocalPosition: {x: -137.54637, y: 128.4, z: 3.1851232}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2135294174}
@@ -308,7 +308,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 7.5, y: 7.5, z: 0}
   m_MaxChunkCount: 16
@@ -1429,6 +1429,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1428764899567188697, guid: 12f8839490acad04eaad775d6291ee65,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1428764899235172643, guid: 12f8839490acad04eaad775d6291ee65,
         type: 3}
       propertyPath: rightMovePoint
@@ -1448,23 +1453,18 @@ PrefabInstance:
         type: 3}
       propertyPath: leftWeaponAnim
       value: 
-      objectReference: {fileID: 1443402003}
+      objectReference: {fileID: 1197869700}
     - target: {fileID: 1428764899235172643, guid: 12f8839490acad04eaad775d6291ee65,
         type: 3}
       propertyPath: leftWeapon
       value: 
-      objectReference: {fileID: 1443401999}
+      objectReference: {fileID: 1197869696}
     - target: {fileID: 1428764899235172643, guid: 12f8839490acad04eaad775d6291ee65,
         type: 3}
       propertyPath: pushRecoveryTime
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1428764899039097127, guid: 12f8839490acad04eaad775d6291ee65,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1428764899567188697, guid: 12f8839490acad04eaad775d6291ee65,
         type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -7841,6 +7841,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8160765561658413357, guid: e0f4d37dae3f82744873adfe7da8748a,
+        type: 3}
+      propertyPath: m_BodyType
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8160765561658413357, guid: e0f4d37dae3f82744873adfe7da8748a,
+        type: 3}
+      propertyPath: m_Constraints
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1107197508677503816, guid: e0f4d37dae3f82744873adfe7da8748a,
+        type: 3}
+      propertyPath: pushDistance
+      value: -50
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e0f4d37dae3f82744873adfe7da8748a, type: 3}

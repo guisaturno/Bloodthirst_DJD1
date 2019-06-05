@@ -20,6 +20,10 @@ public class Character : MonoBehaviour
     [SerializeField] protected GameObject leftWeapon;
     [SerializeField] protected GameObject rightWeapon;
 
+    protected WeaponClass leftWeaponScript;
+    protected WeaponClass rightWeaponScript;
+    private BoxCollider2D leftWeaponCollider;
+    private BoxCollider2D rightWeaponCollider;
     internal bool attacked = true;
 
     [Header("Dash")]
@@ -86,12 +90,20 @@ public class Character : MonoBehaviour
     private bool dead;
 
     public float MaxHP { get; set; } = 100;
+
     public float CurrentHP { get; set; }
 
     protected virtual void Awake()
     {
         charCollider = gameObject.GetComponent<CapsuleCollider2D>();
+
+        rightWeaponScript = rightWeapon.GetComponent<WeaponClass>();
+        leftWeaponScript = leftWeapon.GetComponent<WeaponClass>();
+
+        rightWeaponCollider = rightWeapon.GetComponent<BoxCollider2D>();
+        leftWeaponCollider = leftWeapon.GetComponent<BoxCollider2D>();
     }
+
     protected virtual void Start()
     {
         CurrentHP = MaxHP;
@@ -261,27 +273,19 @@ public class Character : MonoBehaviour
     protected void ResetCharacter()
     {
         //Weapon
-        rightWeapon.GetComponent<BoxCollider2D>().enabled = false;
-        leftWeapon.GetComponent<BoxCollider2D>().enabled = false;
+        rightWeaponCollider.enabled = false;
+        leftWeaponCollider.enabled = false;
 
-        rightWeapon.GetComponent<WeaponClass>().horizontalRecovery = 0.0f;
-        rightWeapon.GetComponent<WeaponClass>().verticalRecovery = 0.0f;
-        rightWeapon.GetComponent<WeaponClass>().damage = rightWeapon.GetComponent<WeaponClass>().baseDamage;
-        rightWeapon.GetComponent<WeaponClass>().hit = true;
-        rightWeapon.GetComponent<WeaponClass>().attacked = true;
+        rightWeaponScript.horizontalRecovery = 0.0f;
+        rightWeaponScript.verticalRecovery = 0.0f;
+        rightWeaponScript.damage = rightWeaponScript.baseDamage;
+        rightWeaponScript.hit = true;
+        rightWeaponScript.attacked = true;
 
-        leftWeapon.GetComponent<WeaponClass>().specialRecovery = 0;
-        leftWeapon.GetComponent<WeaponClass>().attacked = true;
-        leftWeapon.GetComponent<WeaponClass>().hit = true;
+        leftWeaponScript.specialRecovery = 0;
+        leftWeaponScript.attacked = true;
+        leftWeaponScript.hit = true;
 
-        if (leftWeapon.name == "Shield")
-        {
-            leftWeapon.GetComponent<Shield>().specialRecovery = 0;
-            leftWeapon.GetComponent<Shield>().attacked = true;
-            leftWeapon.GetComponent<Shield>().hit = true;
-            leftWeapon.GetComponent<Shield>().shieldHit = false;
-            leftWeapon.GetComponent<Shield>().characterHit = null;
-        }
         //Attack
         attacked = true;
 
@@ -311,8 +315,8 @@ public class Character : MonoBehaviour
         //Push
         //Enable collider
         charCollider.enabled = true;
+        print("Hit: " + transform.name);
         pushDistance = 0;
-        //Finish movement
     }
 
     protected void Attack()
@@ -327,7 +331,7 @@ public class Character : MonoBehaviour
                     leftWeaponAnim.SetBool("HorizontalAttack", true);
                     rightWeaponAnim.SetBool("HorizontalAttack", true);
                     Dash();
-                    rightWeapon.GetComponent<WeaponClass>().HorizontalAttack();
+                    rightWeaponScript.HorizontalAttack();
                     break;
 
                 case AttackState.Vertical:
@@ -335,7 +339,7 @@ public class Character : MonoBehaviour
                     characterAnim.SetBool("VerticalAttack", true);
                     leftWeaponAnim.SetBool("VerticalAttack", true);
                     rightWeaponAnim.SetBool("VerticalAttack", true);
-                    rightWeapon.GetComponent<WeaponClass>().VerticalAttack();
+                    rightWeaponScript.VerticalAttack();
                     break;
 
 
@@ -346,14 +350,14 @@ public class Character : MonoBehaviour
                             characterAnim.SetBool("ShieldAttack", true);
                             leftWeaponAnim.SetBool("ShieldAttack", true);
                             rightWeaponAnim.SetBool("ShieldAttack", true);
-                            leftWeapon.GetComponent<WeaponClass>().SpecialAttack();
+                            leftWeaponScript.SpecialAttack();
                             Dash();
                             break;
                         case "Net":
                             characterAnim.SetBool("NetAttack", true);
                             leftWeaponAnim.SetBool("NetAttack", true);
                             rightWeaponAnim.SetBool("NetAttack", true);
-                            leftWeapon.GetComponent<WeaponClass>().SpecialAttack();
+                            leftWeaponScript.SpecialAttack();
                             break;
                         default:
                             break;
@@ -390,11 +394,11 @@ public class Character : MonoBehaviour
             //Enable weapon collider
             if (attackState == AttackState.Horizontal)
             {
-                rightWeapon.GetComponent<BoxCollider2D>().enabled = true;
+                rightWeaponCollider.enabled = true;
             }
             else if (attackState == AttackState.Special)
             {
-                leftWeapon.GetComponent<BoxCollider2D>().enabled = true;
+                leftWeaponCollider.enabled = true;
             }
 
         }
@@ -413,11 +417,11 @@ public class Character : MonoBehaviour
             //Disable weapon collider
             if (attackState == AttackState.Horizontal)
             {
-                rightWeapon.GetComponent<BoxCollider2D>().enabled = false;
+                rightWeaponCollider.enabled = false;
             }
             else if (attackState == AttackState.Special)
             {
-                leftWeapon.GetComponent<BoxCollider2D>().enabled = false;
+                leftWeaponCollider.enabled = false;
             }
         }
     }
@@ -561,6 +565,7 @@ public class Character : MonoBehaviour
 
     internal void Push()
     {
+        pushRecovery -= Time.fixedDeltaTime;
         //Verifies if net hit something and if characterHit isnt null
         if (charCollider.enabled == true)
         {
@@ -603,12 +608,14 @@ public class Character : MonoBehaviour
         }
         else if (_pushDistance != 0)
         {
+            ResetCharacter();
             state = State.Push;
             hitPos = _hitPos;
             pushDistance = _pushDistance;
         }
         else
         {
+            ResetCharacter();
             state = State.Stun;
         }
         CurrentHP -= damage;
