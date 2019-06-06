@@ -5,7 +5,7 @@ using UnityEngine;
 public class Character : MonoBehaviour
 {
     //ENUMS
-    internal enum State { Idle, Roll, Climb, Attack, Run, Defend, Stun, Push, Dead }
+    internal enum State { Idle, Roll, Climb, Attack, Run, Defend, Stun, Push, Dead, Clash }
     protected enum AttackState { Horizontal, Vertical, Special }
 
     internal State state;
@@ -17,66 +17,59 @@ public class Character : MonoBehaviour
     [SerializeField] protected Animator rightWeaponAnim;
 
     [Header("Attack")]
+    [SerializeField] protected float horizontalRecoveryTime;
+    [SerializeField] protected float verticalRecoveryTime;
     [SerializeField] protected GameObject leftWeapon;
     [SerializeField] protected GameObject rightWeapon;
 
+    protected float specialRecoveryTime;
     protected WeaponClass leftWeaponScript;
     protected WeaponClass rightWeaponScript;
     private BoxCollider2D leftWeaponCollider;
     private BoxCollider2D rightWeaponCollider;
-    internal bool attacked = true;
 
     [Header("Dash")]
-    [SerializeField] private float dashRecoveryTime = 1f;
-    [SerializeField] private float dashDistance = 30.0f;
-    [SerializeField] private float dashSpeed = 15.0f;
+    [SerializeField] private float dashDistance;
+    [SerializeField] private float dashSpeed;
 
     private Vector2 dashTarget;
-    private float dashRecovery;
     private bool dashed = true;
 
     [Header("Roll")]
-    [SerializeField] private float rollDistance = 30.0f;
-    [SerializeField] private float rollRecoveryTime = 10.0f;
-    [SerializeField] private float rollSpeed = 15.0f;
+    [SerializeField] private float rollDistance;
+    [SerializeField] private float rollRecoveryTime;
+    [SerializeField] private float rollSpeed;
 
     private Vector2 rollTarget;
-    private float rollRecovery;
     private bool rolled = true;
     protected bool facingRight = true;
 
     [Header("Move")]
     [SerializeField] private Transform rightMovePoint;
     [SerializeField] private Transform leftMovePoint;
-    [SerializeField] private float moveSpeed = 15f;
+    [SerializeField] private float moveSpeed;
 
     private Vector2 rightMoveTarget;
     private Vector2 leftMoveTarget;
 
     [Header("Climb")]
-    [SerializeField] private float climbDistance = 300.0f;
-    [SerializeField] private float climbRecoveryTime = 10.0f;
-    [SerializeField] protected float climbSpeed = 15.0f;
+    [SerializeField] private float climbDistance;
+    [SerializeField] private float climbRecoveryTime;
+    [SerializeField] protected float climbSpeed;
 
     private Vector2 climbTarget;
-    private float climbRecovery;
     private bool climbed = true;
     private bool atGround = true;
 
     [Header("Stun")]
     [SerializeField] private float stunRecoveryTime;
 
-    private bool stuned = true;
-    private float stunRecovery;
-
     [Header("Push")]
-    [SerializeField] private float pushSpeed = 100f;
-    [SerializeField] private float pushDistance = 10f;
-    [SerializeField] internal float pushRecoveryTime = 1.0f;
+    [SerializeField] private float pushSpeed;
+    [SerializeField] internal float pushRecoveryTime;
 
-    internal float pushRecovery;
+    private float pushDistance;
     Vector2 characterTarget;
-    internal GameObject characterHit;
     internal Transform hitPos;
 
     //Character components
@@ -86,10 +79,11 @@ public class Character : MonoBehaviour
     //Defend
     private bool isDefending;
 
-    //Death
-    private bool dead;
+    //Recovery
+    protected float recovery;
+    private bool recovered;
 
-    public float MaxHP { get; set; } = 100;
+    public float MaxHP { get; set; }
 
     public float CurrentHP { get; set; }
 
@@ -106,6 +100,37 @@ public class Character : MonoBehaviour
 
     protected virtual void Start()
     {
+        //Attack
+        horizontalRecoveryTime = 1.0f;
+        verticalRecoveryTime = 1.5f;
+        specialRecoveryTime = leftWeaponScript.specialRecoveryTime;
+
+        //Dash
+        dashDistance = 30.0f;
+        dashSpeed = 50.0f;
+
+        //Roll
+        rollDistance = 40.0f;
+        rollSpeed = 50.0f;
+        rollRecoveryTime = 1.8f;
+
+        //Move
+        moveSpeed = 40.0f;
+
+        //Climb
+        climbDistance = 42.0f;
+        climbSpeed = 20.0f;
+        climbRecoveryTime = 2.0f;
+
+        //Stun
+        stunRecoveryTime = 1.0f;
+
+        //Push
+        pushRecoveryTime = 2.0f;
+        pushSpeed = 50.0f;
+
+        //HP
+        MaxHP = 100.0f;
         CurrentHP = MaxHP;
     }
 
@@ -115,6 +140,7 @@ public class Character : MonoBehaviour
         if (CurrentHP <= 0)
         {
             characterAnim.SetBool("Death", true);
+            state = State.Dead;
         }
         switch (state)
         {
@@ -122,14 +148,13 @@ public class Character : MonoBehaviour
                 ResetCharacter();
                 break;
             case State.Stun:
-                ResetCharacter();
-                Stun();
+                Recovery(stunRecoveryTime);
                 break;
             case State.Roll:
-                RollCharacter();
+                Roll();
                 break;
             case State.Climb:
-                ClimbCharacter();
+                Climb();
                 break;
             case State.Attack:
                 Attack();
@@ -276,29 +301,20 @@ public class Character : MonoBehaviour
         rightWeaponCollider.enabled = false;
         leftWeaponCollider.enabled = false;
 
-        rightWeaponScript.horizontalRecovery = 0.0f;
-        rightWeaponScript.verticalRecovery = 0.0f;
         rightWeaponScript.damage = rightWeaponScript.baseDamage;
         rightWeaponScript.hit = true;
         rightWeaponScript.attacked = true;
 
-        leftWeaponScript.specialRecovery = 0;
         leftWeaponScript.attacked = true;
         leftWeaponScript.hit = true;
 
-        //Attack
-        attacked = true;
-
         //Dash
-        dashRecovery = 0.0f;
         dashed = true;
 
         //Roll
-        rollRecovery = 0.0f;
         rolled = true;
 
         //Climb
-        climbRecovery = 0.0f;
         climbed = true;
         if (atGround)
         {
@@ -313,67 +329,65 @@ public class Character : MonoBehaviour
         isDefending = false;
 
         //Push
-        //Enable collider
         charCollider.enabled = true;
-        print("Hit: " + transform.name);
         pushDistance = 0;
+
+        //Recovery
+        recovered = false;
     }
 
     protected void Attack()
     {
-        if (attacked)
+        switch (attackState)
         {
-            switch (attackState)
-            {
-                case AttackState.Horizontal:
-                    //Animation
-                    characterAnim.SetBool("HorizontalAttack", true);
-                    leftWeaponAnim.SetBool("HorizontalAttack", true);
-                    rightWeaponAnim.SetBool("HorizontalAttack", true);
-                    Dash();
-                    rightWeaponScript.HorizontalAttack();
-                    break;
+            case AttackState.Horizontal:
+                //Animation
+                characterAnim.SetBool("HorizontalAttack", true);
+                leftWeaponAnim.SetBool("HorizontalAttack", true);
+                rightWeaponAnim.SetBool("HorizontalAttack", true);
+                rightWeaponScript.HorizontalAttack();
+                Dash();
+                Recovery(horizontalRecoveryTime);
+                break;
 
-                case AttackState.Vertical:
-                    //Animation
-                    characterAnim.SetBool("VerticalAttack", true);
-                    leftWeaponAnim.SetBool("VerticalAttack", true);
-                    rightWeaponAnim.SetBool("VerticalAttack", true);
-                    rightWeaponScript.VerticalAttack();
-                    break;
+            case AttackState.Vertical:
+                //Animation
+                characterAnim.SetBool("VerticalAttack", true);
+                leftWeaponAnim.SetBool("VerticalAttack", true);
+                rightWeaponAnim.SetBool("VerticalAttack", true);
+                rightWeaponScript.VerticalAttack();
+                Recovery(verticalRecoveryTime);
+                break;
 
 
-                case AttackState.Special:
-                    switch (leftWeapon.name)
-                    {
-                        case "Shield":
-                            characterAnim.SetBool("ShieldAttack", true);
-                            leftWeaponAnim.SetBool("ShieldAttack", true);
-                            rightWeaponAnim.SetBool("ShieldAttack", true);
-                            leftWeaponScript.SpecialAttack();
-                            Dash();
-                            break;
-                        case "Net":
-                            characterAnim.SetBool("NetAttack", true);
-                            leftWeaponAnim.SetBool("NetAttack", true);
-                            rightWeaponAnim.SetBool("NetAttack", true);
-                            leftWeaponScript.SpecialAttack();
-                            break;
-                        default:
-                            break;
-                    }
-                    break;
-                default:
-                    break;
-            }
+            case AttackState.Special:
+                switch (leftWeapon.name)
+                {
+                    case "Shield":
+                        characterAnim.SetBool("ShieldAttack", true);
+                        leftWeaponAnim.SetBool("ShieldAttack", true);
+                        rightWeaponAnim.SetBool("ShieldAttack", true);
+                        leftWeaponScript.SpecialAttack();
+                        Dash();
+                        break;
+                    case "Net":
+                        characterAnim.SetBool("NetAttack", true);
+                        leftWeaponAnim.SetBool("NetAttack", true);
+                        rightWeaponAnim.SetBool("NetAttack", true);
+                        leftWeaponScript.SpecialAttack();
+                        break;
+                    default:
+                        break;
+                }
+                Recovery(specialRecoveryTime);
+                break;
+            default:
+                break;
         }
     }
 
     private void Dash()
     {
-        //Discount recovery time
-        dashRecovery -= Time.fixedDeltaTime;
-
         if (dashed)
         {
             //Set roll direction
@@ -387,8 +401,6 @@ public class Character : MonoBehaviour
                 //Roll left
                 dashTarget = new Vector2(transform.position.x - dashDistance, transform.position.y);
             }
-            //Reset roll recovery time
-            dashRecovery = dashRecoveryTime;
             //Confirm that character rolled
             dashed = false;
             //Enable weapon collider
@@ -400,37 +412,16 @@ public class Character : MonoBehaviour
             {
                 leftWeaponCollider.enabled = true;
             }
-
         }
         else if (transform.position.x != dashTarget.x)
         {
             //Move character
             transform.position = Vector2.MoveTowards(transform.position, dashTarget, dashSpeed * Time.fixedDeltaTime);
         }
-
-        if (dashRecovery <= 0.0f)
-        {
-            //Reset variables
-            state = State.Idle;
-            dashRecovery = 0.0f;
-            dashed = true;
-            //Disable weapon collider
-            if (attackState == AttackState.Horizontal)
-            {
-                rightWeaponCollider.enabled = false;
-            }
-            else if (attackState == AttackState.Special)
-            {
-                leftWeaponCollider.enabled = false;
-            }
-        }
     }
 
-    private void RollCharacter()
+    private void Roll()
     {
-        //Discount recovery time
-        rollRecovery -= Time.fixedDeltaTime;
-
         if (rolled)
         {
             //Disable collider
@@ -450,8 +441,6 @@ public class Character : MonoBehaviour
                 //Roll left
                 rollTarget = new Vector2(transform.position.x - rollDistance, transform.position.y);
             }
-            //Reset roll recovery time
-            rollRecovery = rollRecoveryTime + 5.0f;
             //Confirm that character rolled
             rolled = false;
         }
@@ -461,24 +450,14 @@ public class Character : MonoBehaviour
             transform.position = Vector2.MoveTowards(transform.position, rollTarget, rollSpeed * Time.fixedDeltaTime);
         }
 
-        if (rollRecovery <= 5.0f)
-        {
-            //Enable collider
-            charCollider.enabled = true;
-            //Reset variables
-            state = State.Idle;
-            rollRecovery = 0.0f;
-            rolled = true;
-        }
+        Recovery(rollRecoveryTime);
     }
 
-    private void ClimbCharacter()
+    private void Climb()
     {
-        //Discount recovery time
-        climbRecovery -= Time.fixedDeltaTime;
-
         if (climbed)
         {
+            charCollider.enabled = false;
             atGround = !atGround;
             //Animation
             characterAnim.SetBool("Climb", true);
@@ -495,8 +474,6 @@ public class Character : MonoBehaviour
                 //Climb down
                 climbTarget = new Vector2(transform.position.x, transform.position.y - climbDistance);
             }
-            //Reset climb recovery time
-            climbRecovery = climbRecoveryTime + 5.0f;
             //Confirm that character climbed
             climbed = false;
         }
@@ -506,13 +483,7 @@ public class Character : MonoBehaviour
             transform.position = Vector2.MoveTowards(transform.position, climbTarget, climbSpeed * Time.fixedDeltaTime);
         }
 
-        if (climbRecovery <= 5.0f)
-        {
-            //Reset variables
-            state = State.Idle;
-            climbRecovery = 0.0f;
-            climbed = true;
-        }
+        Recovery(climbRecoveryTime);
     }
 
     private void MoveRight()
@@ -539,33 +510,28 @@ public class Character : MonoBehaviour
         transform.position = Vector2.MoveTowards(transform.position, leftMoveTarget, moveSpeed * Time.fixedDeltaTime);
     }
 
-    protected void RotateCharacter()
-    {
-        transform.rotation = (transform.right.x > 0.0f) ?
-            Quaternion.Euler(0.0f, 180.0f, 0.0f) : Quaternion.identity;
-    }
-
-    protected void Stun()
+    protected void Recovery(float recoveryTime)
     {
         //Discount recovery time
-        stunRecovery -= Time.fixedDeltaTime;
+        recovery -= Time.fixedDeltaTime;
 
-        if (stuned)
+        if (!recovered)
         {
-            stunRecovery = stunRecoveryTime;
-            stuned = false;
+            //ResetCharacter();
+            recovery = recoveryTime;
+            recovered = true;
         }
 
-        if (stunRecovery <= 0.0f)
+        if (recovery <= 0.0f)
         {
             state = State.Idle;
-            stuned = true;
+            ResetCharacter();
+            recovered = false;
         }
     }
 
-    internal void Push()
+    protected void Push()
     {
-        pushRecovery -= Time.fixedDeltaTime;
         //Verifies if net hit something and if characterHit isnt null
         if (charCollider.enabled == true)
         {
@@ -580,15 +546,8 @@ public class Character : MonoBehaviour
                 //Set caracter target moving point
                 characterTarget = new Vector2(transform.position.x - pushDistance, transform.position.y);
             }
-            //Disable collided character collider
+            //Disable character collider
             charCollider.enabled = false;
-
-            pushRecovery = pushRecoveryTime;
-        }
-        //Verifies if characterHit isnt null and if action is in recovery
-        else if (pushRecovery <= 0.1f)
-        {
-            state = State.Idle;
         }
         //Verifies if characterHit isnt null
         else
@@ -596,11 +555,12 @@ public class Character : MonoBehaviour
             //Move collided character to target moving point
             transform.position = Vector2.MoveTowards(transform.position, characterTarget, pushSpeed * Time.fixedDeltaTime);
         }
+        Recovery(pushRecoveryTime);
     }
 
     internal void TakeDamage(float damage, float _pushDistance, Transform _hitPos)
     {
-        if (isDefending)
+        if (isDefending && _pushDistance == 0)
         {
             characterAnim.SetTrigger("Block");
             leftWeaponAnim.SetTrigger("Block");
@@ -612,15 +572,30 @@ public class Character : MonoBehaviour
             state = State.Push;
             hitPos = _hitPos;
             pushDistance = _pushDistance;
+
+            CurrentHP -= damage;
+            characterAnim.SetTrigger("Hit");
+            leftWeaponAnim.SetTrigger("Hit");
+            rightWeaponAnim.SetTrigger("Hit");
         }
         else
         {
             ResetCharacter();
             state = State.Stun;
+
+            CurrentHP -= damage;
+            characterAnim.SetTrigger("Hit");
+            leftWeaponAnim.SetTrigger("Hit");
+            rightWeaponAnim.SetTrigger("Hit");
         }
-        CurrentHP -= damage;
-        characterAnim.SetTrigger("Hit");
-        leftWeaponAnim.SetTrigger("Hit");
-        rightWeaponAnim.SetTrigger("Hit");
+    }
+
+    private void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.CompareTag("Enemy") || col.CompareTag("Player"))
+        {
+            print("Clashing");
+            state = State.Clash;
+        }
     }
 }

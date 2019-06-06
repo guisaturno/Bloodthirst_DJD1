@@ -47,10 +47,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseDamage: 0
-  specialRecoveryTime: 2.4
+  specialRecoveryTime: 2.5
   pushDistance: 30
-  horizontalRecoveryTime: 0
-  verticalRecoveryTime: 0
 --- !u!95 &8360194568693842043
 Animator:
   serializedVersion: 3

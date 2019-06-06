@@ -116,9 +116,10 @@ MonoBehaviour:
   characterAnim: {fileID: 8160765561143404707}
   leftWeaponAnim: {fileID: 379918241532257867}
   rightWeaponAnim: {fileID: 3747632762438995150}
+  horizontalRecoveryTime: 0
+  verticalRecoveryTime: 0
   leftWeapon: {fileID: 379918241532257871}
   rightWeapon: {fileID: 3747632762438995146}
-  dashRecoveryTime: 1.2
   dashDistance: 20
   dashSpeed: 50
   rollDistance: 41
@@ -131,6 +132,8 @@ MonoBehaviour:
   climbRecoveryTime: 2.2
   climbSpeed: 30
   stunRecoveryTime: 0
+  pushSpeed: 0
+  pushRecoveryTime: 0
   playerDistance: 15
 --- !u!95 &8160765561143404707
 Animator:
@@ -188,7 +191,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300070, guid: 97f68a651fb168d448967c4d2c96a22c, type: 3}
+  m_Sprite: {fileID: 21300064, guid: 97f68a651fb168d448967c4d2c96a22c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -233,7 +236,7 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 3.09, y: 0}
   m_Size: {x: 9, y: 19}
   m_Direction: 0
 --- !u!1001 &8160765560432924254

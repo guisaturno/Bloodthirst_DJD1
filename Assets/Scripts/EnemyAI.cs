@@ -28,6 +28,7 @@ public class EnemyAI : Character
         def = Random.Range(1, 6);
 
         StartCoroutine(SetState());
+        StartCoroutine(Rotate());
     }
 
     protected override void Update()
@@ -36,15 +37,6 @@ public class EnemyAI : Character
 
         UpdateState();
 
-        if (transform.position.x < playerTransform.position.x)
-        {
-            transform.rotation = Quaternion.identity;
-        }
-        else
-        {
-            transform.rotation = Quaternion.Euler(0.0f, 180.0f, 0.0f);
-        }
-
         if (Vector2.Distance(transform.position, playerTransform.position) < playerDistance && state == State.Run)
         {
             state = State.Idle;
@@ -52,36 +44,15 @@ public class EnemyAI : Character
     }
 
     //AI Methods
-    private void UpdateState()
-    {
-        playerState = playerAnim.GetCurrentAnimatorStateInfo(0);
-        if (playerState.IsName("Attack"))
-        {
-            currentAgro = Random.Range(1, 10) + agro;
-            currentDef = Random.Range(5, 10) + def;
-        }
-        else if (playerState.IsName("Defend"))
-        {
-            currentAgro = Random.Range(5, 10) + agro;
-            currentDef = Random.Range(1, 10) + def;
-        }
-        else if (playerState.IsName("Roll"))
-        {
-            currentAgro = Random.Range(5, 10) + agro;
-            currentDef = Random.Range(1, 5) + def;
-        }
-        else
-        {
-            currentAgro = Random.Range(1, 10) + agro;
-            currentDef = Random.Range(1, 10) + def;
-        }
-    }
-
     private IEnumerator SetState()
     {
         while (true)
         {
-            if (Vector2.Distance(transform.position, playerTransform.position) > playerDistance
+            if (recovery > 0.0f)
+            {
+                yield return new WaitForSeconds(recovery);
+            }
+            else if (Vector2.Distance(transform.position, playerTransform.position) > playerDistance
                 && transform.position.y == playerTransform.position.y)
             {
                 state = State.Run;
@@ -108,10 +79,52 @@ public class EnemyAI : Character
         }
     }
 
+    private IEnumerator Rotate()
+    {
+        while (true)
+        {
+            if (transform.position.x < playerTransform.position.x && state != State.Roll
+           && transform.position.x < playerTransform.position.x && state != State.Attack)
+            {
+                transform.rotation = Quaternion.identity;
+            }
+            else if (state != State.Roll && state != State.Attack)
+            {
+                transform.rotation = Quaternion.Euler(0.0f, 180.0f, 0.0f);
+            }
+            yield return new WaitForSeconds(.5f);
+        }
+    }
+
+    private void UpdateState()
+    {
+        playerState = playerAnim.GetCurrentAnimatorStateInfo(0);
+        if (playerState.IsName("Attack"))
+        {
+            currentAgro = Random.Range(1, 10) + agro;
+            currentDef = Random.Range(5, 10) + def;
+        }
+        else if (playerState.IsName("Defend"))
+        {
+            currentAgro = Random.Range(5, 10) + agro;
+            currentDef = Random.Range(1, 10) + def;
+        }
+        else if (playerState.IsName("Roll"))
+        {
+            currentAgro = Random.Range(5, 10) + agro;
+            currentDef = Random.Range(1, 5) + def;
+        }
+        else
+        {
+            currentAgro = Random.Range(1, 10) + agro;
+            currentDef = Random.Range(1, 10) + def;
+        }
+    }
+
     private void SelectAttack()
     {
 
-        if (Vector2.Distance(transform.position, playerTransform.position) <= 20)
+        if (Vector2.Distance(transform.position, playerTransform.position) <= 25)
         {
             attackState = AttackState.Special;
         }
