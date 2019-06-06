@@ -141,11 +141,7 @@ public class Character : MonoBehaviour
     protected virtual void Update()
     {
         AnimationManager();
-        if (CurrentHP <= 0)
-        {
-            characterAnim.SetBool("Death", true);
-            state = State.Dead;
-        }
+
         switch (state)
         {
             case State.Idle:
@@ -560,6 +556,16 @@ public class Character : MonoBehaviour
             transform.position = Vector2.MoveTowards(transform.position, characterTarget, pushSpeed * Time.fixedDeltaTime);
         }
         Recovery(pushRecoveryTime);
+    }
+
+    protected virtual void Death()
+    {
+        characterAnim.SetBool("Death", true);
+        leftWeaponAnim.SetBool("Death", true);
+        rightWeaponAnim.SetBool("Death", true);
+
+        charCollider.enabled = false;
+        this.enabled = false;
     }
 
     internal void TakeDamage(float damage, float _pushDistance, Transform _hitPos)

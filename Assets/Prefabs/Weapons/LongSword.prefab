@@ -46,10 +46,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b95620012dacee45bdd148d8c1f9035, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseDamage: 0
+  baseDamage: 30
   specialRecoveryTime: 1
-  horizontalRecoveryTime: 1
-  verticalRecoveryTime: 1
+  pushDistance: 0
 --- !u!95 &5318492210134909029
 Animator:
   serializedVersion: 3

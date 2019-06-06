@@ -57,6 +57,11 @@ public class EnemyAI : Character
 
     protected override void Update()
     {
+        if (CurrentHP <= 0)
+        {
+            Death();
+        }
+
         base.Update();
 
         UpdateState();
@@ -161,4 +166,11 @@ public class EnemyAI : Character
             attackState = AttackState.Horizontal;
         }
     }
+
+    protected override void Death()
+    {
+        StopAllCoroutines();
+        base.Death();
+    }
+
 }
