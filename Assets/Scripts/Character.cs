@@ -89,7 +89,11 @@ public class Character : MonoBehaviour
 
     protected virtual void Awake()
     {
+        characterAnim = gameObject.GetComponent<Animator>();
         charCollider = gameObject.GetComponent<CapsuleCollider2D>();
+
+        rightWeaponAnim = rightWeapon.GetComponent<Animator>();
+        leftWeaponAnim = leftWeapon.GetComponent<Animator>();
 
         rightWeaponScript = rightWeapon.GetComponent<WeaponClass>();
         leftWeaponScript = leftWeapon.GetComponent<WeaponClass>();
@@ -590,12 +594,12 @@ public class Character : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D col)
-    {
-        if (col.CompareTag("Enemy") || col.CompareTag("Player"))
-        {
-            print("Clashing");
-            state = State.Clash;
-        }
-    }
+    //private void OnTriggerEnter2D(Collider2D col)
+    //{
+    //    if (col.CompareTag("Enemy") || col.CompareTag("Player"))
+    //    {
+    //        print("Clashing");
+    //        state = State.Clash;
+    //    }
+    //}
 }

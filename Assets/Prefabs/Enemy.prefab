@@ -254,7 +254,7 @@ PrefabInstance:
     - target: {fileID: 4990719761623177876, guid: 326be0c3ad266ce40903462980448879,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4990719761623177875, guid: 326be0c3ad266ce40903462980448879,
         type: 3}
@@ -346,7 +346,7 @@ PrefabInstance:
     - target: {fileID: 8360194568693842047, guid: 320e43e1c35962d4eaacc65fe41a5774,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8360194568693842046, guid: 320e43e1c35962d4eaacc65fe41a5774,
         type: 3}
@@ -433,7 +433,7 @@ PrefabInstance:
     - target: {fileID: 5318492210810279587, guid: 22ea230ea5a470244a28ca3ce9580064,
         type: 3}
       propertyPath: m_Name
-      value: LongSword
+      value: Sword
       objectReference: {fileID: 0}
     - target: {fileID: 5318492210810279587, guid: 22ea230ea5a470244a28ca3ce9580064,
         type: 3}
