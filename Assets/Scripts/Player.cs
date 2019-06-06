@@ -1,23 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class Player : Character
 {
-    [Header("Player")]
-    private Collider2D playerCollider;
-    private WeaponClass weapon;
-
-    // Methods
-    protected override void Start()
-    {
-        // Call parent method
-        base.Start();
-        playerCollider = GetComponent<Collider2D>();
-        weapon = GetComponent<WeaponClass>();
-    }
-
     protected override void Update()
     {
         base.Update();

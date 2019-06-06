@@ -125,8 +125,10 @@ MonoBehaviour:
   rollDistance: 41
   rollRecoveryTime: 1.5
   rollSpeed: 100
-  rightMovePoint: {fileID: 0}
-  leftMovePoint: {fileID: 0}
+  rightMovePoint: {fileID: 7682092140051647602, guid: d16c1743f4f7cd943896c5d4e994c217,
+    type: 3}
+  leftMovePoint: {fileID: 6667280109380836698, guid: 7c7642093be49304ba9050ab55ef6adb,
+    type: 3}
   moveSpeed: 30
   climbDistance: 41
   climbRecoveryTime: 2.2

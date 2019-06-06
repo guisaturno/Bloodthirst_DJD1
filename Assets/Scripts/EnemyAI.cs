@@ -5,9 +5,12 @@ using UnityEngine;
 public class EnemyAI : Character
 {
     [Header("Enemy")]
+    //Spawn control
+    private RoundManager roundManager;
     //AI
     private Animator playerAnim;
     private AnimatorStateInfo playerState;
+    private float responseTime;
 
     //Player position
     [SerializeField] private float playerDistance = 25f;
@@ -61,7 +64,7 @@ public class EnemyAI : Character
         {
             Death();
         }
-
+ 
         base.Update();
 
         UpdateState();
@@ -72,7 +75,12 @@ public class EnemyAI : Character
         }
     }
 
-    //AI Methods
+    public void NewEnemy(RoundManager _roundManager, float _responseTime)
+    {
+        roundManager = _roundManager;
+        responseTime = _responseTime;
+    }
+
     private IEnumerator SetState()
     {
         while (true)
@@ -104,7 +112,7 @@ public class EnemyAI : Character
                 state = State.Defend; ;
             }
 
-            yield return new WaitForSeconds(1.5f);
+            yield return new WaitForSeconds(responseTime);
         }
     }
 
@@ -170,6 +178,7 @@ public class EnemyAI : Character
     protected override void Death()
     {
         StopAllCoroutines();
+        roundManager.enemysAlive -= 1;
         base.Death();
     }
 

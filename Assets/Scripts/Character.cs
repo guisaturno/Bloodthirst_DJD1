@@ -105,21 +105,21 @@ public class Character : MonoBehaviour
     protected virtual void Start()
     {
         //Attack
-        horizontalRecoveryTime = 1.0f;
+        horizontalRecoveryTime = 1.5f;
         verticalRecoveryTime = 1.5f;
         specialRecoveryTime = leftWeaponScript.specialRecoveryTime;
 
         //Dash
         dashDistance = 30.0f;
-        dashSpeed = 50.0f;
+        dashSpeed = 15.0f;
 
         //Roll
-        rollDistance = 40.0f;
-        rollSpeed = 50.0f;
+        rollDistance = 60.0f;
+        rollSpeed = 30.0f;
         rollRecoveryTime = 1.8f;
 
         //Move
-        moveSpeed = 40.0f;
+        moveSpeed = 30.0f;
 
         //Climb
         climbDistance = 42.0f;
@@ -295,6 +295,7 @@ public class Character : MonoBehaviour
         }
     }
 
+    //Set all changed values during method execution to default
     protected void ResetCharacter()
     {
         //Weapon
@@ -341,7 +342,6 @@ public class Character : MonoBehaviour
         switch (attackState)
         {
             case AttackState.Horizontal:
-                //Animation
                 characterAnim.SetBool("HorizontalAttack", true);
                 leftWeaponAnim.SetBool("HorizontalAttack", true);
                 rightWeaponAnim.SetBool("HorizontalAttack", true);
@@ -351,7 +351,6 @@ public class Character : MonoBehaviour
                 break;
 
             case AttackState.Vertical:
-                //Animation
                 characterAnim.SetBool("VerticalAttack", true);
                 leftWeaponAnim.SetBool("VerticalAttack", true);
                 rightWeaponAnim.SetBool("VerticalAttack", true);
@@ -390,18 +389,18 @@ public class Character : MonoBehaviour
     {
         if (dashed)
         {
-            //Set roll direction
+            //Set dash direction
             if (transform.right.x > 0.0f)
             {
-                //Roll right
+                //Dash right
                 dashTarget = new Vector2(transform.position.x + dashDistance, transform.position.y);
             }
             else
             {
-                //Roll left
+                //Dash left
                 dashTarget = new Vector2(transform.position.x - dashDistance, transform.position.y);
             }
-            //Confirm that character rolled
+            //Confirm that character dashed
             dashed = false;
             //Enable weapon collider
             if (attackState == AttackState.Horizontal)
@@ -457,6 +456,7 @@ public class Character : MonoBehaviour
     {
         if (climbed)
         {
+            //Disable collider
             charCollider.enabled = false;
             atGround = !atGround;
             //Animation
@@ -517,7 +517,6 @@ public class Character : MonoBehaviour
 
         if (!recovered)
         {
-            //ResetCharacter();
             recovery = recoveryTime;
             recovered = true;
         }
@@ -532,10 +531,10 @@ public class Character : MonoBehaviour
 
     protected void Push()
     {
-        //Verifies if net hit something and if characterHit isnt null
+        //Verifies if character collider is active
         if (charCollider.enabled == true)
         {
-            //Set collided character direction
+            //Set character direction
             if (transform.position.x > hitPos.position.x)
             {
                 //Set caracter target moving point
@@ -549,10 +548,9 @@ public class Character : MonoBehaviour
             //Disable character collider
             charCollider.enabled = false;
         }
-        //Verifies if characterHit isnt null
         else
         {
-            //Move collided character to target moving point
+            //Move character to target moving point
             transform.position = Vector2.MoveTowards(transform.position, characterTarget, pushSpeed * Time.fixedDeltaTime);
         }
         Recovery(pushRecoveryTime);
