@@ -111,7 +111,7 @@ public class Character : MonoBehaviour
 
         //Dash
         dashDistance = 30.0f;
-        dashSpeed = 15.0f;
+        dashSpeed = 30.0f;
 
         //Roll
         rollDistance = 60.0f;
@@ -119,7 +119,7 @@ public class Character : MonoBehaviour
         rollRecoveryTime = 1.8f;
 
         //Move
-        moveSpeed = 30.0f;
+        moveSpeed = 35.0f;
 
         //Climb
         climbDistance = 42.0f;
@@ -493,7 +493,14 @@ public class Character : MonoBehaviour
         leftWeaponAnim.SetBool("Run", true);
         rightWeaponAnim.SetBool("Run", true);
         //Set character movement direction
-        rightMoveTarget = new Vector2(rightMovePoint.position.x, transform.position.y);
+        if (gameObject.tag != "Enemy")
+        {
+            rightMoveTarget = new Vector2(rightMovePoint.position.x, transform.position.y);
+        }
+        else
+        {
+
+        }
         //Move character towards right
         transform.position = Vector2.MoveTowards(transform.position, rightMoveTarget, moveSpeed * Time.fixedDeltaTime);
     }
@@ -505,7 +512,10 @@ public class Character : MonoBehaviour
         leftWeaponAnim.SetBool("Run", true);
         rightWeaponAnim.SetBool("Run", true);
         //Set character movement direction
-        leftMoveTarget = new Vector2(leftMovePoint.position.x, transform.position.y);
+        if (gameObject.tag == "Enemy")
+        {
+            leftMoveTarget = new Vector2(leftMovePoint.position.x, transform.position.y);
+        }
         //Move character towards left
         transform.position = Vector2.MoveTowards(transform.position, leftMoveTarget, moveSpeed * Time.fixedDeltaTime);
     }

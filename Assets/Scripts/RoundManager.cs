@@ -38,7 +38,8 @@ public class RoundManager : MonoBehaviour
     {
         int spawnPoint = Random.Range(0, spawnPoints.Length);
         GameObject obj = Instantiate(enemyPrefab, spawnPoints[spawnPoint].position, spawnPoints[spawnPoint].rotation) as GameObject;
-        //obj.GetComponents<EnemyAI>()
+        EnemyAI enemyAI = obj.GetComponent<EnemyAI>();
+        //enemyAI.NewEnemy();
         enemysAlive += 1;
     }
 }

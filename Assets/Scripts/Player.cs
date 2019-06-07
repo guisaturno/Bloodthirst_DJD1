@@ -3,6 +3,18 @@ using UnityEngine.SceneManagement;
 
 public class Player : Character
 {
+    //Variables
+    [Header ("Player")]
+    [SerializeField] internal Transform[] attackSlots;
+    internal EnemyAI[] availableAttackSlot;
+
+    protected override void Start()
+    {
+        base.Start();
+
+        availableAttackSlot = new EnemyAI[attackSlots.Length];
+    }
+
     protected override void Update()
     {
         base.Update();
@@ -68,7 +80,7 @@ public class Player : Character
                 state = State.Idle;
             }
         }
-        
+
         //On death
         if (CurrentHP <= 0)
         {
@@ -79,5 +91,56 @@ public class Player : Character
         {
             Scene scene = SceneManager.GetActiveScene(); SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
+    }
+
+    internal Transform GetAttackSlots(EnemyAI enemy)
+    {
+        if (enemy.transform.position.x > transform.position.x)
+        {
+            if (availableAttackSlot[0] == null)
+            {
+                availableAttackSlot[0] = enemy;
+                return attackSlots[0];
+            }
+            else if (availableAttackSlot[1] == null)
+            {
+                availableAttackSlot[1] = enemy;
+                return attackSlots[1];
+            }
+            else if (availableAttackSlot[2] == null)
+            {
+                availableAttackSlot[2] = enemy;
+                return attackSlots[2];
+            }
+            else if (availableAttackSlot[3] == null)
+            {
+                availableAttackSlot[3] = enemy;
+                return attackSlots[3];
+            }
+        }
+        else
+        {
+            if (availableAttackSlot[1] == null)
+            {
+                availableAttackSlot[1] = enemy;
+                return attackSlots[1];
+            }
+            else if (availableAttackSlot[0] == null)
+            {
+                availableAttackSlot[0] = enemy;
+                return attackSlots[0];
+            }
+            else if (availableAttackSlot[3] == null)
+            {
+                availableAttackSlot[3] = enemy;
+                return attackSlots[3];
+            }
+            else if (availableAttackSlot[2] == null)
+            {
+                availableAttackSlot[2] = enemy;
+                return attackSlots[2];
+            }
+        }
+        return null;
     }
 }

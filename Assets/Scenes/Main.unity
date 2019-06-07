@@ -1444,7 +1444,7 @@ PrefabInstance:
     - target: {fileID: 1428764899235172643, guid: 12f8839490acad04eaad775d6291ee65,
         type: 3}
       propertyPath: moveSpeed
-      value: 30
+      value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 1428764899235172643, guid: 12f8839490acad04eaad775d6291ee65,
         type: 3}
@@ -1464,12 +1464,12 @@ PrefabInstance:
     - target: {fileID: 1428764899235172643, guid: 12f8839490acad04eaad775d6291ee65,
         type: 3}
       propertyPath: dashDistance
-      value: 30
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 1428764899235172643, guid: 12f8839490acad04eaad775d6291ee65,
         type: 3}
       propertyPath: dashSpeed
-      value: 50
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 1428764899235172643, guid: 12f8839490acad04eaad775d6291ee65,
         type: 3}
@@ -1500,6 +1500,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Mass
       value: 153.61725
+      objectReference: {fileID: 0}
+    - target: {fileID: 5410035919135414868, guid: 12f8839490acad04eaad775d6291ee65,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8881570539410646676, guid: 12f8839490acad04eaad775d6291ee65,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 12f8839490acad04eaad775d6291ee65, type: 3}
@@ -7989,7 +7999,7 @@ PrefabInstance:
     - target: {fileID: 8160765561658413359, guid: e0f4d37dae3f82744873adfe7da8748a,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8160765561658413352, guid: e0f4d37dae3f82744873adfe7da8748a,
         type: 3}
@@ -8059,7 +8069,7 @@ PrefabInstance:
     - target: {fileID: 8160765561658413355, guid: e0f4d37dae3f82744873adfe7da8748a,
         type: 3}
       propertyPath: playerDistance
-      value: 40
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8160765561658413355, guid: e0f4d37dae3f82744873adfe7da8748a,
         type: 3}
