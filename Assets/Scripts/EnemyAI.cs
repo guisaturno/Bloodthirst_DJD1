@@ -11,7 +11,6 @@ public class EnemyAI : Character
     private Animator playerAnim;
     private AnimatorStateInfo playerState;
     private float responseTime;
-    private Player playerScript;
 
     //Player position
     [SerializeField] private float playerDistance = 25f;
@@ -49,8 +48,6 @@ public class EnemyAI : Character
     {
         base.Start();
 
-        playerScript = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
-
         playerAnim = GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>();
         playerTransform = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
 
@@ -72,7 +69,7 @@ public class EnemyAI : Character
 
         UpdateState();
 
-        if (Vector2.Distance(transform.position, playerScript.GetAttackSlots(this).position) < playerDistance && state == State.Run)
+        if (Vector2.Distance(transform.position, playerTransform.position) < playerDistance && state == State.Run)
         {
             state = State.Idle;
         }
@@ -92,7 +89,7 @@ public class EnemyAI : Character
             {
                 yield return new WaitForSeconds(recovery);
             }
-            else if (Vector2.Distance(transform.position, playerScript.GetAttackSlots(this).position) > playerDistance
+            else if (Vector2.Distance(transform.position, playerTransform.position) > playerDistance
                 && transform.position.y == playerTransform.position.y)
             {
                 state = State.Run;
@@ -115,7 +112,7 @@ public class EnemyAI : Character
                 state = State.Defend; ;
             }
 
-            yield return new WaitForSeconds(1.5f);
+            yield return new WaitForSeconds(responseTime);
         }
     }
 

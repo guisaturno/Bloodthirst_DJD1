@@ -493,14 +493,8 @@ public class Character : MonoBehaviour
         leftWeaponAnim.SetBool("Run", true);
         rightWeaponAnim.SetBool("Run", true);
         //Set character movement direction
-        if (gameObject.tag != "Enemy")
-        {
-            rightMoveTarget = new Vector2(rightMovePoint.position.x, transform.position.y);
-        }
-        else
-        {
 
-        }
+        rightMoveTarget = new Vector2(rightMovePoint.position.x, transform.position.y);
         //Move character towards right
         transform.position = Vector2.MoveTowards(transform.position, rightMoveTarget, moveSpeed * Time.fixedDeltaTime);
     }
@@ -512,10 +506,7 @@ public class Character : MonoBehaviour
         leftWeaponAnim.SetBool("Run", true);
         rightWeaponAnim.SetBool("Run", true);
         //Set character movement direction
-        if (gameObject.tag == "Enemy")
-        {
-            leftMoveTarget = new Vector2(leftMovePoint.position.x, transform.position.y);
-        }
+        leftMoveTarget = new Vector2(leftMovePoint.position.x, transform.position.y);
         //Move character towards left
         transform.position = Vector2.MoveTowards(transform.position, leftMoveTarget, moveSpeed * Time.fixedDeltaTime);
     }
@@ -607,13 +598,4 @@ public class Character : MonoBehaviour
             rightWeaponAnim.SetTrigger("Hit");
         }
     }
-
-    //private void OnTriggerEnter2D(Collider2D col)
-    //{
-    //    if (col.CompareTag("Enemy") || col.CompareTag("Player"))
-    //    {
-    //        print("Clashing");
-    //        state = State.Clash;
-    //    }
-    //}
 }
