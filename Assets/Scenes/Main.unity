@@ -7853,6 +7853,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6667280109380836701, guid: 7c7642093be49304ba9050ab55ef6adb,
+        type: 3}
+      propertyPath: m_Name
+      value: LeftMapEnd
+      objectReference: {fileID: 0}
     - target: {fileID: 6667280109380836698, guid: 7c7642093be49304ba9050ab55ef6adb,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7908,11 +7913,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6667280109380836701, guid: 7c7642093be49304ba9050ab55ef6adb,
-        type: 3}
-      propertyPath: m_Name
-      value: LeftMapEnd
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7c7642093be49304ba9050ab55ef6adb, type: 3}
 --- !u!1001 &7682092141497622825
@@ -7922,6 +7922,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7682092140051647603, guid: d16c1743f4f7cd943896c5d4e994c217,
+        type: 3}
+      propertyPath: m_Name
+      value: RightMapEnd
+      objectReference: {fileID: 0}
     - target: {fileID: 7682092140051647602, guid: d16c1743f4f7cd943896c5d4e994c217,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7976,11 +7981,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7682092140051647603, guid: d16c1743f4f7cd943896c5d4e994c217,
-        type: 3}
-      propertyPath: m_Name
-      value: RightMapEnd
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d16c1743f4f7cd943896c5d4e994c217, type: 3}

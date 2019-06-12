@@ -109,7 +109,7 @@ public class EnemyAI : Character
             }
             else if (currentDef > currentAgro)
             {
-                state = State.Defend; ;
+                state = State.Defend;
             }
 
             yield return new WaitForSeconds(responseTime);
