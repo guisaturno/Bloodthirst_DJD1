@@ -83,6 +83,11 @@ public class Character : MonoBehaviour
     protected float recovery;
     private bool recovered;
 
+    // SOUND *****
+    [SerializeField] public AudioClip climb;
+    public AudioClip step;
+    public AudioClip scream1;
+
     public float MaxHP { get; set; }
 
     public float CurrentHP { get; set; }

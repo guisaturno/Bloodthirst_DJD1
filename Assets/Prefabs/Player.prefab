@@ -71,6 +71,9 @@ MonoBehaviour:
   stunRecoveryTime: 2
   pushSpeed: 0
   pushRecoveryTime: 0
+  climb: {fileID: 8300000, guid: 57958f0d933e9fe4cba705e384704b52, type: 3}
+  step: {fileID: 0}
+  scream1: {fileID: 0}
 --- !u!212 &1428764899235172668
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -321,6 +324,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1428764899881856917}
     m_Modifications:
+    - target: {fileID: 5318492210810279587, guid: 22ea230ea5a470244a28ca3ce9580064,
+        type: 3}
+      propertyPath: m_Name
+      value: LongSword
+      objectReference: {fileID: 0}
     - target: {fileID: 5318492210810279591, guid: 22ea230ea5a470244a28ca3ce9580064,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -375,11 +383,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5318492210810279587, guid: 22ea230ea5a470244a28ca3ce9580064,
-        type: 3}
-      propertyPath: m_Name
-      value: LongSword
       objectReference: {fileID: 0}
     - target: {fileID: 5318492210810279590, guid: 22ea230ea5a470244a28ca3ce9580064,
         type: 3}
@@ -568,6 +571,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1428764900456774947}
     m_Modifications:
+    - target: {fileID: 7738114049571249033, guid: ef6b293ab3488f241bfad11dad50728d,
+        type: 3}
+      propertyPath: m_Name
+      value: Shield
+      objectReference: {fileID: 0}
     - target: {fileID: 7738114049571249029, guid: ef6b293ab3488f241bfad11dad50728d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -622,11 +630,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7738114049571249033, guid: ef6b293ab3488f241bfad11dad50728d,
-        type: 3}
-      propertyPath: m_Name
-      value: Shield
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ef6b293ab3488f241bfad11dad50728d, type: 3}
