@@ -84,7 +84,7 @@ public class Character : MonoBehaviour
     private bool recovered;
 
     // SOUND *****
-    [SerializeField] public AudioClip climb;
+    public AudioClip climb;
     public AudioClip step;
     public AudioClip scream1;
 
@@ -468,6 +468,10 @@ public class Character : MonoBehaviour
             characterAnim.SetBool("Climb", true);
             leftWeaponAnim.SetBool("Climb", true);
             rightWeaponAnim.SetBool("Climb", true);
+
+            // Sound, adjustable volume and "random" pitch
+            SoundManager.PlaySound(climb, 0.90f, Random.Range(1.0f, 3.0f));
+
             //Set climb direction
             if (transform.position.y == -58)
             {

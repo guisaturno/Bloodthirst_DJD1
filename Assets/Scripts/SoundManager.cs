@@ -25,12 +25,9 @@ public class SoundManager : MonoBehaviour
 
         GetComponentsInChildren<AudioSource>(true, audioSources);
     }
-    
-    /// <summary>
-    /// Accepts an audioclip and plays sound
-    /// </summary>
-    /// <param name="clip"></param>
-    public void PlaySound(AudioClip clip)
+
+    // Is called by it's static method to do required function
+    public void _PlaySound(AudioClip clip, float vol = 1.0f, float pitch = 1.0f)
     {
         foreach (AudioSource sound in audioSources)
         {
@@ -38,6 +35,8 @@ public class SoundManager : MonoBehaviour
             if (!sound.isPlaying)
             {
                 sound.clip = clip;
+                sound.volume = vol;
+                sound.pitch = pitch;
                 sound.Play();
                 return;
             }
@@ -49,8 +48,22 @@ public class SoundManager : MonoBehaviour
         nGo.name = "Sound Effect";
         AudioSource obj = nGo.AddComponent<AudioSource>(); // Adds new object to list
         obj.clip = clip;
+        obj.volume = vol;
+        obj.pitch = pitch;
         obj.Play();
 
         audioSources.Add(obj);
+    }
+
+    /// <summary>
+    /// Accepts an audioclip, it's volume, pitch and plays sound
+    /// </summary>
+    /// <param name="clip"></param>
+    /// <param name="vol"></param>
+    /// <param name="pitch"></param>
+    public static void PlaySound(AudioClip clip, float vol = 1.0f, float pitch = 1.0f)
+    {
+        if (instance == null) return;
+        instance._PlaySound(clip, vol, pitch);
     }
 }
