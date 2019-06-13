@@ -84,10 +84,18 @@ public class Character : MonoBehaviour
     private bool recovered;
 
     // SOUND *****
-    public AudioClip climb;
+    [Header("SoundFX")]
+    public AudioClip climbRoll;
     public AudioClip step;
-    public AudioClip scream1;
+    public AudioClip screamAtk;
+    public AudioClip screamHit;
+    public AudioClip screamStun;
+    public AudioClip screamDeath;
+    public AudioClip steps;
+    public AudioClip shieldBlock;
+    public AudioClip anyBlock; // Not implemented, missing condition
 
+    // Properties
     public float MaxHP { get; set; }
 
     public float CurrentHP { get; set; }
@@ -363,7 +371,6 @@ public class Character : MonoBehaviour
                 Recovery(verticalRecoveryTime);
                 break;
 
-
             case AttackState.Special:
                 switch (leftWeapon.name)
                 {
@@ -434,6 +441,10 @@ public class Character : MonoBehaviour
             characterAnim.SetTrigger("Roll");
             leftWeaponAnim.SetTrigger("Roll");
             rightWeaponAnim.SetTrigger("Roll");
+
+            // Sound
+            SoundManager.PlaySound(climbRoll, 0.20f, Random.Range(1.0f, 3.0f));
+
             //Set roll direction
             if (transform.right.x > 0.0f)
             {
@@ -470,7 +481,7 @@ public class Character : MonoBehaviour
             rightWeaponAnim.SetBool("Climb", true);
 
             // Sound, adjustable volume and "random" pitch
-            SoundManager.PlaySound(climb, 0.90f, Random.Range(1.0f, 3.0f));
+            SoundManager.PlaySound(climbRoll, 0.20f, Random.Range(4.5f, 6.0f));
 
             //Set climb direction
             if (transform.position.y == -58)
@@ -503,6 +514,10 @@ public class Character : MonoBehaviour
         rightWeaponAnim.SetBool("Run", true);
         //Set character movement direction
 
+        // Sound
+        SoundManager.PlaySound(steps, 0.1f, Random.Range(1.0f, 1.5f));
+
+
         rightMoveTarget = new Vector2(rightMovePoint.position.x, transform.position.y);
         //Move character towards right
         transform.position = Vector2.MoveTowards(transform.position, rightMoveTarget, moveSpeed * Time.fixedDeltaTime);
@@ -514,10 +529,12 @@ public class Character : MonoBehaviour
         characterAnim.SetBool("Run", true);
         leftWeaponAnim.SetBool("Run", true);
         rightWeaponAnim.SetBool("Run", true);
+
         //Set character movement direction
         leftMoveTarget = new Vector2(leftMovePoint.position.x, transform.position.y);
         //Move character towards left
         transform.position = Vector2.MoveTowards(transform.position, leftMoveTarget, moveSpeed * Time.fixedDeltaTime);
+
     }
 
     protected void Recovery(float recoveryTime)
@@ -572,6 +589,9 @@ public class Character : MonoBehaviour
         leftWeaponAnim.SetBool("Death", true);
         rightWeaponAnim.SetBool("Death", true);
 
+        // Sound
+        SoundManager.PlaySound(screamDeath, 10.0f, Random.Range(1.0f, 2.0f));                                                                                          /////////////   
+
         charCollider.enabled = false;
         this.enabled = false;
     }
@@ -583,6 +603,18 @@ public class Character : MonoBehaviour
             characterAnim.SetTrigger("Block");
             leftWeaponAnim.SetTrigger("Block");
             rightWeaponAnim.SetTrigger("Block");
+
+            // Shield block sound
+            if (true)
+            {
+                SoundManager.PlaySound(shieldBlock, 0.2f, Random.Range(1.0f, 1.5f));
+            }
+            // If no shield in hand
+            else
+            {
+                SoundManager.PlaySound
+                (anyBlock, Random.Range(5.0f, 7.0f), Random.Range(6.0f, 7.0f));
+            }
         }
         else if (_pushDistance != 0)
         {
@@ -595,6 +627,9 @@ public class Character : MonoBehaviour
             characterAnim.SetTrigger("Hit");
             leftWeaponAnim.SetTrigger("Hit");
             rightWeaponAnim.SetTrigger("Hit");
+
+            // Hurt
+            SoundManager.PlaySound(screamHit, 2.0f, Random.Range(1.0f, 1.1f));
         }
         else
         {
@@ -605,6 +640,9 @@ public class Character : MonoBehaviour
             characterAnim.SetTrigger("Hit");
             leftWeaponAnim.SetTrigger("Hit");
             rightWeaponAnim.SetTrigger("Hit");
+
+            // Hurt stun Sound
+            SoundManager.PlaySound(screamStun, 2.0f, Random.Range(1.0f, 1.1f));
         }
     }
 }
