@@ -1682,6 +1682,31 @@ PrefabInstance:
       propertyPath: screamAtk
       value: 
       objectReference: {fileID: 8300000, guid: 4b26d6a08e4a8c5478f1695c31097c91, type: 3}
+    - target: {fileID: 1428764899235172643, guid: 12f8839490acad04eaad775d6291ee65,
+        type: 3}
+      propertyPath: shieldBlock2
+      value: 
+      objectReference: {fileID: 8300000, guid: 7524db2f91d3d1348949064a79a6b4de, type: 3}
+    - target: {fileID: 1428764899235172643, guid: 12f8839490acad04eaad775d6291ee65,
+        type: 3}
+      propertyPath: shieldBlock
+      value: 
+      objectReference: {fileID: 8300000, guid: a9ff8a3246a1be047947202af8370747, type: 3}
+    - target: {fileID: 1428764899235172643, guid: 12f8839490acad04eaad775d6291ee65,
+        type: 3}
+      propertyPath: screamStun
+      value: 
+      objectReference: {fileID: 8300000, guid: aa3b9b722a07b1e44bde0fc3750f4e6b, type: 3}
+    - target: {fileID: 1428764899235172643, guid: 12f8839490acad04eaad775d6291ee65,
+        type: 3}
+      propertyPath: screamHit
+      value: 
+      objectReference: {fileID: 8300000, guid: de2febb67e72ccf4895ede52b4af7e2d, type: 3}
+    - target: {fileID: 1428764899235172643, guid: 12f8839490acad04eaad775d6291ee65,
+        type: 3}
+      propertyPath: steps
+      value: 
+      objectReference: {fileID: 8300000, guid: bdc130b3b0c0c1441b91238340f18f82, type: 3}
     - target: {fileID: 1428764899235172669, guid: 12f8839490acad04eaad775d6291ee65,
         type: 3}
       propertyPath: m_Mass
@@ -1706,6 +1731,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_RootOrder
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1428764899235172668, guid: 12f8839490acad04eaad775d6291ee65,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1428764899235172668, guid: 12f8839490acad04eaad775d6291ee65,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.9386792
+      objectReference: {fileID: 0}
+    - target: {fileID: 1428764899235172668, guid: 12f8839490acad04eaad775d6291ee65,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.9868975
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 12f8839490acad04eaad775d6291ee65, type: 3}

@@ -515,8 +515,7 @@ public class Character : MonoBehaviour
         //Set character movement direction
 
         // Sound
-        SoundManager.PlaySound(steps, 0.1f, Random.Range(1.0f, 1.5f));
-
+        //SoundManager.PlaySound(steps, 0.1f, Random.Range(1.0f, 1.5f)); 
 
         rightMoveTarget = new Vector2(rightMovePoint.position.x, transform.position.y);
         //Move character towards right
