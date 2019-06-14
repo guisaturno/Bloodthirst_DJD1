@@ -71,9 +71,15 @@ MonoBehaviour:
   stunRecoveryTime: 2
   pushSpeed: 0
   pushRecoveryTime: 0
-  climb: {fileID: 8300000, guid: 57958f0d933e9fe4cba705e384704b52, type: 3}
-  step: {fileID: 0}
-  scream1: {fileID: 0}
+  climbRoll: {fileID: 8300000, guid: b579660620cccca4a8f8d43fadbf23bc, type: 3}
+  screamAtk: {fileID: 8300000, guid: 4b26d6a08e4a8c5478f1695c31097c91, type: 3}
+  screamHit: {fileID: 8300000, guid: de2febb67e72ccf4895ede52b4af7e2d, type: 3}
+  screamStun: {fileID: 8300000, guid: aa3b9b722a07b1e44bde0fc3750f4e6b, type: 3}
+  screamDeath: {fileID: 8300000, guid: 99443723962cf0849998a64c6b3e75fa, type: 3}
+  screamDeath2: {fileID: 8300000, guid: e728377cab14f3440857187652106baf, type: 3}
+  shieldBlock: {fileID: 8300000, guid: b719d8de1e3ab3f4dbb2a0ac76a45861, type: 3}
+  anyBlock: {fileID: 8300000, guid: b719d8de1e3ab3f4dbb2a0ac76a45861, type: 3}
+  swordAtk1: {fileID: 8300000, guid: fb9a803f7ed58674d8c4faab33eedaa0, type: 3}
 --- !u!212 &1428764899235172668
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -416,6 +422,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1428764900610385994}
     m_Modifications:
+    - target: {fileID: 6337126049904040643, guid: fee3fa66e9d6d6a428e57d824697e616,
+        type: 3}
+      propertyPath: m_Name
+      value: RunLimit
+      objectReference: {fileID: 0}
     - target: {fileID: 1201763347404584897, guid: fee3fa66e9d6d6a428e57d824697e616,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -470,11 +481,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6337126049904040643, guid: fee3fa66e9d6d6a428e57d824697e616,
-        type: 3}
-      propertyPath: m_Name
-      value: RunLimit
       objectReference: {fileID: 0}
     - target: {fileID: 4466034812368078655, guid: fee3fa66e9d6d6a428e57d824697e616,
         type: 3}

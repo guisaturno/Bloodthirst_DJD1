@@ -137,15 +137,16 @@ MonoBehaviour:
   stunRecoveryTime: 0
   pushSpeed: 0
   pushRecoveryTime: 0
-  climbRoll: {fileID: 8300000, guid: 57958f0d933e9fe4cba705e384704b52, type: 3}
-  step: {fileID: 8300000, guid: bdc130b3b0c0c1441b91238340f18f82, type: 3}
+  climbRollNet: {fileID: 8300000, guid: b579660620cccca4a8f8d43fadbf23bc, type: 3}
   screamAtk: {fileID: 8300000, guid: 4b26d6a08e4a8c5478f1695c31097c91, type: 3}
   screamHit: {fileID: 8300000, guid: 100a3fe1064443a409a58be216c8bd95, type: 3}
   screamStun: {fileID: 8300000, guid: 4cb667c99eae4aa44bfe833b325670b8, type: 3}
-  screamDeath: {fileID: 0}
-  steps: {fileID: 8300000, guid: bdc130b3b0c0c1441b91238340f18f82, type: 3}
+  screamDeath: {fileID: 8300000, guid: 99443723962cf0849998a64c6b3e75fa, type: 3}
+  screamDeath2: {fileID: 8300000, guid: e728377cab14f3440857187652106baf, type: 3}
   shieldBlock: {fileID: 8300000, guid: a9ff8a3246a1be047947202af8370747, type: 3}
-  anyBlock: {fileID: 0}
+  anyBlock: {fileID: 8300000, guid: b719d8de1e3ab3f4dbb2a0ac76a45861, type: 3}
+  swordAtk1: {fileID: 8300000, guid: fb9a803f7ed58674d8c4faab33eedaa0, type: 3}
+  swordAtk2: {fileID: 8300000, guid: 8985eba9817be82438818eaf844a52d2, type: 3}
   playerDistance: 40
 --- !u!95 &8160765561143404707
 Animator:

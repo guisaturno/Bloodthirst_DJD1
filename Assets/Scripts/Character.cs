@@ -85,15 +85,23 @@ public class Character : MonoBehaviour
 
     // SOUND *****
     [Header("SoundFX")]
-    public AudioClip climbRoll;
-    public AudioClip step;
+    public AudioClip climbRollNet;
+
+    //public AudioClip step;
+
+    // Scream sounds
     public AudioClip screamAtk;
     public AudioClip screamHit;
     public AudioClip screamStun;
     public AudioClip screamDeath;
-    public AudioClip steps;
+    public AudioClip screamDeath2;
+    //public AudioClip steps;
+
+    // Weapon Sounds
     public AudioClip shieldBlock;
-    public AudioClip anyBlock; // Not implemented, missing condition
+    public AudioClip anyBlock;
+    public AudioClip swordAtk1;
+    public AudioClip swordAtk2;
 
     // Properties
     public float MaxHP { get; set; }
@@ -198,7 +206,7 @@ public class Character : MonoBehaviour
         }
 
         Vector3 newPos = transform.position;
-        newPos.z = newPos.y + 90.0f + zOffset;     
+        newPos.z = newPos.y + 90.0f + zOffset;
         transform.position = newPos;
     }
 
@@ -449,7 +457,7 @@ public class Character : MonoBehaviour
             rightWeaponAnim.SetTrigger("Roll");
 
             // Sound
-            SoundManager.PlaySound(climbRoll, 0.20f, Random.Range(1.0f, 3.0f));
+            SoundManager.PlaySound(climbRollNet, 0.20f, Random.Range(1.0f, 3.0f));
 
             //Set roll direction
             if (transform.right.x > 0.0f)
@@ -487,7 +495,7 @@ public class Character : MonoBehaviour
             rightWeaponAnim.SetBool("Climb", true);
 
             // Sound, adjustable volume and "random" pitch
-            SoundManager.PlaySound(climbRoll, 0.20f, Random.Range(4.5f, 6.0f));
+            SoundManager.PlaySound(climbRollNet, 0.20f, Random.Range(4.5f, 6.0f));
 
             //Set climb direction
             if (transform.position.y == -58)
@@ -518,12 +526,10 @@ public class Character : MonoBehaviour
         characterAnim.SetBool("Run", true);
         leftWeaponAnim.SetBool("Run", true);
         rightWeaponAnim.SetBool("Run", true);
+
         //Set character movement direction
-
-        // Sound
-        //SoundManager.PlaySound(steps, 0.1f, Random.Range(1.0f, 1.5f)); 
-
         rightMoveTarget = new Vector2(rightMovePoint.position.x, transform.position.y);
+
         //Move character towards right
         transform.position = Vector2.MoveTowards(transform.position, rightMoveTarget, moveSpeed * Time.fixedDeltaTime);
     }
@@ -537,6 +543,7 @@ public class Character : MonoBehaviour
 
         //Set character movement direction
         leftMoveTarget = new Vector2(leftMovePoint.position.x, transform.position.y);
+
         //Move character towards left
         transform.position = Vector2.MoveTowards(transform.position, leftMoveTarget, moveSpeed * Time.fixedDeltaTime);
 
@@ -595,7 +602,14 @@ public class Character : MonoBehaviour
         rightWeaponAnim.SetBool("Death", true);
 
         // Sound
-        SoundManager.PlaySound(screamDeath, 10.0f, Random.Range(1.0f, 2.0f));                                                                                          /////////////   
+        if (leftWeapon.name == "Shield")
+        {
+            SoundManager.PlaySound(screamDeath, 3.0f, Random.Range(0.6f, 1.1f));
+        }
+        else if (leftWeapon.name == "Net")
+        {
+            SoundManager.PlaySound(screamDeath2, 1.0f, Random.Range(0.9f, 1.2f));
+        }
 
         charCollider.enabled = false;
         this.enabled = false;
@@ -638,8 +652,14 @@ public class Character : MonoBehaviour
             leftWeaponAnim.SetTrigger("Hit");
             rightWeaponAnim.SetTrigger("Hit");
 
+            // Sound net
+            if (rightWeapon.name == "Net")
+            {
+                SoundManager.PlaySound(climbRollNet, 1.0f, Random.Range(0.5f, 0.7f));
+            }
+
             // Hurt
-            SoundManager.PlaySound(screamHit, 2.0f, Random.Range(1.0f, 1.1f));
+            SoundManager.PlaySound(screamHit, 0.8f, Random.Range(1.0f, 1.1f));
         }
         else
         {
@@ -651,8 +671,20 @@ public class Character : MonoBehaviour
             leftWeaponAnim.SetTrigger("Hit");
             rightWeaponAnim.SetTrigger("Hit");
 
+            // Sword sound
+            if (rightWeapon.name == "Sword")
+            {
+                SoundManager.PlaySound(swordAtk2, 0.3f, Random.Range(0.7f, 1.1f));
+            }
+            else if (rightWeapon.name == "Net")
+            {
+                SoundManager.PlaySound(climbRollNet, 1.0f, Random.Range(0.5f, 0.7f));
+            }
+            else
+                SoundManager.PlaySound(swordAtk1, 0.3f, Random.Range(0.5f, 0.7f));
+
             // Hurt stun Sound
-            SoundManager.PlaySound(screamStun, 2.0f, Random.Range(1.0f, 1.1f));
+            SoundManager.PlaySound(screamStun, 0.8f, Random.Range(1.0f, 1.1f));
         }
     }
 }
