@@ -42,6 +42,8 @@ public class EnemyAI : Character
         rightWeapon.SetActive(true);
 
         base.Awake();
+
+        zOffset = 0.5f;
     }
 
     protected override void Start()

@@ -100,6 +100,8 @@ public class Character : MonoBehaviour
 
     public float CurrentHP { get; set; }
 
+    protected float zOffset = 0.0f;
+
     protected virtual void Awake()
     {
         characterAnim = gameObject.GetComponent<Animator>();
@@ -194,6 +196,10 @@ public class Character : MonoBehaviour
             default:
                 break;
         }
+
+        Vector3 newPos = transform.position;
+        newPos.z = newPos.y + 90.0f + zOffset;     
+        transform.position = newPos;
     }
 
     private void AnimationManager()
@@ -593,6 +599,11 @@ public class Character : MonoBehaviour
 
         charCollider.enabled = false;
         this.enabled = false;
+
+        zOffset += 2.0f;
+        Vector3 newPos = transform.position;
+        newPos.z = newPos.y + 90.0f + zOffset;
+        transform.position = newPos;
     }
 
     internal void TakeDamage(float damage, float _pushDistance, Transform _hitPos)
@@ -604,7 +615,7 @@ public class Character : MonoBehaviour
             rightWeaponAnim.SetTrigger("Block");
 
             // Shield block sound
-            if (true)
+            if (leftWeapon.name == "Shield")
             {
                 SoundManager.PlaySound(shieldBlock, 0.2f, Random.Range(1.0f, 1.5f));
             }
