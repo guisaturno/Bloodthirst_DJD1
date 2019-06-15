@@ -16,6 +16,9 @@ public class Character : MonoBehaviour
     [SerializeField] protected Animator leftWeaponAnim;
     [SerializeField] protected Animator rightWeaponAnim;
 
+    [Header("Particles")]
+    [SerializeField] protected GameObject bloodEffect;
+
     [Header("Attack")]
     [SerializeField] protected float horizontalRecoveryTime;
     [SerializeField] protected float verticalRecoveryTime;
@@ -647,6 +650,7 @@ public class Character : MonoBehaviour
             hitPos = _hitPos;
             pushDistance = _pushDistance;
 
+            Instantiate(bloodEffect, transform.position, Quaternion.identity);
             CurrentHP -= damage;
             characterAnim.SetTrigger("Hit");
             leftWeaponAnim.SetTrigger("Hit");
@@ -666,6 +670,7 @@ public class Character : MonoBehaviour
             ResetCharacter();
             state = State.Stun;
 
+            Instantiate(bloodEffect, transform.position, Quaternion.identity);
             CurrentHP -= damage;
             characterAnim.SetTrigger("Hit");
             leftWeaponAnim.SetTrigger("Hit");
