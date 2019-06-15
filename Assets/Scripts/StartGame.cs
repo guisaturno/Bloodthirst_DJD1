@@ -5,10 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class StartGame : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-    }
+    [SerializeField] private Animator transition;
+    private bool changedScene = false;
 
     private void Update()
     {
@@ -20,7 +18,18 @@ public class StartGame : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            StartCoroutine(LoadGame());
+        }
+    }
+
+    IEnumerator LoadGame()
+    {
+        if (!changedScene)
+        {
+            transition.SetTrigger("end");
+            yield return new WaitForSeconds(1.5f);
+            SceneManager.LoadScene("Main");
+            changedScene = true;
         }
     }
 
