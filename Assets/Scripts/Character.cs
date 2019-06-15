@@ -108,10 +108,10 @@ public class Character : MonoBehaviour
 
     // Properties
     public float MaxHP { get; set; }
-
     public float CurrentHP { get; set; }
-
     protected float zOffset = 0.0f;
+
+
 
     protected virtual void Awake()
     {
@@ -650,6 +650,7 @@ public class Character : MonoBehaviour
             hitPos = _hitPos;
             pushDistance = _pushDistance;
 
+            if (this is Player) HealthBar.health -= 10f;
             Instantiate(bloodEffect, transform.position, Quaternion.identity);
             CurrentHP -= damage;
             characterAnim.SetTrigger("Hit");
@@ -670,6 +671,7 @@ public class Character : MonoBehaviour
             ResetCharacter();
             state = State.Stun;
 
+            if (this is Player) HealthBar.health -= 10f;
             Instantiate(bloodEffect, transform.position, Quaternion.identity);
             CurrentHP -= damage;
             characterAnim.SetTrigger("Hit");
