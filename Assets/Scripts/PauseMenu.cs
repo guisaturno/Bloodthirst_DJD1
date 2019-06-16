@@ -8,12 +8,16 @@ public class PauseMenu : MonoBehaviour
 {
     public static bool pauseGame = true;
     [SerializeField] private GameObject pauseMenu;
+    [SerializeField] private GameObject controlsImage;
+    [SerializeField] private GameObject controlsText;
+    private bool isPressed;
+
     private GameObject selected;
 
     private void Start()
     {
         selected = GameObject.Find("Start");
-        //Time.timeScale = 0f;
+        isPressed = false;
     }
 
     void Update()
@@ -26,13 +30,11 @@ public class PauseMenu : MonoBehaviour
             if (pauseGame)
             {
                 pauseMenu.SetActive(false);
-                //Time.timeScale = 1f;
                 pauseGame = false;
             }
             else
             {
                 pauseMenu.SetActive(true);
-                //Time.timeScale = 0f;
                 pauseGame = true;
             }
         }
@@ -51,7 +53,6 @@ public class PauseMenu : MonoBehaviour
     public void StartGame()
     {
         pauseMenu.SetActive(false);
-        //Time.timeScale = 1f;
         pauseGame = false;
     }
 
@@ -60,14 +61,11 @@ public class PauseMenu : MonoBehaviour
         SceneManager.LoadScene(1);
     }
 
-    public void ToControls()
+    public void ShowControls()
     {
-
-    }
-
-    public void SelectGameMode()
-    {
-
+        isPressed = !isPressed;
+        controlsImage.SetActive(isPressed);
+        controlsText.SetActive(isPressed);
     }
 
     public void Exit()
