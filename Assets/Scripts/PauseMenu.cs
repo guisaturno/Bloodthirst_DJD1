@@ -6,14 +6,18 @@ using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
-    public bool PauseGame { get; private set; } = true;
+    public static bool pauseGame = true;
     [SerializeField] private GameObject pauseMenu;
+    [SerializeField] private GameObject controlsImage;
+    [SerializeField] private GameObject controlsText;
+    private bool isPressed;
+
     private GameObject selected;
 
     private void Start()
     {
         selected = GameObject.Find("Start");
-        Time.timeScale = 0f;
+        isPressed = false;
     }
 
     void Update()
@@ -23,17 +27,15 @@ public class PauseMenu : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (PauseGame)
+            if (pauseGame)
             {
                 pauseMenu.SetActive(false);
-                Time.timeScale = 1f;
-                PauseGame = false;
+                pauseGame = false;
             }
             else
             {
                 pauseMenu.SetActive(true);
-                Time.timeScale = 0f;
-                PauseGame = true;
+                pauseGame = true;
             }
         }
 
@@ -51,8 +53,7 @@ public class PauseMenu : MonoBehaviour
     public void StartGame()
     {
         pauseMenu.SetActive(false);
-        Time.timeScale = 1f;
-        PauseGame = false;
+        pauseGame = false;
     }
 
     public void RestartGame()
@@ -60,14 +61,11 @@ public class PauseMenu : MonoBehaviour
         SceneManager.LoadScene(1);
     }
 
-    public void ToControls()
+    public void ShowControls()
     {
-
-    }
-
-    public void SelectGameMode()
-    {
-
+        isPressed = !isPressed;
+        controlsImage.SetActive(isPressed);
+        controlsText.SetActive(isPressed);
     }
 
     public void Exit()

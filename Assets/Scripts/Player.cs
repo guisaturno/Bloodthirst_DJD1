@@ -10,7 +10,7 @@ public class Player : Character
     protected override void Update()
     {
         base.Update();
-        if (state != State.Stun)
+        if (state != State.Stun && PauseMenu.pauseGame == false)
         {
             if (state == State.Idle || state == State.Run)
             {

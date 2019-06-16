@@ -67,12 +67,22 @@ public class EnemyAI : Character
             Death();
         }
 
-        base.Update();
+        
 
-        UpdateState();
-
-        if (Vector2.Distance(transform.position, playerTransform.position) < playerDistance && state == State.Run)
+        if (PauseMenu.pauseGame == false)
         {
+            base.Update();
+            UpdateState();
+
+            if (Vector2.Distance(transform.position, playerTransform.position) < playerDistance && state == State.Run)
+            {
+                state = State.Idle;
+            }
+        }
+        else
+        {
+            ResetCharacter();
+            AnimationManager();
             state = State.Idle;
         }
     }
