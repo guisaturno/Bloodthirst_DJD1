@@ -11,6 +11,8 @@ public class Character : MonoBehaviour
     internal State state;
     protected AttackState attackState;
 
+    Random rnd;
+
     [Header("Animator")]
     [SerializeField] protected Animator characterAnim;
     [SerializeField] protected Animator leftWeaponAnim;
@@ -162,6 +164,7 @@ public class Character : MonoBehaviour
         //HP
         MaxHP = 100.0f;
         CurrentHP = MaxHP;
+        rnd = new Random();
     }
 
     protected virtual void Update()
@@ -600,9 +603,19 @@ public class Character : MonoBehaviour
 
     protected virtual void Death()
     {
+        float fallSpeed;
+        Vector2 goDown = (transform.position.y == -17) ? 
+            new Vector2(transform.position.x, transform.position.y - 500f):
+            new Vector2(transform.position.x, transform.position.y - Random.Range(-5f, 20f));
+
         characterAnim.SetBool("Death", true);
         leftWeaponAnim.SetBool("Death", true);
         rightWeaponAnim.SetBool("Death", true);
+
+        fallSpeed = (transform.position.y == -17) ? 10f : 10f;
+
+        transform.position = Vector2.MoveTowards(transform.position, goDown, fallSpeed);
+
 
         // Sound
         if (leftWeapon.name == "Shield")
