@@ -177,7 +177,7 @@ public class EnemyAI : Character
     protected override void Death()
     {
         StopAllCoroutines();
-        KillCount.enemysKilled++;
+        KillCount.enemiesKilled++;
         roundManager.enemysAlive -= 1;
         base.Death();
     }

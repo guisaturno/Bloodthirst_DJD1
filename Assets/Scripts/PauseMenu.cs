@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
-    public static bool pauseGame = true;
+    public static bool pauseGame;
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private GameObject controlsImage;
     [SerializeField] private GameObject controlsText;
@@ -17,6 +17,7 @@ public class PauseMenu : MonoBehaviour
     private void Start()
     {
         selected = GameObject.Find("Start");
+        pauseGame = true;
         isPressed = false;
     }
 
