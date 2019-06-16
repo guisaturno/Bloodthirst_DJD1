@@ -5,16 +5,19 @@ using UnityEngine.UI;
 
 public class KillCount : MonoBehaviour
 {
-    [SerializeField] private Text roundText;
-    public static int enemysKilled;
+    [SerializeField] private Text killText;
+    public static float enemiesKilled;
 
     void Start()
     {
-        enemysKilled = 0;
+        enemiesKilled = 0f;
     }
 
     void Update()
     {
-        roundText.text = "Kills " + enemysKilled;
+        if(enemiesKilled > PlayerPrefs.GetFloat("MostKills"))
+            PlayerPrefs.SetFloat("MostKills", enemiesKilled);
+
+        killText.text = "Kills: " + Mathf.Round(enemiesKilled) + "\n Most Kills: " + PlayerPrefs.GetFloat("MostKills");
     }
 }
