@@ -22,7 +22,6 @@ public class StopRunning : MonoBehaviour
         || obj.CompareTag("Enemy") && character.state == Character.State.Run)
         {
             character.state = Character.State.Idle;
-            print("Stop running");
         }
     }
 }

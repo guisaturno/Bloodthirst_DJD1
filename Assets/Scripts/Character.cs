@@ -131,33 +131,33 @@ public class Character : MonoBehaviour
     protected virtual void Start()
     {
         //Attack
-        horizontalRecoveryTime = 1.5f;
-        verticalRecoveryTime = 1.5f;
-        specialRecoveryTime = leftWeaponScript.specialRecoveryTime;
+        horizontalRecoveryTime = 1.5f -1f;
+        verticalRecoveryTime = 1.5f - 1.1f;
+        specialRecoveryTime = leftWeaponScript.specialRecoveryTime - 1f;
 
         //Dash
         dashDistance = 30.0f;
-        dashSpeed = 30.0f;
+        dashSpeed = 30.0f * 2.3f;
 
         //Roll
         rollDistance = 60.0f;
-        rollSpeed = 30.0f;
-        rollRecoveryTime = 1.8f;
+        rollSpeed = 30.0f * 2.3f;
+        rollRecoveryTime = 1.8f - 1.1f;
 
         //Move
-        moveSpeed = 35.0f;
+        moveSpeed = 35.0f * 2.3f;
 
         //Climb
         climbDistance = 42.0f;
-        climbSpeed = 20.0f;
-        climbRecoveryTime = 2.0f;
+        climbSpeed = 20.0f * 2.3f;
+        climbRecoveryTime = 2.0f - 1.1f;
 
         //Stun
-        stunRecoveryTime = 1.0f;
+        stunRecoveryTime = .5f;
 
         //Push
-        pushRecoveryTime = 2.0f;
-        pushSpeed = 50.0f;
+        pushRecoveryTime = 2.0f - 1.1f;
+        pushSpeed = 50.0f * 2.3f;
 
         //HP
         MaxHP = 100.0f;
