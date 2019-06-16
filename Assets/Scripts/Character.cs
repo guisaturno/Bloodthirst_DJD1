@@ -109,12 +109,30 @@ public class Character : MonoBehaviour
     // Properties
     public float MaxHP { get; set; }
     public float CurrentHP { get; set; }
+    //Death
     protected float zOffset = 0.0f;
-
-
 
     protected virtual void Awake()
     {
+        if (Random.Range(1, 3) == 1)
+        {
+            leftWeapon = gameObject.transform.Find("LeftHand").transform.Find("Net").gameObject;
+        }
+        else
+        {
+            leftWeapon = gameObject.transform.Find("LeftHand").transform.Find("Shield").gameObject;
+        }
+        leftWeapon.SetActive(true);
+        if (Random.Range(1, 3) == 1)
+        {
+            rightWeapon = gameObject.transform.Find("RightHand").transform.Find("Sword").gameObject;
+        }
+        else
+        {
+            rightWeapon = gameObject.transform.Find("RightHand").transform.Find("Trident").gameObject;
+        }
+        rightWeapon.SetActive(true);
+
         characterAnim = gameObject.GetComponent<Animator>();
         charCollider = gameObject.GetComponent<CapsuleCollider2D>();
 
@@ -131,8 +149,8 @@ public class Character : MonoBehaviour
     protected virtual void Start()
     {
         //Attack
-        horizontalRecoveryTime = 1.5f -1f;
-        verticalRecoveryTime = 1.5f - 1.1f;
+        horizontalRecoveryTime = 1.8f - 1f;
+        verticalRecoveryTime = 2.0f - 1.1f;
         specialRecoveryTime = leftWeaponScript.specialRecoveryTime - 1f;
 
         //Dash
@@ -156,9 +174,9 @@ public class Character : MonoBehaviour
         stunRecoveryTime = .5f;
 
         //Push
-        pushRecoveryTime = 2.0f - 1.1f;
+        pushRecoveryTime = 1.5f - 1.1f;
         pushSpeed = 50.0f * 2.3f;
-
+       
         //HP
         MaxHP = 100.0f;
         CurrentHP = MaxHP;
@@ -213,7 +231,7 @@ public class Character : MonoBehaviour
         transform.position = newPos;
     }
 
-    private void AnimationManager()
+    protected void AnimationManager()
     {
         //Set animator booleans to false according to state
         switch (state)
@@ -402,6 +420,7 @@ public class Character : MonoBehaviour
                         characterAnim.SetBool("NetAttack", true);
                         leftWeaponAnim.SetBool("NetAttack", true);
                         rightWeaponAnim.SetBool("NetAttack", true);
+                        charCollider.enabled = false;
                         leftWeaponScript.SpecialAttack();
                         break;
                     default:
@@ -600,9 +619,18 @@ public class Character : MonoBehaviour
 
     protected virtual void Death()
     {
+        float fallSpeed;
+        Vector2 goDown = (transform.position.y == -17) ?
+            new Vector2(transform.position.x, transform.position.y - 500f) :
+            new Vector2(transform.position.x, transform.position.y - Random.Range(-5f, 20f));
+
         characterAnim.SetBool("Death", true);
         leftWeaponAnim.SetBool("Death", true);
         rightWeaponAnim.SetBool("Death", true);
+
+        fallSpeed = (transform.position.y == -17) ? 10f : 15f;
+        transform.position = Vector2.MoveTowards(transform.position, goDown, fallSpeed);
+
 
         // Sound
         if (leftWeapon.name == "Shield")
@@ -650,7 +678,7 @@ public class Character : MonoBehaviour
             hitPos = _hitPos;
             pushDistance = _pushDistance;
 
-            if (this is Player) HealthBar.health -= 10f;
+            if (this is Player) HealthBar.health -= damage;
             Instantiate(bloodEffect, transform.position, Quaternion.identity);
             CurrentHP -= damage;
             characterAnim.SetTrigger("Hit");
@@ -671,7 +699,7 @@ public class Character : MonoBehaviour
             ResetCharacter();
             state = State.Stun;
 
-            if (this is Player) HealthBar.health -= 10f;
+            if (this is Player) HealthBar.health -= damage;
             Instantiate(bloodEffect, transform.position, Quaternion.identity);
             CurrentHP -= damage;
             characterAnim.SetTrigger("Hit");

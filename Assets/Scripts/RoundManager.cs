@@ -5,10 +5,12 @@ using UnityEngine;
 public class RoundManager : MonoBehaviour
 {
     [SerializeField] internal Transform[] spawnPoints;
+    [SerializeField] private float baseSpawnTime;
     public GameObject enemyPrefab;
     internal int enemysAlive;
     private int roundLevel;
     private float timeResponseAI;
+    private float spawnTime;
 
     // Crowd sound
     public AudioClip crowd;
@@ -16,17 +18,28 @@ public class RoundManager : MonoBehaviour
     private void Start()
     {
         enemysAlive = 0;
-        timeResponseAI = 2f;
+        timeResponseAI = 1.5f;
+        spawnTime = baseSpawnTime;
     }
 
     void Update()
     {
-        if (enemysAlive == 0)
+        if (PauseMenu.pauseGame == false)
+            spawnTime -= Time.deltaTime;
+
+        if (enemysAlive == 0 || spawnTime <= 0 && enemysAlive <= 5)
         {
+            RoundCount.rounds += 1;
             roundLevel += 1;
-            if (roundLevel % 2 == 0)
+            if (baseSpawnTime > 5)
             {
-                timeResponseAI -= 0.2f;
+                baseSpawnTime -= 1;
+            }
+            
+            spawnTime = baseSpawnTime;
+            if (roundLevel % 2 == 0 && timeResponseAI >= 0.25)
+            {
+                timeResponseAI -= 0.25f;
                 Spawn();
             }
             else

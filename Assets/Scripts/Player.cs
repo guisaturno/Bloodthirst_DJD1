@@ -3,10 +3,14 @@ using UnityEngine.SceneManagement;
 
 public class Player : Character
 {
+    protected override void Start()
+    {
+        base.Start();
+    }
     protected override void Update()
     {
         base.Update();
-        if (state != State.Stun)
+        if (state != State.Stun && PauseMenu.pauseGame == false)
         {
             if (state == State.Idle || state == State.Run)
             {
