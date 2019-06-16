@@ -18,6 +18,6 @@ public class KillCount : MonoBehaviour
         if(enemiesKilled > PlayerPrefs.GetFloat("MostKills"))
             PlayerPrefs.SetFloat("MostKills", enemiesKilled);
 
-        killText.text = "Kills: " + Mathf.Round(enemiesKilled) + "\n Most Kills: " + PlayerPrefs.GetFloat("MostKills");
+        killText.text = "\t\t\tKills: " + Mathf.Round(enemiesKilled) + "\n Most Kills: " + PlayerPrefs.GetFloat("MostKills");
     }
 }
