@@ -53,6 +53,7 @@ MonoBehaviour:
   characterAnim: {fileID: 1428764900073420306}
   leftWeaponAnim: {fileID: 1428764899039097129}
   rightWeaponAnim: {fileID: 1428764899659681260}
+  bloodEffect: {fileID: 0}
   horizontalRecoveryTime: 0
   verticalRecoveryTime: 0
   leftWeapon: {fileID: 1428764899039097127}
@@ -71,7 +72,7 @@ MonoBehaviour:
   stunRecoveryTime: 2
   pushSpeed: 0
   pushRecoveryTime: 0
-  climbRoll: {fileID: 8300000, guid: b579660620cccca4a8f8d43fadbf23bc, type: 3}
+  climbRollNet: {fileID: 0}
   screamAtk: {fileID: 8300000, guid: 4b26d6a08e4a8c5478f1695c31097c91, type: 3}
   screamHit: {fileID: 8300000, guid: de2febb67e72ccf4895ede52b4af7e2d, type: 3}
   screamStun: {fileID: 8300000, guid: aa3b9b722a07b1e44bde0fc3750f4e6b, type: 3}
@@ -80,6 +81,7 @@ MonoBehaviour:
   shieldBlock: {fileID: 8300000, guid: b719d8de1e3ab3f4dbb2a0ac76a45861, type: 3}
   anyBlock: {fileID: 8300000, guid: b719d8de1e3ab3f4dbb2a0ac76a45861, type: 3}
   swordAtk1: {fileID: 8300000, guid: fb9a803f7ed58674d8c4faab33eedaa0, type: 3}
+  swordAtk2: {fileID: 0}
 --- !u!212 &1428764899235172668
 SpriteRenderer:
   m_ObjectHideFlags: 0
