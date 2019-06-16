@@ -6,14 +6,14 @@ using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
-    public bool PauseGame { get; private set; } = true;
+    public static bool pauseGame = true;
     [SerializeField] private GameObject pauseMenu;
     private GameObject selected;
 
     private void Start()
     {
         selected = GameObject.Find("Start");
-        Time.timeScale = 0f;
+        //Time.timeScale = 0f;
     }
 
     void Update()
@@ -23,17 +23,17 @@ public class PauseMenu : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (PauseGame)
+            if (pauseGame)
             {
                 pauseMenu.SetActive(false);
-                Time.timeScale = 1f;
-                PauseGame = false;
+                //Time.timeScale = 1f;
+                pauseGame = false;
             }
             else
             {
                 pauseMenu.SetActive(true);
-                Time.timeScale = 0f;
-                PauseGame = true;
+                //Time.timeScale = 0f;
+                pauseGame = true;
             }
         }
 
@@ -51,8 +51,8 @@ public class PauseMenu : MonoBehaviour
     public void StartGame()
     {
         pauseMenu.SetActive(false);
-        Time.timeScale = 1f;
-        PauseGame = false;
+        //Time.timeScale = 1f;
+        pauseGame = false;
     }
 
     public void RestartGame()

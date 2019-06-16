@@ -11,8 +11,6 @@ public class Character : MonoBehaviour
     internal State state;
     protected AttackState attackState;
 
-    Random rnd;
-
     [Header("Animator")]
     [SerializeField] protected Animator characterAnim;
     [SerializeField] protected Animator leftWeaponAnim;
@@ -163,7 +161,6 @@ public class Character : MonoBehaviour
         //HP
         MaxHP = 100.0f;
         CurrentHP = MaxHP;
-        rnd = new Random();
     }
 
     protected virtual void Update()
@@ -215,7 +212,7 @@ public class Character : MonoBehaviour
         transform.position = newPos;
     }
 
-    private void AnimationManager()
+    protected void AnimationManager()
     {
         //Set animator booleans to false according to state
         switch (state)
