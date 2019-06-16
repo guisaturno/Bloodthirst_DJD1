@@ -43,7 +43,7 @@ public class EnemyAI : Character
 
         base.Awake();
 
-        zOffset = 0.5f;
+        zOffset = 5f;
     }
 
     protected override void Start()
