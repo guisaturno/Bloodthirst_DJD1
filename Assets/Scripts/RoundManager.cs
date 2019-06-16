@@ -29,6 +29,7 @@ public class RoundManager : MonoBehaviour
 
         if (enemysAlive == 0 || spawnTime <= 0 && enemysAlive <= 5)
         {
+            RoundCount.rounds += 1;
             roundLevel += 1;
             if (baseSpawnTime > 5)
             {
