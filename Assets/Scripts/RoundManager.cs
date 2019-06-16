@@ -10,6 +10,9 @@ public class RoundManager : MonoBehaviour
     private int roundLevel;
     private float timeResponseAI;
 
+    // Crowd sound
+    public AudioClip crowd;
+
     private void Start()
     {
         enemysAlive = 0;
@@ -41,5 +44,8 @@ public class RoundManager : MonoBehaviour
         EnemyAI enemyAI = obj.GetComponent<EnemyAI>();
         enemyAI.NewEnemy(this, timeResponseAI);
         enemysAlive += 1;
+
+        // Sound crowd
+        SoundManager.PlaySound(crowd, Random.Range(0.5f, 1.0f), Random.Range(1.0f, 1.3f));
     }
 }
