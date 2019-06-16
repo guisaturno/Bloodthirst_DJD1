@@ -1,8 +1,11 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class Player : Character
 {
+    private bool isCoroutineExecuting = false;
+
     protected override void Start()
     {
         base.Start();
@@ -76,12 +79,28 @@ public class Player : Character
         //On death
         if (CurrentHP <= 0)
         {
-            Scene scene = SceneManager.GetActiveScene(); SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+            state = State.Dead;
+            Death();
+            StartCoroutine(ExecuteAfterTime(4f));
         }
         //Restart scene
         if (Input.GetKeyDown(KeyCode.R))
         {
             Scene scene = SceneManager.GetActiveScene(); SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
+    }
+
+    IEnumerator ExecuteAfterTime(float delay)
+    {
+        if (isCoroutineExecuting)
+            yield break;
+
+        isCoroutineExecuting = true;
+
+        yield return new WaitForSeconds(delay);
+
+        // Code to execute after the delay
+        Scene scene = SceneManager.GetActiveScene(); SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+        isCoroutineExecuting = false;
     }
 }
