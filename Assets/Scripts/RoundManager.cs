@@ -24,7 +24,9 @@ public class RoundManager : MonoBehaviour
 
     void Update()
     {
-        spawnTime -= Time.deltaTime;
+        if (PauseMenu.pauseGame == false)
+            spawnTime -= Time.deltaTime;
+
         if (enemysAlive == 0 || spawnTime <= 0 && enemysAlive <= 5)
         {
             roundLevel += 1;
