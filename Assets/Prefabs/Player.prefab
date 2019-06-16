@@ -53,7 +53,8 @@ MonoBehaviour:
   characterAnim: {fileID: 1428764900073420306}
   leftWeaponAnim: {fileID: 1428764899039097129}
   rightWeaponAnim: {fileID: 1428764899659681260}
-  bloodEffect: {fileID: 0}
+  bloodEffect: {fileID: 1921381198519819808, guid: 65a17d3a737f90049851e0af11fcd52d,
+    type: 3}
   horizontalRecoveryTime: 0
   verticalRecoveryTime: 0
   leftWeapon: {fileID: 1428764899039097127}
@@ -63,8 +64,10 @@ MonoBehaviour:
   rollDistance: 41
   rollRecoveryTime: 1.5
   rollSpeed: 100
-  rightMovePoint: {fileID: 0}
-  leftMovePoint: {fileID: 0}
+  rightMovePoint: {fileID: 7682092140051647602, guid: d16c1743f4f7cd943896c5d4e994c217,
+    type: 3}
+  leftMovePoint: {fileID: 6667280109380836698, guid: 7c7642093be49304ba9050ab55ef6adb,
+    type: 3}
   moveSpeed: 40
   climbDistance: 41
   climbRecoveryTime: 2.2
@@ -335,7 +338,12 @@ PrefabInstance:
     - target: {fileID: 5318492210810279587, guid: 22ea230ea5a470244a28ca3ce9580064,
         type: 3}
       propertyPath: m_Name
-      value: LongSword
+      value: Sword
+      objectReference: {fileID: 0}
+    - target: {fileID: 5318492210810279587, guid: 22ea230ea5a470244a28ca3ce9580064,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5318492210810279591, guid: 22ea230ea5a470244a28ca3ce9580064,
         type: 3}
@@ -395,7 +403,7 @@ PrefabInstance:
     - target: {fileID: 5318492210810279590, guid: 22ea230ea5a470244a28ca3ce9580064,
         type: 3}
       propertyPath: baseDamage
-      value: 50
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 22ea230ea5a470244a28ca3ce9580064, type: 3}
@@ -564,6 +572,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8360194568693842040, guid: 320e43e1c35962d4eaacc65fe41a5774,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9087511220511485304, guid: 320e43e1c35962d4eaacc65fe41a5774,
+        type: 3}
+      propertyPath: pushDistance
+      value: -50
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 320e43e1c35962d4eaacc65fe41a5774, type: 3}
 --- !u!4 &1428764899567188696 stripped
@@ -583,6 +601,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Shield
+      objectReference: {fileID: 0}
+    - target: {fileID: 7738114049571249033, guid: ef6b293ab3488f241bfad11dad50728d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7738114049571249029, guid: ef6b293ab3488f241bfad11dad50728d,
         type: 3}

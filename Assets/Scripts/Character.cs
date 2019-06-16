@@ -116,6 +116,25 @@ public class Character : MonoBehaviour
 
     protected virtual void Awake()
     {
+        if (Random.Range(1, 3) == 1)
+        {
+            leftWeapon = gameObject.transform.Find("LeftHand").transform.Find("Net").gameObject;
+        }
+        else
+        {
+            leftWeapon = gameObject.transform.Find("LeftHand").transform.Find("Shield").gameObject;
+        }
+        leftWeapon.SetActive(true);
+        if (Random.Range(1, 3) == 1)
+        {
+            rightWeapon = gameObject.transform.Find("RightHand").transform.Find("Sword").gameObject;
+        }
+        else
+        {
+            rightWeapon = gameObject.transform.Find("RightHand").transform.Find("Trident").gameObject;
+        }
+        rightWeapon.SetActive(true);
+
         characterAnim = gameObject.GetComponent<Animator>();
         charCollider = gameObject.GetComponent<CapsuleCollider2D>();
 
@@ -133,7 +152,7 @@ public class Character : MonoBehaviour
     {
         //Attack
         horizontalRecoveryTime = 1.5f - 1f;
-        verticalRecoveryTime = 1.5f - 1.1f;
+        verticalRecoveryTime = 2.0f - 1.1f;
         specialRecoveryTime = leftWeaponScript.specialRecoveryTime - 1f;
 
         //Dash
@@ -157,9 +176,9 @@ public class Character : MonoBehaviour
         stunRecoveryTime = .5f;
 
         //Push
-        pushRecoveryTime = 2.0f - 1.1f;
+        pushRecoveryTime = 1.5f - 1.1f;
         pushSpeed = 50.0f * 2.3f;
-
+       
         //HP
         MaxHP = 100.0f;
         CurrentHP = MaxHP;
@@ -568,7 +587,7 @@ public class Character : MonoBehaviour
         if (recovery <= 0.0f)
         {
             state = State.Idle;
-            ResetCharacter();
+            charCollider.enabled = true;
             recovered = false;
         }
     }

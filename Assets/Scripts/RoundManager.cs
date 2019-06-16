@@ -18,7 +18,7 @@ public class RoundManager : MonoBehaviour
     private void Start()
     {
         enemysAlive = 0;
-        timeResponseAI = 2f;
+        timeResponseAI = 1.5f;
         spawnTime = baseSpawnTime;
     }
 
@@ -29,9 +29,9 @@ public class RoundManager : MonoBehaviour
         {
             roundLevel += 1;
             spawnTime = baseSpawnTime;
-            if (roundLevel % 2 == 0 && timeResponseAI >= 0.75)
+            if (roundLevel % 2 == 0 && timeResponseAI >= 0.25)
             {
-                timeResponseAI -= 0.2f;
+                timeResponseAI -= 0.25f;
                 Spawn();
             }
             else
