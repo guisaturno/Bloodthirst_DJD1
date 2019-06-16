@@ -22,28 +22,9 @@ public class EnemyAI : Character
 
     protected override void Awake()
     {
-        if (Random.Range(1, 3) == 1)
-        {
-            leftWeapon = gameObject.transform.Find("LeftHand").transform.Find("Net").gameObject;
-        }
-        else
-        {
-            leftWeapon = gameObject.transform.Find("LeftHand").transform.Find("Shield").gameObject;
-        }
-        leftWeapon.SetActive(true);
-        if (Random.Range(1, 3) == 1)
-        {
-            rightWeapon = gameObject.transform.Find("RightHand").transform.Find("Sword").gameObject;
-        }
-        else
-        {
-            rightWeapon = gameObject.transform.Find("RightHand").transform.Find("Trident").gameObject;
-        }
-        rightWeapon.SetActive(true);
-
         base.Awake();
 
-        zOffset = 0.5f;
+        zOffset = 5f;
     }
 
     protected override void Start()

@@ -30,6 +30,11 @@ public class RoundManager : MonoBehaviour
         if (enemysAlive == 0 || spawnTime <= 0 && enemysAlive <= 5)
         {
             roundLevel += 1;
+            if (baseSpawnTime > 5)
+            {
+                baseSpawnTime -= 1;
+            }
+            
             spawnTime = baseSpawnTime;
             if (roundLevel % 2 == 0 && timeResponseAI >= 0.25)
             {

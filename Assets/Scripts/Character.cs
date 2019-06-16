@@ -149,7 +149,7 @@ public class Character : MonoBehaviour
     protected virtual void Start()
     {
         //Attack
-        horizontalRecoveryTime = 1.5f - 1f;
+        horizontalRecoveryTime = 1.8f - 1f;
         verticalRecoveryTime = 2.0f - 1.1f;
         specialRecoveryTime = leftWeaponScript.specialRecoveryTime - 1f;
 
@@ -420,6 +420,7 @@ public class Character : MonoBehaviour
                         characterAnim.SetBool("NetAttack", true);
                         leftWeaponAnim.SetBool("NetAttack", true);
                         rightWeaponAnim.SetBool("NetAttack", true);
+                        charCollider.enabled = false;
                         leftWeaponScript.SpecialAttack();
                         break;
                     default:
@@ -584,7 +585,7 @@ public class Character : MonoBehaviour
         if (recovery <= 0.0f)
         {
             state = State.Idle;
-            charCollider.enabled = true;
+            ResetCharacter();
             recovered = false;
         }
     }
