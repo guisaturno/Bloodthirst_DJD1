@@ -16,12 +16,12 @@ public class WeaponClass : MonoBehaviour
     internal bool attacked = true;
     internal bool hit;
 
-    protected virtual void Start()
+    private void Start()
     {
         damage = baseDamage;
     }
 
-    internal virtual void VerticalAttack()
+    internal void VerticalAttack()
     {
         if (attacked)
         {
@@ -33,7 +33,7 @@ public class WeaponClass : MonoBehaviour
         }
     }
 
-    internal virtual void HorizontalAttack()
+    internal void HorizontalAttack()
     {
         if (attacked)
         {
@@ -42,7 +42,7 @@ public class WeaponClass : MonoBehaviour
         }
     }
 
-    internal virtual void SpecialAttack()
+    internal void SpecialAttack()
     {
         if (attacked)
         {
@@ -54,7 +54,7 @@ public class WeaponClass : MonoBehaviour
         }
     }
 
-    protected virtual void OnTriggerEnter2D(Collider2D obj)
+    private void OnTriggerEnter2D(Collider2D obj)
     {
         if (hit && obj.CompareTag("Player") || hit && obj.CompareTag("Enemy"))
         {

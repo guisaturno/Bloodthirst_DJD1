@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8160765560591362075}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.76, y: 1.52, z: 0}
+  m_LocalPosition: {x: 2.76, y: 1.52, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3747632762438995149}
@@ -56,7 +56,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8160765561193515867}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.39, y: 3.03, z: 0}
+  m_LocalPosition: {x: 8.39, y: 3.03, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 379918241532257870}
@@ -149,7 +149,6 @@ MonoBehaviour:
   anyBlock: {fileID: 8300000, guid: b719d8de1e3ab3f4dbb2a0ac76a45861, type: 3}
   swordAtk1: {fileID: 8300000, guid: fb9a803f7ed58674d8c4faab33eedaa0, type: 3}
   swordAtk2: {fileID: 8300000, guid: 8985eba9817be82438818eaf844a52d2, type: 3}
-  healthObject: {fileID: 0}
   playerDistance: 40
 --- !u!95 &8160765561143404707
 Animator:
@@ -415,7 +414,7 @@ PrefabInstance:
     - target: {fileID: 4990719761623177873, guid: 326be0c3ad266ce40903462980448879,
         type: 3}
       propertyPath: m_SortingOrder
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 326be0c3ad266ce40903462980448879, type: 3}
@@ -629,7 +628,7 @@ PrefabInstance:
     - target: {fileID: 5318492210810279585, guid: 22ea230ea5a470244a28ca3ce9580064,
         type: 3}
       propertyPath: m_SortingOrder
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 22ea230ea5a470244a28ca3ce9580064, type: 3}

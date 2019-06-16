@@ -111,9 +111,8 @@ public class Character : MonoBehaviour
     // Properties
     public float MaxHP { get; set; }
     public float CurrentHP { get; set; }
+    //Death
     protected float zOffset = 0.0f;
-
-
 
     protected virtual void Awake()
     {
@@ -133,7 +132,7 @@ public class Character : MonoBehaviour
     protected virtual void Start()
     {
         //Attack
-        horizontalRecoveryTime = 1.5f -1f;
+        horizontalRecoveryTime = 1.5f - 1f;
         verticalRecoveryTime = 1.5f - 1.1f;
         specialRecoveryTime = leftWeaponScript.specialRecoveryTime - 1f;
 
@@ -603,18 +602,15 @@ public class Character : MonoBehaviour
 
     protected virtual void Death()
     {
-        float fallSpeed;
-        Vector2 goDown = (transform.position.y == -17) ? 
-            new Vector2(transform.position.x, transform.position.y - 500f):
+        Vector2 goDown = (transform.position.y == -17) ?
+            new Vector2(transform.position.x, transform.position.y - 500f) :
             new Vector2(transform.position.x, transform.position.y - Random.Range(-5f, 20f));
 
         characterAnim.SetBool("Death", true);
         leftWeaponAnim.SetBool("Death", true);
         rightWeaponAnim.SetBool("Death", true);
 
-        fallSpeed = (transform.position.y == -17) ? 10f : 10f;
-
-        transform.position = Vector2.MoveTowards(transform.position, goDown, fallSpeed);
+        transform.position = Vector2.MoveTowards(transform.position, goDown, 10f);
 
 
         // Sound
