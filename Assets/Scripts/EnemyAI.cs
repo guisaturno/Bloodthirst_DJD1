@@ -8,6 +8,7 @@ public class EnemyAI : Character
     //Spawn control
     private RoundManager roundManager;
     //AI
+    private Player playerScript;
     private Animator playerAnim;
     private AnimatorStateInfo playerState;
     private float responseTime;
@@ -31,6 +32,7 @@ public class EnemyAI : Character
     {
         base.Start();
 
+        playerScript = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         playerAnim = GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>();
         playerTransform = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
 
@@ -47,8 +49,6 @@ public class EnemyAI : Character
         {
             Death();
         }
-
-        
 
         if (PauseMenu.pauseGame == false)
         {
@@ -103,6 +103,12 @@ public class EnemyAI : Character
             else if (currentDef > currentAgro)
             {
                 state = State.Defend;
+            }
+
+            if (playerScript.CurrentHP <= 0)
+            {
+                state = State.Idle;
+                StopAllCoroutines();
             }
 
             yield return new WaitForSeconds(responseTime);
@@ -171,6 +177,7 @@ public class EnemyAI : Character
     protected override void Death()
     {
         StopAllCoroutines();
+        KillCount.enemysKilled++;
         roundManager.enemysAlive -= 1;
         base.Death();
     }

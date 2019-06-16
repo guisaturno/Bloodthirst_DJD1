@@ -3,18 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class RoundCount : MonoBehaviour
+public class KillCount : MonoBehaviour
 {
     [SerializeField] private Text roundText;
-    public static int rounds;
+    public static int enemysKilled;
 
     void Start()
     {
-        rounds = 0;
+        enemysKilled = 0;
     }
 
     void Update()
     {
-        roundText.text = "Round " + rounds;
+        roundText.text = "Kills " + enemysKilled;
     }
 }
