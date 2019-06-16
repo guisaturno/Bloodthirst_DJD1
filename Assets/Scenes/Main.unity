@@ -9379,7 +9379,7 @@ PrefabInstance:
     - target: {fileID: 6251880509577759886, guid: 190d7806d7bedb44eb7a137541b3f360,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6251880509577759887, guid: 190d7806d7bedb44eb7a137541b3f360,
         type: 3}
@@ -9451,6 +9451,11 @@ PrefabInstance:
       propertyPath: crowd
       value: 
       objectReference: {fileID: 8300000, guid: 13789247b9b26b8459f2cdd9d81b9fae, type: 3}
+    - target: {fileID: 6251880509577759880, guid: 190d7806d7bedb44eb7a137541b3f360,
+        type: 3}
+      propertyPath: baseSpawnTime
+      value: 30
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 190d7806d7bedb44eb7a137541b3f360, type: 3}
 --- !u!1001 &6667280109681697406
