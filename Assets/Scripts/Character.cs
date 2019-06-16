@@ -619,6 +619,7 @@ public class Character : MonoBehaviour
 
     protected virtual void Death()
     {
+        float fallSpeed;
         Vector2 goDown = (transform.position.y == -17) ?
             new Vector2(transform.position.x, transform.position.y - 500f) :
             new Vector2(transform.position.x, transform.position.y - Random.Range(-5f, 20f));
@@ -627,7 +628,8 @@ public class Character : MonoBehaviour
         leftWeaponAnim.SetBool("Death", true);
         rightWeaponAnim.SetBool("Death", true);
 
-        transform.position = Vector2.MoveTowards(transform.position, goDown, 10f);
+        fallSpeed = (transform.position.y == -17) ? 10f : 15f;
+        transform.position = Vector2.MoveTowards(transform.position, goDown, fallSpeed);
 
 
         // Sound
@@ -676,7 +678,7 @@ public class Character : MonoBehaviour
             hitPos = _hitPos;
             pushDistance = _pushDistance;
 
-            if (this is Player) HealthBar.health -= 10f;
+            if (this is Player) HealthBar.health -= damage;
             Instantiate(bloodEffect, transform.position, Quaternion.identity);
             CurrentHP -= damage;
             characterAnim.SetTrigger("Hit");
@@ -697,7 +699,7 @@ public class Character : MonoBehaviour
             ResetCharacter();
             state = State.Stun;
 
-            if (this is Player) HealthBar.health -= 10f;
+            if (this is Player) HealthBar.health -= damage;
             Instantiate(bloodEffect, transform.position, Quaternion.identity);
             CurrentHP -= damage;
             characterAnim.SetTrigger("Hit");
